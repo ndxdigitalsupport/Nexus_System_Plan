@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Group International — Ecosystem Portfolio &amp; Master Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #050508;
+      --card: #0B0B14;
+      --card-hover: #10101C;
+      --border: #1C1C2C;
+      --border-accent: #33334D;
+      --text: #F8F8FC;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --violet: #8B5CF6;
+      --violet-glow: rgba(139, 92, 246, 0.4);
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.16) 0%, transparent 55%),
+        radial-gradient(circle at 10% 40%, rgba(37, 99, 235, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+      padding-bottom: 80px;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .top-nexus-bar {
+      background: #08080E;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+    .bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .bar-pill {
+      background: var(--violet);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bar-links {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+    }
+    .bar-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .bar-links a:hover, .bar-links a.active { color: #fff; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* HERO */
+    .hero-section {
+      text-align: center;
+      padding: 70px 0 50px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #C4B5FD;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: #10B981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10B981;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-wrap: balance;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A5A5C8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: pretty;
+    }
+    .portal-card:active, .btn-portal-card:active, .badge-archetype:active {
+      transform: scale(0.975);
+    }
+
+    /* METRICS STRIP */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .m-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+    }
+    .m-num {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .m-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    /* SECTION TITLE */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* SITES GRID */
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+    .site-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+      position: relative;
+    }
+    .site-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8);
+    }
+
+    .card-top {
+      padding: 26px 26px 18px;
+    }
+    .card-browser {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #94A3B8;
+    }
+    .browser-dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .d-red { background: #EF4444; }
+    .d-yellow { background: #F59E0B; }
+    .d-green { background: #10B981; }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .site-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .archetype-chip {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .site-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 14px;
+      font-size: 0.8rem;
+    }
+    .f-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+    .f-val { font-weight: 600; color: #fff; }
+
+    .card-bottom {
+      padding: 16px 26px;
+      background: rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      gap: 12px;
+    }
+    .btn-launch {
+      flex: 1;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-launch:hover { transform: translateY(-1px); }
+
+    /* FOOTER */
+    .master-footer {
+      border-top: 1px solid var(--border);
+      padding: 50px 0 20px;
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-title { font-size: 2.8rem; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+      .sites-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL NAV BAR -->
+  <div class="top-nexus-bar">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="index.html" class="bar-brand">
+        <span class="bar-pill">⬡</span>
+        <span>NEXUS ECOSYSTEM DIRECTORY</span>
+      </a>
+      <span style="color: var(--border);">|</span>
+      <div class="bar-links">
+        <a href="01_aios/index.html">AiOS</a>
+        <a href="02_crm/index.html">CRM</a>
+        <a href="03_commerce/index.html">Commerce (Light)</a>
+        <a href="04_finance/index.html">Finance</a>
+        <a href="05_affiliate/index.html">Affiliates</a>
+        <a href="06_talently/index.html">Talently (Light)</a>
+        <a href="07_agency/index.html">Agency</a>
+        <a href="08_ai_consulting/index.html">AI Enterprise</a>
+        <a href="09_vertex/index.html">Vertex (Ivory Paper)</a>
+      </div>
+    </div>
+    <div>Executive Review Line: <a href="https://t.me/DanLP18" target="_blank" style="color: #60A5FA; text-decoration: none;">@DanLP18</a></div>
+  </div>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <header class="hero-section">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>9 Production Properties · 100% English · Multi-Brand Identity</span>
+      </div>
+      <h1 class="hero-title">Nexus Group Portfolio &amp; Digital Ecosystem</h1>
+      <p class="hero-lead">
+        A differentiated multi-brand technology ecosystem combining enterprise AI operating systems, vertical SaaS, conversational Telegram commerce, and regional executive advisory across Southeast Asia.
+      </p>
+    </header>
+
+    <!-- METRICS -->
+    <div class="metrics-strip">
+      <div class="m-box">
+        <div class="m-num">9</div>
+        <div class="m-label">Active Web Properties</div>
+      </div>
+      <div class="m-box">
+        <div class="m-num">3</div>
+        <div class="m-label">Light &amp; Paper Archetypes</div>
+      </div>
+      <div class="m-box">
+        <div class="m-num">6</div>
+        <div class="m-label">Specialized Tech Surfaces</div>
+      </div>
+      <div class="m-box">
+        <div class="m-num">100%</div>
+        <div class="m-label">Taste Skill Verified</div>
+      </div>
+    </div>
+
+    <!-- PILLAR 1: DIGITAL PRODUCTS -->
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Pillar 1: Digital Products &amp; SaaS Platforms</h2>
+        <p class="section-desc">Telegram-native and cloud SaaS applications engineered for SMEs, retail commerce, finance, and executive hiring.</p>
+      </div>
+    </div>
+
+    <div class="sites-grid">
+
+      <!-- 1. AIOS -->
+      <div class="site-card" style="border-color: rgba(139, 92, 246, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>aios.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(139, 92, 246, 0.15); color: #C4B5FD; border: 1px solid rgba(139, 92, 246, 0.3);">
+            Midnight Violet &amp; Neural Audio
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus AiOS</h3>
+            <span class="tag" style="background: rgba(139, 92, 246, 0.2); color: #C4B5FD;">Product</span>
+          </div>
+          <p class="site-desc">Telegram-native AI Operating System for SME founders. Automatically synthesizes staff check-ins into an audio executive digest at 8:00 AM.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Working Audio Briefing Player</span></div>
+            <div class="f-row"><span>Workflow</span><span class="f-val">Zero App Downloads (Telegram)</span></div>
+            <div class="f-row"><span>Design</span><span class="f-val">Taste Skill 100svh Split Hero</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="01_aios/index.html" class="btn-launch" style="background: #8B5CF6;">Launch Nexus AiOS ↗</a>
+        </div>
+      </div>
+
+      <!-- 2. CRM -->
+      <div class="site-card" style="border-color: rgba(59, 130, 246, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>crm.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(59, 130, 246, 0.15); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.3);">
+            Cobalt Slate &amp; Dynamic KHQR
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus Pro CRM</h3>
+            <span class="tag" style="background: rgba(59, 130, 246, 0.2); color: #93C5FD;">Product</span>
+          </div>
+          <p class="site-desc">Multi-currency sales pipeline and milestone invoicing for professional services. Settle retainers in 1.4s via Bakong KHQR in USD and KHR.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Live KHQR Currency Switcher</span></div>
+            <div class="f-row"><span>Pipeline</span><span class="f-val">Dynamic Kanban Deal Stages</span></div>
+            <div class="f-row"><span>Compliance</span><span class="f-val">GDT E-Filing Tax Export</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="02_crm/index.html" class="btn-launch" style="background: #2563EB;">Launch Nexus CRM ↗</a>
+        </div>
+      </div>
+
+      <!-- 3. COMMERCE -->
+      <div class="site-card" style="border-color: rgba(255, 56, 92, 0.3); background: #0E0E14;">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>commerce.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: #FFFFFF; color: #0F172A; border: 1px solid #E2E8F0; font-weight: 800;">
+            Vibrant Warm White Retail Light
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus Commerce</h3>
+            <span class="tag" style="background: rgba(255, 56, 92, 0.2); color: #FF385C;">Light Mode</span>
+          </div>
+          <p class="site-desc">Convert Telegram channels into automated revenue storefronts. 3-tap customer checkout, instant PayWay and Bakong KHQR, and live inventory decrementation.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">iPhone Mini-App + Cart Drawer</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Clean #FFFFFF Canvas</span></div>
+            <div class="f-row"><span>Checkout Flow</span><span class="f-val">PayWay &amp; Bakong Settled</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="03_commerce/index.html" class="btn-launch" style="background: #FF385C;">Launch Commerce Storefront ↗</a>
+        </div>
+      </div>
+
+      <!-- 4. FINANCE -->
+      <div class="site-card" style="border-color: rgba(16, 185, 129, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>finance.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(16, 185, 129, 0.15); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.3);">
+            Maritime Mint &amp; Liquidity Curve
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus Finance</h3>
+            <span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #6EE7B7;">Product</span>
+          </div>
+          <p class="site-desc">Multi-bank treasury clearinghouse and runway forecasting engine. Connect operating accounts across ABA, Canadia, and DBS with zero-spread interbank FX.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Interactive SVG Burn Runway Slider</span></div>
+            <div class="f-row"><span>Clearing</span><span class="f-val">1-Click Batch Payroll (500+ tx)</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Maritime Deep Midnight #020B18</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="04_finance/index.html" class="btn-launch" style="background: #059669;">Launch Nexus Finance ↗</a>
+        </div>
+      </div>
+
+      <!-- 5. AFFILIATE -->
+      <div class="site-card" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>partners.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(245, 158, 11, 0.15); color: #FDE68A; border: 1px solid rgba(245, 158, 11, 0.3);">
+            Carbon Gold &amp; Instant Payouts
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus Partner Network</h3>
+            <span class="tag" style="background: rgba(245, 158, 11, 0.2); color: #FDE68A;">Product</span>
+          </div>
+          <p class="site-desc">Recurring revenue partner network for agencies and creators. Earn 25%–40% lifetime recurring commissions with automated instant Bakong disbursements.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Interactive Yield Slider &amp; Bot</span></div>
+            <div class="f-row"><span>Attribution</span><span class="f-val">90-Day Cookie Lock</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Carbon Gold #0A0B0E</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="05_affiliate/index.html" class="btn-launch" style="background: #D97706; color: #000; font-weight: 800;">Launch Partner Portal ↗</a>
+        </div>
+      </div>
+
+      <!-- 6. TALENTLY -->
+      <div class="site-card" style="border-color: rgba(5, 150, 105, 0.4); background: #0E1318;">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>talently.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: #F8FAFC; color: #059669; border: 1px solid #A7F3D0; font-weight: 800;">
+            Crisp Modern Slate Light
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Talently Careers</h3>
+            <span class="tag" style="background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0;">Light Mode</span>
+          </div>
+          <p class="site-desc">AI-screened technical and executive talent marketplace for Southeast Asia. Pre-vetted candidate scorecards, 48-hour shortlist SLA, and ASEAN EOR payroll ready.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Live Candidate Scorecards &amp; Radar</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Clean Slate Light #F8FAFC</span></div>
+            <div class="f-row"><span>Velocity</span><span class="f-val">48-Hr Shortlist Guarantee</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="06_talently/index.html" class="btn-launch" style="background: #059669;">Launch Talently Marketplace ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PILLAR 2: SERVICES -->
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Pillar 2: Professional Services &amp; Enterprise Advisory</h2>
+        <p class="section-desc">Full-service AI software engineering, sovereign cognitive enterprise platforms, and cross-border M&amp;A corporate finance.</p>
+      </div>
+    </div>
+
+    <div class="sites-grid">
+
+      <!-- 7. AGENCY -->
+      <div class="site-card" style="border-color: rgba(6, 182, 212, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>intelligence.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(6, 182, 212, 0.15); color: #67E8F9; border: 1px solid rgba(6, 182, 212, 0.3);">
+            Cyber Neon &amp; Client Telemetry
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus Intelligence</h3>
+            <span class="tag" style="background: rgba(6, 182, 212, 0.2); color: #67E8F9;">Service</span>
+          </div>
+          <p class="site-desc">Production AI software engineering and growth studio in Phnom Penh. Building high-concurrency fintech micro-frontends, Telegram Mini-Apps, and Bayesian MMM models.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Switchable Case Study Telemetry</span></div>
+            <div class="f-row"><span>Clients</span><span class="f-val">ABA Bank, Chip Mong, Aeon</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Cyber Neon Obsidian #050810</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="07_agency/index.html" class="btn-launch" style="background: #0284C7;">Launch Intelligence Studio ↗</a>
+        </div>
+      </div>
+
+      <!-- 8. AI CONSULTING -->
+      <div class="site-card" style="border-color: rgba(202, 138, 4, 0.3);">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>enterprise.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: rgba(202, 138, 4, 0.15); color: #FDE047; border: 1px solid rgba(202, 138, 4, 0.3);">
+            Sovereign Deep Bronze &amp; Private RAG
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name">Nexus AI Enterprise</h3>
+            <span class="tag" style="background: rgba(202, 138, 4, 0.2); color: #FDE047;">Service</span>
+          </div>
+          <p class="site-desc">Private sovereign LLM systems and air-gapped cognitive architecture for regulated banks and telecom groups. Sub-200ms vector search with zero public cloud leakage.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">Air-Gapped RAG Topology Node</span></div>
+            <div class="f-row"><span>Security</span><span class="f-val">100% In-Country Local GPU Hosting</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Sovereign Deep Bronze #080A0F</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="08_ai_consulting/index.html" class="btn-launch" style="background: #CA8A04;">Launch Enterprise AI ↗</a>
+        </div>
+      </div>
+
+      <!-- 9. VERTEX PARTNERS -->
+      <div class="site-card" style="border-color: rgba(184, 134, 11, 0.4); background: #12100E;">
+        <div class="card-top">
+          <div class="card-browser">
+            <div class="browser-dots">
+              <span class="dot d-red"></span>
+              <span class="dot d-yellow"></span>
+              <span class="dot d-green"></span>
+            </div>
+            <span>vertex.nexus.asia</span>
+          </div>
+          <div class="archetype-chip" style="background: #FAF8F5; color: #8C6205; border: 1px solid #D4AF37; font-weight: 800; font-family: var(--font-serif);">
+            Warm Ivory Editorial Luxury Paper
+          </div>
+          <div class="card-title-row">
+            <h3 class="site-name" style="font-family: var(--font-serif);">Vertex Partners</h3>
+            <span class="tag" style="background: #F5EFEB; color: #8C6205; border: 1px solid #D4AF37;">Ivory Paper</span>
+          </div>
+          <p class="site-desc">Direct-mandate cross-border M&amp;A advisory, conglomerate succession planning, and corporate restructuring across Singapore and Phnom Penh.</p>
+          <div class="feature-list">
+            <div class="f-row"><span>Hero Console</span><span class="f-val">AES-256 Deal Room ($120M CIM)</span></div>
+            <div class="f-row"><span>Surface</span><span class="f-val">Warm Ivory Linen #FAF8F5</span></div>
+            <div class="f-row"><span>Track Record</span><span class="f-val">$1.8B+ Aggregate Volume</span></div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <a href="09_vertex/index.html" class="btn-launch" style="background: #B8860B;">Launch Vertex Partners ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="master-footer">
+      <p>© 2026 Nexus Group International · Unified Ecosystem Portfolio Directory.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: var(--text-muted);">
+        Standardized under Taste Skill 2.5.1 Multi-Brand Identity Architecture · Prepared for Executive Review.
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

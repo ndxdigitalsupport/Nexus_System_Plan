@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus AI Enterprise — Sovereign AI Systems &amp; Private LLM Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #080A0F;
+      --surface: #11141C;
+      --card: #161B26;
+      --card-border: rgba(202, 138, 4, 0.22);
+      --card-hover: rgba(234, 179, 8, 0.45);
+      
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+
+      --bronze: #CA8A04;
+      --bronze-light: #FDE047;
+      --bronze-dark: #A16207;
+      --bronze-glow: rgba(202, 138, 4, 0.35);
+
+      --amber: #F59E0B;
+      --emerald: #10B981;
+      --emerald-light: #6EE7B7;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 85% 0%, rgba(202, 138, 4, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 10% 45%, rgba(245, 158, 11, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 60% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: rgba(8, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+    }
+    .nexus-global-bar a { color: var(--text-sub); text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #fff; font-weight: 700; }
+    .nexus-global-bar a.active { color: var(--bronze-light); }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(8, 10, 15, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px var(--bronze-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-portal {
+      color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-portal:hover { border-color: var(--bronze-light); background: rgba(202, 138, 4, 0.1); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--bronze-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(202, 138, 4, 0.6); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: 100svh SPLIT HERO */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(202, 138, 4, 0.12);
+      border: 1px solid rgba(202, 138, 4, 0.35);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--bronze-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--bronze);
+      box-shadow: 0 0 10px var(--bronze);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+      margin-bottom: 18px;
+      color: #fff;
+      text-wrap: balance;
+    }
+    .hero-headline span {
+      background: linear-gradient(135deg, #FEF08A 0%, #EAB308 60%, #CA8A04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--bronze-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(202, 138, 4, 0.45); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-portal:active, .node-box:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { background: rgba(202, 138, 4, 0.12); border-color: var(--bronze-light); }
+
+    /* TRUST BADGES */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      max-width: 520px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--bronze-light); flex-shrink: 0; }
+
+    /* RIGHT HERO: LIVE ENTERPRISE RAG ARCHITECTURE CONSOLE */
+    .rag-console {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 24px rgba(202, 138, 4, 0.2);
+      position: relative;
+    }
+    .console-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .console-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .console-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(202, 138, 4, 0.15);
+      color: var(--bronze-light);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .rag-nodes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .rag-node-item {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    .node-name { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; }
+    .node-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--bronze-light); }
+
+    .rag-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .stat-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .stat-val { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #fff; margin-top: 2px; }
+    .stat-val.bronze { color: var(--bronze-light); }
+
+    .btn-query-sim {
+      width: 100%;
+      background: var(--bronze);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-query-sim:hover { background: var(--bronze-dark); }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--bronze-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--card-hover);
+      box-shadow: 0 16px 36px -10px rgba(0,0,0,0.7), 0 0 20px -5px rgba(202, 138, 4, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    /* AUDIT OPTIONS */
+    .q-opt {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 0.74rem;
+      color: var(--text-sub);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .q-opt.active {
+      border-color: var(--bronze);
+      background: rgba(202, 138, 4, 0.18);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* SCREEN 3: ADVISORY PACKAGES */
+    .pricing-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .price-val {
+      font-family: var(--font-mono);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 16px 0 8px;
+    }
+    .price-val span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+    .feature-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+    .feature-list li { display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-sub); }
+    .feature-list li svg { width: 16px; height: 16px; stroke: var(--emerald-light); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 0 40px;
+      background: rgba(4, 5, 8, 0.95);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-5, .col-6, .col-7, .col-8, .col-12 { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #fff; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(202, 138, 4, 0.2); color: var(--bronze-light); padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">ENTERPRISE AI</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html" class="active">AI Enterprise</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg>
+      </div>
+      <div>Nexus <span style="color: var(--bronze-light);">AI Enterprise</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#audit">Readiness Audit</a>
+      <a href="#rag">Sovereign RAG Stack</a>
+      <a href="#roi">Displacement ROI</a>
+      <a href="#advisory">Advisory Mandates</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-portal">Enterprise Portal</a>
+      <a href="#advisory" class="btn-cta">
+        <span>Book AI Audit</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: EDITORIAL VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Nexus AI Enterprise • Sovereign Intelligence Infrastructure
+          </div>
+          <h1 class="hero-headline">
+            Sovereign AI Systems.<br>
+            <span>Air-Gapped Enterprise LLMs</span>.
+          </h1>
+          <p class="hero-sub">
+            We deploy private, self-hosted LLM pipelines for banks, telecom operators, and conglomerate groups. Keep sensitive corporate data completely in-country with zero leakage to public cloud models.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#audit" class="btn-hero-primary">
+              <span>Run AI Readiness Audit</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#advisory" class="btn-hero-secondary">
+              <span>View Advisory Terms</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% In-Country Tier-3 Hosting</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>Zero Public Cloud API Leakage</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Sub-200ms Enterprise Vector Search</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span>Board-Level Compliance &amp; Governance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE ENTERPRISE RAG ARCHITECTURE CONSOLE -->
+        <div class="rag-console" id="rag">
+          <div class="console-top">
+            <div>
+              <div class="console-title">Private Enterprise RAG Topology</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Air-gapped retrieval pipeline topology</div>
+            </div>
+            <span class="console-tag">AIR-GAPPED NODE</span>
+          </div>
+
+          <div class="rag-nodes-list">
+            <div class="rag-node-item">
+              <div class="node-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bronze-light)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+                <span>1. Local ERP &amp; Vault Ingestion</span>
+              </div>
+              <span class="node-meta">Encrypted In-Memory</span>
+            </div>
+
+            <div class="rag-node-item">
+              <div class="node-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bronze-light)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>2. Vector Embedding (1,536-dim)</span>
+              </div>
+              <span class="node-meta">Local GPU Array</span>
+            </div>
+
+            <div class="rag-node-item">
+              <div class="node-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bronze-light)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <span>3. Milvus Semantic Hybrid Search</span>
+              </div>
+              <span class="node-meta">P99: 42ms</span>
+            </div>
+
+            <div class="rag-node-item">
+              <div class="node-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>4. Air-Gapped Llama-3 Synthesizer</span>
+              </div>
+              <span class="node-meta" style="color: var(--emerald-light);">Zero Cloud Calls</span>
+            </div>
+          </div>
+
+          <div class="rag-stats-bar">
+            <div>
+              <div class="stat-label">End-to-End Latency</div>
+              <div class="stat-val bronze">168ms</div>
+            </div>
+            <div>
+              <div class="stat-label">Data Leakage</div>
+              <div class="stat-val" style="color: var(--emerald-light);">0.0%</div>
+            </div>
+            <div>
+              <div class="stat-label">Accuracy F1</div>
+              <div class="stat-val bronze">98.4%</div>
+            </div>
+          </div>
+
+          <button class="btn-query-sim" id="btn-rag-sim" onclick="simulateRAGQuery()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Test Private Vector Query Simulation</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO SECTION -->
+    <section class="container bento-section" id="audit">
+      <div class="section-tag">Enterprise Readiness</div>
+      <h2 class="section-title">AI Readiness &amp; Governance Matrix</h2>
+      <p class="section-lead">Evaluate your infrastructure maturity, compute requirements, and compliance readiness.</p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: READINESS AUDIT TOOL -->
+        <div class="bento-card col-7">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--bronze-light); text-transform: uppercase;">Maturity Assessment</span>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-top: 4px;">AI Readiness Scorecard</h3>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(202, 138, 4, 0.15); color: var(--bronze-light); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
+                Audit Score: 84 / 100
+              </div>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.35); border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div style="margin-bottom: 14px;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 6px;">1. Primary Corporate Data Storage:</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <div class="q-opt active" onclick="setOpt(this)">On-Premise PostgreSQL / Oracle</div>
+                  <div class="q-opt" onclick="setOpt(this)">Public Cloud AWS / GCP / Azure</div>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 14px;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 6px;">2. Regulatory Compliance Requirement:</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <div class="q-opt active" onclick="setOpt(this)">NBC &amp; National Sovereignty (Strict)</div>
+                  <div class="q-opt" onclick="setOpt(this)">Standard Commercial Discretion</div>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 6px;">3. Target AI Automation Use Case:</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <div class="q-opt active" onclick="setOpt(this)">Internal Legal &amp; Policy Synthesis</div>
+                  <div class="q-opt" onclick="setOpt(this)">Customer Banking WebApp Bot</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: DISPLACEMENT ROI -->
+        <div class="bento-card col-5" id="roi">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(202, 138, 4, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bronze-light)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">Headcount Efficiency ROI</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Automating Tier-1 document analysis and compliance reporting saves an average regional financial institution 1,400+ executive hours per month.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--bronze-light); font-size: 0.85rem;">
+            ✓ 6.4x Average 12-Month Net ROI
+          </div>
+        </div>
+
+        <!-- CARD 3: LOCAL GPU CLUSTERS -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Dedicated NVIDIA Nodes</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Provision dedicated H100 and A100 GPU clusters in Phnom Penh tier-3 data centers for predictable multi-token inference throughput.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--emerald-light); font-size: 0.8rem;">
+            ✓ Guaranteed Compute SLAs
+          </div>
+        </div>
+
+        <!-- CARD 4: AUDIT LOGGING -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Tamper-Proof Audit Trails</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Every LLM query, context injection, and generated output is cryptographically signed and stored in an immutable WORM compliance log.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--amber); font-size: 0.8rem;">
+            ✓ Full Regulatory Auditability
+          </div>
+        </div>
+
+        <!-- CARD 5: KH-EN BILINGUAL MODELS -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(202, 138, 4, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bronze-light)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Bilingual Legal Fine-Tuning</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Proprietary LoRA adapters trained on Cambodian royal decrees, tax codes, and banking regulations for exact cross-lingual fidelity.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--bronze-light); font-size: 0.8rem;">
+            ✓ High-Fidelity Domain Adapters
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: ADVISORY PACKAGES -->
+    <section class="container pricing-section" id="advisory">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Engagement Structures</div>
+        <h2 class="section-title">Enterprise AI Advisory Mandates</h2>
+        <p class="section-lead">Fixed-scope architectural advisory and managed LLM deployments.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">AI Readiness Sprint</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">3-Week diagnostic of data systems &amp; security.</p>
+            <div class="price-val">
+              $9,500 <span>/ Sprint</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Data Pipeline &amp; Security Topology Audit</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> On-Prem vs Private Cloud GPU Sizing</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 Custom ROI Business Case Models</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Board-Ready AI Strategic Roadmap</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Initiate Readiness Sprint</a>
+        </div>
+
+        <div class="bento-card col-4" style="border-color: var(--bronze); box-shadow: 0 10px 30px -10px var(--bronze-glow);">
+          <div style="position: absolute; top: 16px; right: 16px; background: var(--bronze); color: #000; font-size: 0.7rem; font-weight: 800; padding: 3px 9px; border-radius: 4px; text-transform: uppercase;">
+            Primary Solution
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Sovereign RAG Deployment</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Full turnkey private LLM stack deployed in your VPC.</p>
+            <div class="price-val" style="color: var(--bronze-light);">
+              $38,000 <span>/ Implementation</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Air-Gapped Llama-3 Local GPU Cluster</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Milvus Hybrid Vector Indexing Pipeline</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Role-Based Access Control (RBAC) System</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 90-Day Production Guarantee</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center;">Deploy Sovereign Stack</a>
+        </div>
+
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Chief AI Officer Retainer</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Fractional executive leadership for conglomerates.</p>
+            <div class="price-val">
+              $14,000 <span>/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Senior AI Research Director</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Continuous Model Evaluation &amp; Upgrades</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Regulatory Compliance &amp; Audit Support</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly Staff Prompt &amp; Tooling Workshops</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Inquire CAIO Retainer</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg>
+          </div>
+          <div>Nexus <span style="color: var(--bronze-light);">AI Enterprise</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          Private sovereign LLM systems, air-gapped enterprise cognitive pipelines, and multi-agent systems for Southeast Asia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>AI Capabilities</h4>
+        <ul>
+          <li><a href="#audit">Readiness Audit</a></li>
+          <li><a href="#rag">Sovereign RAG Stack</a></li>
+          <li><a href="#roi">Displacement ROI</a></li>
+          <li><a href="#advisory">Advisory Mandates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../02_crm/index.html">Nexus CRM</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../04_finance/index.html">Nexus Finance</a></li>
+          <li><a href="../09_vertex/index.html">Vertex Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Head Office</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          Exchange Square Tower, Level 18<br>
+          Phnom Penh, Kingdom of Cambodia<br>
+          ai@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Nexus Group International. All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Security &amp; NBC Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setOpt(el) {
+      const parent = el.closest('div');
+      parent.querySelectorAll('.q-opt').forEach(opt => opt.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function simulateRAGQuery() {
+      const btn = document.getElementById('btn-rag-sim');
+      btn.innerHTML = '<span>Scanning Air-Gapped Vector Index...</span>';
+      btn.style.background = '#2563EB';
+
+      setTimeout(() => {
+        btn.innerHTML = '✓ Query Resolved in 142ms • Zero Cloud Calls';
+        btn.style.background = '#059669';
+        alert('Vector Query Verified: 4 local document chunks retrieved from in-memory Milvus index. Context injected into local Llama-3 weights with 0 bytes transmitted outside VPC.');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

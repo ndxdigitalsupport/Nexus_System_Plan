@@ -1,0 +1,2492 @@
+{
+  "AiOS": {
+    "url": "https://nexus-aios-ashy.vercel.app/",
+    "final_url": "https://nexus-aios-ashy.vercel.app/",
+    "title": "AIOS \u2014 Your AI Operating System",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Telegram-native AI Operating System for Cambodian SME & corporate owners: daily reports, follow-ups and department alignment, automated."
+    },
+    "frameworks": [
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "headings": [
+      [
+        "h1",
+        "\u1782\u17d2\u179a\u1794\u17cb\u1782\u17d2\u179a\u1784\u1780\u17d2\u179a\u17bb\u1798\u17a0\u17ca\u17bb\u1793\u179a\u1794\u179f\u17cb\u17a2\u17d2\u1793\u1780\u1796\u17b8"
+      ],
+      [
+        "h2",
+        "\u1792\u17d2\u179b\u17b6\u1794\u17cb\u1787\u17bd\u1794\u1794\u1789\u17d2\u17a0\u17b6\u1791\u17b6\u17c6\u1784\u1793\u17c1\u17c7\u1791\u17c1?"
+      ],
+      [
+        "h2",
+        "\u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a"
+      ],
+      [
+        "h2",
+        "\u1794\u178e\u17d2\u178e\u17b6\u179b\u17d0\u1799\u179b\u17c6\u17a0\u17bc\u179a\u1780\u17b6\u179a\u1784\u17b6\u179a"
+      ],
+      [
+        "h3",
+        "\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u178a\u17c2\u179b\u1794\u17b6\u178f\u17cb"
+      ],
+      [
+        "h3",
+        "\u179f\u1784\u17d2\u1781\u17c1\u1794\u1796\u17d2\u179a\u17b9\u1780\u179f\u1798\u17d2\u179a\u17b6\u1794\u17cb\u1798\u17d2\u1785\u17b6\u179f\u17cb"
+      ],
+      [
+        "h3",
+        "\u179f\u17c1\u1785\u1780\u17d2\u178f\u17b8\u1796\u17d2\u179a\u17b6\u1784\u1798\u17b6\u178f\u17b7\u1780\u17b6"
+      ],
+      [
+        "h3",
+        "\u1794\u1789\u17d2\u17a0\u17b6 \u1793\u17b7\u1784\u178a\u17c6\u178e\u17c4\u17c7\u179f\u17d2\u179a\u17b6\u1799"
+      ],
+      [
+        "h3",
+        "\u1780\u17b6\u179a\u179c\u17b6\u1799\u178f\u1798\u17d2\u179b\u17c3\u17a2\u178f\u17b7\u1790\u17b7\u1787\u1793\u1790\u17d2\u1798\u17b8"
+      ],
+      [
+        "h3",
+        "\u1780\u17b6\u179a\u178f\u17b6\u1798\u178a\u17b6\u1793\u179c\u17b7\u1780\u17d2\u1780\u1799\u1794\u178f\u17d2\u179a"
+      ],
+      [
+        "h2",
+        "\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a\u1780\u17d2\u1793\u17bb\u1784\u1794\u17b8\u1787\u17c6\u17a0\u17b6\u1793"
+      ],
+      [
+        "h3",
+        "\u1780\u17c6\u178e\u178f\u17cb"
+      ],
+      [
+        "h3",
+        "\u178a\u17c6\u17a1\u17be\u1784"
+      ],
+      [
+        "h3",
+        "\u1794\u178e\u17d2\u178f\u17bb\u17c7\u1794\u178e\u17d2\u178f\u17b6\u179b"
+      ],
+      [
+        "h2",
+        "\u178f\u1798\u17d2\u179b\u17c3\u179f\u17b6\u1798\u1789\u17d2\u1789"
+      ],
+      [
+        "h3",
+        "Starter"
+      ],
+      [
+        "h3",
+        "Growth"
+      ],
+      [
+        "h3",
+        "Enterprise"
+      ]
+    ],
+    "login_links": [
+      {
+        "href": "/login",
+        "text": "\u1785\u17bc\u179b\u1794\u17d2\u179a\u17be",
+        "class": "text-sm font-semibold text-[#101014] hover:text-[#7C5CFC]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "inline-block rounded-full bg-[#101014] px-[22px] py-[11px] text-sm font-semibold text-white hover:bg-[#23232B]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u17a1\u17bc\u179c",
+        "class": "inline-block rounded-full bg-[#7C5CFC] px-[34px] py-3.5 text-[15.5px] font-semibold text-white shadow-[0_10px_24px_rgba(124,92,252,0.35)] hover:bg-[#6D4DF0]"
+      },
+      {
+        "href": "/signup?plan=starter",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#F6F6FA] text-[#101014] hover:bg-[#ECECF1]"
+      },
+      {
+        "href": "/signup?plan=growth",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#7C5CFC] text-white hover:bg-[#6D4DF0]"
+      },
+      {
+        "href": "/signup?plan=enterprise",
+        "text": "\u1791\u17b6\u1780\u17cb\u1791\u1784\u1798\u1780\u1799\u17be\u1784",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#101014] text-white hover:bg-[#23232B]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u1787\u17b6\u1798\u17bd\u1799 AI Audit",
+        "class": "inline-block rounded-full bg-[#7C5CFC] px-[34px] py-3.5 text-[15.5px] font-semibold text-white shadow-[0_10px_24px_rgba(124,92,252,0.35)] hover:bg-[#6D4DF0]"
+      }
+    ],
+    "nexus_links": [],
+    "all_links_count": 14,
+    "top_links": [
+      {
+        "href": "#top",
+        "text": "AIOS",
+        "class": "flex items-center gap-2.5 text-[19px] font-extrabold tracking-[-0.02em] text-[#101014]"
+      },
+      {
+        "href": "#top",
+        "text": "\u1791\u17c6\u1796\u17d0\u179a\u178a\u17be\u1798",
+        "class": "rounded-full bg-white px-3.5 py-[7px] text-[13.5px] font-medium text-[#7C5CFC] shadow-[0_1px_4px_rgba(0,0,0,0.06)]"
+      },
+      {
+        "href": "#how",
+        "text": "\u1795\u179b\u17b7\u178f\u1795\u179b",
+        "class": "rounded-full px-3.5 py-[7px] text-[13.5px] font-medium text-[#6B6B76] hover:bg-white hover:text-[#101014]"
+      },
+      {
+        "href": "#workflows",
+        "text": "\u179b\u17c6\u17a0\u17bc\u179a\u1780\u17b6\u179a\u1784\u17b6\u179a",
+        "class": "rounded-full px-3.5 py-[7px] text-[13.5px] font-medium text-[#6B6B76] hover:bg-white hover:text-[#101014]"
+      },
+      {
+        "href": "#pricing",
+        "text": "\u178f\u1798\u17d2\u179b\u17c3",
+        "class": "rounded-full px-3.5 py-[7px] text-[13.5px] font-medium text-[#6B6B76] hover:bg-white hover:text-[#101014]"
+      },
+      {
+        "href": "#about",
+        "text": "\u17a2\u17c6\u1796\u17b8\u1799\u17be\u1784",
+        "class": "rounded-full px-3.5 py-[7px] text-[13.5px] font-medium text-[#6B6B76] hover:bg-white hover:text-[#101014]"
+      },
+      {
+        "href": "/login",
+        "text": "\u1785\u17bc\u179b\u1794\u17d2\u179a\u17be",
+        "class": "text-sm font-semibold text-[#101014] hover:text-[#7C5CFC]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "inline-block rounded-full bg-[#101014] px-[22px] py-[11px] text-sm font-semibold text-white hover:bg-[#23232B]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u17a1\u17bc\u179c",
+        "class": "inline-block rounded-full bg-[#7C5CFC] px-[34px] py-3.5 text-[15.5px] font-semibold text-white shadow-[0_10px_24px_rgba(124,92,252,0.35)] hover:bg-[#6D4DF0]"
+      },
+      {
+        "href": "#how",
+        "text": "\u1798\u17be\u179b\u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a",
+        "class": "border-b-2 border-[#C9BFFF] pb-0.5 text-[14.5px] font-semibold text-[#101014] hover:border-[#7C5CFC]"
+      },
+      {
+        "href": "/signup?plan=starter",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#F6F6FA] text-[#101014] hover:bg-[#ECECF1]"
+      },
+      {
+        "href": "/signup?plan=growth",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u17a5\u178f\u1782\u17b7\u178f\u1790\u17d2\u179b\u17c3",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#7C5CFC] text-white hover:bg-[#6D4DF0]"
+      },
+      {
+        "href": "/signup?plan=enterprise",
+        "text": "\u1791\u17b6\u1780\u17cb\u1791\u1784\u1798\u1780\u1799\u17be\u1784",
+        "class": "block rounded-full px-3 py-3 text-center text-sm font-semibold bg-[#101014] text-white hover:bg-[#23232B]"
+      },
+      {
+        "href": "/signup",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u1787\u17b6\u1798\u17bd\u1799 AI Audit",
+        "class": "inline-block rounded-full bg-[#7C5CFC] px-[34px] py-3.5 text-[15.5px] font-semibold text-white shadow-[0_10px_24px_rgba(124,92,252,0.35)] hover:bg-[#6D4DF0]"
+      }
+    ],
+    "forms_count": 0,
+    "inputs": [],
+    "hex_colors": [
+      "#55506E",
+      "#ECECF1",
+      "#23232B",
+      "#E8F7EE",
+      "#B7791F",
+      "#EFEAFF",
+      "#6D4DF0",
+      "#16A34A",
+      "#9A9AA5",
+      "#F0F0F5",
+      "#000",
+      "#F6F6FA",
+      "#6B6B76",
+      "#C9BFFF",
+      "#4C1D95",
+      "#101014",
+      "#7C5CFC",
+      "#17122B",
+      "#FBF0D9",
+      "#3D3D46",
+      "#fff",
+      "#F8F7FF",
+      "#F0EEF9"
+    ],
+    "stylesheets": [
+      "/_next/static/css/01164bd34bac5e72.css"
+    ],
+    "scripts": [
+      "/_next/static/chunks/fd9d1056-dcba7f094ce3d609.js",
+      "/_next/static/chunks/117-b93b2d5c59297f67.js",
+      "/_next/static/chunks/main-app-2dcde4753ea0d175.js",
+      "/_next/static/chunks/965-c98a6326b4c145f9.js",
+      "/_next/static/chunks/340-592bfd915eef60fd.js",
+      "/_next/static/chunks/app/page-bba2831f67d67da8.js",
+      "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "/_next/static/chunks/webpack-03f7c6bc932ce1e3.js"
+    ],
+    "sample_content": [
+      "\u1781\u17d2\u1798\u17c2\u179a",
+      "EN",
+      "Telegram",
+      "\u1794\u17bb\u1782\u17d2\u1782\u179b\u17b7\u1780\u179a\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u1780\u17d2\u1793\u17bb\u1784 Telegram \u17d4 AIOS \u1794\u17d2\u179a\u1798\u17bc\u179b\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u1791\u17b6\u17c6\u1784\u17a2\u179f\u17cb\u1787\u17bc\u1793\u17a2\u17d2\u1793\u1780 \u2014 \u1787\u17b6\u179f\u1784\u17d2\u1781\u17c1\u1794\u1798\u17bd\u1799\u178a\u17cf\u179f\u17d2\u1784\u1794\u17cb\u179f\u17d2\u1784\u17b6\u178f\u17cb \u179a\u17c0\u1784\u179a\u17b6\u179b\u17cb\u1796\u17d2\u179a\u17b9\u1780\u17d4",
+      "\u179f\u1784\u17d2\u1781\u17c1\u1794\u1798\u17d2\u1785\u17b6\u179f\u17cb",
+      "\u1782\u17c6\u179a\u17bc",
+      "8/12",
+      "\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u1794\u17b6\u1793\u1785\u17bc\u179b \u00b7 Sokha Sample Co.",
+      "\u179f\u179a\u17bb\u1794\u1790\u17d2\u1784\u17c3\u1793\u17c1\u17c7",
+      "67%",
+      "\u178f\u17d2\u179a\u17bc\u179c\u1780\u17b6\u179a\u1780\u17b6\u179a\u17a2\u1793\u17bb\u1798\u17d0\u178f",
+      "\u1782\u17c6\u179a\u17bc \u00b7 Sokha Sample Co.",
+      "\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u1794\u17d2\u179a\u1785\u17b6\u17c6\u1790\u17d2\u1784\u17c3 \u2014 \u1780\u17d2\u179a\u17bb\u1798\u179b\u1780\u17cb",
+      "\u1794\u17b6\u1793\u178f\u17b6\u1798\u178a\u17b6\u1793\u17a2\u178f\u17b7\u1790\u17b7\u1787\u1793 12 \u1793\u17b6\u1780\u17cb \u00b7 \u1780\u17b6\u179a\u1794\u1789\u17d2\u1787\u17b6\u1791\u17b7\u1789\u1790\u17d2\u1798\u17b8 3 \u00b7 \u1794\u1789\u17d2\u17a0\u17b6\u178a\u17b9\u1780\u1787\u1789\u17d2\u1787\u17bc\u1793 1 \u178f\u17d2\u179a\u17bc\u179c\u1794\u17b6\u1793\u179b\u17be\u1780\u17a1\u17be\u1784",
+      "\u17a2\u1793\u17bb\u1798\u17d0\u178f",
+      "\u1798\u17be\u179b\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd",
+      "\u1793\u17b6\u1799\u1780\u1794\u17d2\u179a\u178f\u17b7\u1794\u178f\u17d2\u178f\u17b7 \u2192 \u1794\u17d2\u179a\u1792\u17b6\u1793\u1795\u17d2\u1793\u17c2\u1780 \u2192 \u1798\u17d2\u1785\u17b6\u179f\u17cb",
+      "\u1795\u17d2\u1791\u17b6\u17c6\u1784\u1796\u17b7\u1793\u17d2\u1791\u17bb ROI",
+      "\u1782\u17c6\u179a\u17bc",
+      "4.2\u00d7",
+      "\u1781\u17c2\u1793\u17c1\u17c7",
+      "\u1798\u17c9\u17c4\u1784\u178a\u17c2\u179b\u179f\u1793\u17d2\u179f\u17c6\u1794\u17b6\u1793 \u1792\u17c0\u1794\u1793\u17b9\u1784\u1780\u17b6\u179a\u178f\u17b6\u1798\u178a\u17b6\u1793\u178a\u17c4\u1799\u178a\u17c3",
+      "\u179a\u1794\u17c0\u1794\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u17a1\u17be\u1784\u1791\u17c5\u179b\u17be",
+      "\u179a\u1794\u17b6\u1799\u1780\u17b6\u179a\u178e\u17cd\u1794\u17bb\u1782\u17d2\u1782\u179b\u17b7\u1780",
+      "\u2192",
+      "\u1793\u17b6\u1799\u1780\u1794\u17d2\u179a\u178f\u17b7\u1794\u178f\u17d2\u178f\u17b7",
+      "\u2192",
+      "\u1794\u17d2\u179a\u1792\u17b6\u1793\u1795\u17d2\u1793\u17c2\u1780",
+      "\u2192",
+      "\u1798\u17d2\u1785\u17b6\u179f\u17cb"
+    ]
+  },
+  "CRM": {
+    "url": "https://nexus-crm-liard.vercel.app/",
+    "final_url": "https://nexus-crm-liard.vercel.app/",
+    "title": "Nexus Pro CRM \u2014 CRM for Professional Services Firms",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Telegram-native CRM for professional services firms in Cambodia: leads, proposals, engagements, invoices and KHQR payments in one place. EN/\u1781\u17d2\u1798\u17c2\u179a \u00b7 USD/KHR."
+    },
+    "frameworks": [
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "headings": [
+      [
+        "h1",
+        "Turn every"
+      ],
+      [
+        "h2",
+        "Begin with production-grade building blocks"
+      ],
+      [
+        "h2",
+        "Make your firm happy with a CRM they'll love"
+      ],
+      [
+        "h3",
+        "Familiar, modern interface"
+      ],
+      [
+        "h3",
+        "Live in Telegram"
+      ],
+      [
+        "h3",
+        "Fast path to action"
+      ],
+      [
+        "h2",
+        "Pricing"
+      ],
+      [
+        "h3",
+        "Pro"
+      ],
+      [
+        "h3",
+        "Organization"
+      ],
+      [
+        "h3",
+        "Enterprise"
+      ],
+      [
+        "h2",
+        "Ready to run your firm like this?"
+      ]
+    ],
+    "login_links": [
+      {
+        "href": "/portal",
+        "text": "Client portal",
+        "class": "transition hover:text-neutral-900"
+      },
+      {
+        "href": "/dashboard/login",
+        "text": "Firm Login",
+        "class": "hidden rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 sm:block"
+      },
+      {
+        "href": "/signup?plan=pro",
+        "text": "Start",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-white text-neutral-900 ring-1 ring-neutral-300 hover:ring-neutral-900"
+      },
+      {
+        "href": "/signup?plan=organization",
+        "text": "Start",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-neutral-900 text-white hover:bg-neutral-700"
+      }
+    ],
+    "nexus_links": [
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "mt-6 inline-block rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-700"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Talk to us",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-white text-neutral-900 ring-1 ring-neutral-300 hover:ring-neutral-900"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Talk to us on Telegram",
+        "class": "mt-8 inline-block rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      }
+    ],
+    "all_links_count": 13,
+    "top_links": [
+      {
+        "href": "/",
+        "text": "N Nexus\u00a0Pro\u00a0CRM",
+        "class": "flex items-center gap-2 text-[17px] font-semibold tracking-tight text-neutral-900"
+      },
+      {
+        "href": "#features",
+        "text": "Product",
+        "class": "transition hover:text-neutral-900"
+      },
+      {
+        "href": "#pricing",
+        "text": "Pricing",
+        "class": "transition hover:text-neutral-900"
+      },
+      {
+        "href": "/portal",
+        "text": "Client portal",
+        "class": "transition hover:text-neutral-900"
+      },
+      {
+        "href": "/dashboard/login",
+        "text": "Firm Login",
+        "class": "hidden rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100 sm:block"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      },
+      {
+        "href": "#pricing",
+        "text": "See pricing \u2192",
+        "class": "rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-neutral-800 ring-1 ring-neutral-200 transition hover:ring-neutral-300"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Start on Telegram",
+        "class": "mt-6 inline-block rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-700"
+      },
+      {
+        "href": "/signup?plan=pro",
+        "text": "Start",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-white text-neutral-900 ring-1 ring-neutral-300 hover:ring-neutral-900"
+      },
+      {
+        "href": "/signup?plan=organization",
+        "text": "Start",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-neutral-900 text-white hover:bg-neutral-700"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Talk to us",
+        "class": "mt-7 block rounded-lg px-4 py-2.5 text-center text-[13px] font-bold uppercase tracking-[0.14em] transition bg-white text-neutral-900 ring-1 ring-neutral-300 hover:ring-neutral-900"
+      },
+      {
+        "href": "https://t.me/nexuscrm_official_bot",
+        "text": "Talk to us on Telegram",
+        "class": "mt-8 inline-block rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
+      }
+    ],
+    "forms_count": 0,
+    "inputs": [],
+    "hex_colors": [
+      "#FAFAF9",
+      "#000",
+      "#fff",
+      "#FEBC2E",
+      "#28C840",
+      "#FF5F57"
+    ],
+    "stylesheets": [
+      "/_next/static/css/14faec455df0de49.css",
+      "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    ],
+    "scripts": [
+      "/_next/static/chunks/fd9d1056-87da80e0c187477b.js",
+      "/_next/static/chunks/117-b6e3112c6285acfe.js",
+      "/_next/static/chunks/main-app-2dcde4753ea0d175.js",
+      "/_next/static/chunks/app/page-f04f3c79907b7604.js",
+      "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "/_next/static/chunks/webpack-c81f7fd28659d64f.js"
+    ],
+    "sample_content": [
+      "Lead",
+      "Proposal",
+      "Invoice",
+      "Retainer",
+      "into a paying client",
+      "A Telegram-native CRM for Cambodian professional firms \u2014 leads, proposals, engagements and invoices in one clean workspace, with KHQR payments your clients already know.",
+      "Built for law, accounting, consulting & agency firms \u00b7 EN/\u1781\u17d2\u1798\u17c2\u179a \u00b7 USD/KHR \u00b7 KHQR-native",
+      "Nexus Pro CRM \u2014 Leads",
+      "SAMPLE",
+      "\u2261",
+      "All Leads \u00b7 6",
+      "Filter",
+      "Sort",
+      "Options",
+      "+ New Record",
+      "Company",
+      "Contact",
+      "Stage",
+      "Value",
+      "S",
+      "Siem Reap Boutique Hotels",
+      "Lina Ouk",
+      "New",
+      "$5,600",
+      "P",
+      "Phnom Penh Dental Clinic",
+      "Dr. Heng",
+      "New",
+      "$4,000",
+      "K"
+    ]
+  },
+  "Ecommerce": {
+    "url": "https://nexuscommerce.asia/",
+    "final_url": "https://nexuscommerce.asia/",
+    "title": "NEXUS Commerce \u2014 Telegram Shops for Small Businesses",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "description": "NEXUS Commerce builds Telegram mini shops for small businesses. Take orders, accept PayWay & KHQR, manage everything from your phone."
+    },
+    "frameworks": [],
+    "headings": [
+      [
+        "h2",
+        "\u1796\u17b8\u1780\u17b6\u179a\u1787\u1787\u17c2\u1780\u1791\u17c5\u1787\u17b6\u17a0\u17b6\u1784 \u178f\u17d2\u179a\u17b9\u1798\u1794\u17b8\u1787\u17c6\u17a0\u17b6\u1793"
+      ],
+      [
+        "h3",
+        "\u1793\u17b7\u1799\u17b6\u1799\u1782\u17d2\u1793\u17b6\u179f\u17b7\u1793"
+      ],
+      [
+        "h3",
+        "\u1799\u17be\u1784\u1794\u1784\u17d2\u1780\u17be\u178f\u17a0\u17b6\u1784\u17b1\u17d2\u1799"
+      ],
+      [
+        "h3",
+        "\u17a2\u17d2\u1793\u1780\u179b\u1780\u17cb"
+      ],
+      [
+        "h2",
+        "\u17a2\u17d2\u179c\u17b8\u17d7\u1782\u17d2\u179a\u1794\u17cb\u1799\u17c9\u17b6\u1784\u178a\u17c2\u179b\u17a0\u17b6\u1784\u178f\u17bc\u1785\u1798\u17bd\u1799\u178f\u17d2\u179a\u17bc\u179c\u1780\u17b6\u179a"
+      ],
+      [
+        "h3",
+        "\u17a0\u17b6\u1784\u1793\u17c5\u179b\u17be Telegram"
+      ],
+      [
+        "h3",
+        "\u1795\u17d2\u1791\u17b6\u17c6\u1784\u1782\u17d2\u179a\u1794\u17cb\u1782\u17d2\u179a\u1784\u1780\u17b6\u179a\u1794\u1789\u17d2\u1787\u17b6\u1791\u17b7\u1789"
+      ],
+      [
+        "h3",
+        "PayWay \u1793\u17b7\u1784 KHQR"
+      ],
+      [
+        "h3",
+        "\u1780\u17b6\u179a\u1795\u17d2\u179f\u1796\u17d2\u179c\u1795\u17d2\u179f\u17b6\u1799"
+      ],
+      [
+        "h3",
+        "\u1780\u17b6\u179a\u179c\u17b7\u1797\u17b6\u1782"
+      ],
+      [
+        "h3",
+        "\u1781\u17d2\u1798\u17c2\u179a + \u17a2\u1784\u17cb\u1782\u17d2\u179b\u17c1\u179f"
+      ],
+      [
+        "h3",
+        "\u178f\u17b6\u1798\u178a\u17b6\u1793\u1780\u17b6\u179a\u178a\u17b9\u1780\u1787\u1789\u17d2\u1787\u17bc\u1793"
+      ],
+      [
+        "h3",
+        "\u1795\u17d2\u1791\u17b6\u17c6\u1784\u17a2\u178f\u17b7\u1790\u17b7\u1787\u1793"
+      ],
+      [
+        "h3",
+        "\u179a\u17c6\u179b\u17b9\u1780\u179a\u1791\u17c1\u17c7\u178a\u17c2\u179b\u1794\u17c4\u17c7\u1794\u1784\u17cb"
+      ],
+      [
+        "h2",
+        "\u1780\u17c6\u1796\u17bb\u1784\u179b\u1780\u17cb\u179b\u17be NEXUS Commerce \u17a0\u17be\u1799"
+      ],
+      [
+        "h3",
+        "Durger King"
+      ],
+      [
+        "h2",
+        "\u1782\u1798\u17d2\u179a\u17c4\u1784\u179f\u17b6\u1798\u1789\u17d2\u1789 \u179a\u17b8\u1780\u1785\u1798\u17d2\u179a\u17be\u1793\u1787\u17b6\u1798\u17bd\u1799\u17a2\u17d2\u1793\u1780"
+      ],
+      [
+        "h3",
+        "Standard"
+      ],
+      [
+        "h3",
+        "Pro"
+      ],
+      [
+        "h3",
+        "Signature"
+      ]
+    ],
+    "login_links": [],
+    "nexus_links": [
+      {
+        "href": "https://app.nexuscommerce.asia/?store=durger-king",
+        "text": "\u1798\u17be\u179b\u17a0\u17b6\u1784",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://app.nexuscommerce.asia/?store=phumkiri",
+        "text": "\u1798\u17be\u179b\u17a0\u17b6\u1784",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://app.nexuscommerce.asia",
+        "text": "\u1785\u17bc\u179b\u1794\u17d2\u179a\u17be\u179c\u17c1\u1791\u17b7\u1780\u17b6",
+        "class": ""
+      }
+    ],
+    "all_links_count": 24,
+    "top_links": [
+      {
+        "href": "#top",
+        "text": "NEXUS Commerce",
+        "class": "brand"
+      },
+      {
+        "href": "#features",
+        "text": "\u1798\u17bb\u1781\u1784\u17b6\u179a",
+        "class": ""
+      },
+      {
+        "href": "#stores",
+        "text": "\u17a0\u17b6\u1784",
+        "class": ""
+      },
+      {
+        "href": "#pricing",
+        "text": "\u178f\u1798\u17d2\u179b\u17c3",
+        "class": ""
+      },
+      {
+        "href": "#faq",
+        "text": "\u179f\u17c6\u178e\u17bd\u179a\u1789\u17b9\u1780\u1789\u17b6\u1794\u17cb",
+        "class": ""
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1791\u17b6\u1780\u17cb\u1791\u1784\u1798\u1780",
+        "class": "btn"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1787\u1787\u17c2\u1780\u178f\u17b6\u1798 Telegram",
+        "class": "btn btn-white"
+      },
+      {
+        "href": "#stores",
+        "text": "\u1798\u17be\u179b\u17a0\u17b6\u1784\u1795\u17d2\u1791\u17b6\u179b\u17cb",
+        "class": "btn btn-dark"
+      },
+      {
+        "href": "#stores",
+        "text": "\u17a0\u17b6\u1784 2 \u1780\u17c6\u1796\u17bb\u1784\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a \u2192",
+        "class": "fchip blue"
+      },
+      {
+        "href": "#pricing",
+        "text": "\u1785\u17b6\u1794\u17cb\u1796\u17b8 $11.99/\u1781\u17c2",
+        "class": "fchip price"
+      },
+      {
+        "href": "https://app.nexuscommerce.asia/?store=durger-king",
+        "text": "\u1798\u17be\u179b\u17a0\u17b6\u1784",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://app.nexuscommerce.asia/?store=phumkiri",
+        "text": "\u1798\u17be\u179b\u17a0\u17b6\u1784",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u178f\u17b6\u1798 Telegram",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u178f\u17b6\u1798 Telegram",
+        "class": "btn"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u178f\u17b6\u1798 Telegram",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1796\u17b7\u1797\u17b6\u1780\u17d2\u179f\u17b6\u1787\u17b6\u1798\u17bd\u1799\u1799\u17be\u1784",
+        "class": "btn ghost"
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "\u1787\u1787\u17c2\u1780\u178f\u17b6\u1798 Telegram",
+        "class": "btn"
+      },
+      {
+        "href": "#top",
+        "text": "NEXUS Commerce",
+        "class": "brand"
+      },
+      {
+        "href": "#features",
+        "text": "\u1798\u17bb\u1781\u1784\u17b6\u179a",
+        "class": ""
+      },
+      {
+        "href": "#stores",
+        "text": "\u17a0\u17b6\u1784",
+        "class": ""
+      },
+      {
+        "href": "#pricing",
+        "text": "\u178f\u1798\u17d2\u179b\u17c3",
+        "class": ""
+      },
+      {
+        "href": "#faq",
+        "text": "\u179f\u17c6\u178e\u17bd\u179a\u1789\u17b9\u1780\u1789\u17b6\u1794\u17cb",
+        "class": ""
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "Telegram",
+        "class": ""
+      },
+      {
+        "href": "https://app.nexuscommerce.asia",
+        "text": "\u1785\u17bc\u179b\u1794\u17d2\u179a\u17be\u179c\u17c1\u1791\u17b7\u1780\u17b6",
+        "class": ""
+      }
+    ],
+    "forms_count": 0,
+    "inputs": [],
+    "hex_colors": [
+      "#4338ca",
+      "#fef3e2",
+      "#E1251B",
+      "#141414",
+      "#e8f0ff",
+      "#232a55",
+      "#e7f7ee",
+      "#191d33",
+      "#f0665f",
+      "#e1251b",
+      "#c11f16",
+      "#ffd9d6",
+      "#eef1fa",
+      "#f3e8ff",
+      "#10142b",
+      "#d6336c",
+      "#e0f2f1",
+      "#f4f6fb",
+      "#f2675c",
+      "#000",
+      "#7c3aed",
+      "#2456d6",
+      "#f5f7ff",
+      "#fde8f1",
+      "#141a35"
+    ],
+    "stylesheets": [],
+    "scripts": [],
+    "sample_content": [
+      "\u1781\u17d2\u1798\u17c2\u179a",
+      "EN",
+      "\u17a0\u17b6\u1784 TELEGRAM \u179f\u1798\u17d2\u179a\u17b6\u1794\u17cb\u17a2\u17b6\u1787\u17b8\u179c\u1780\u1798\u17d2\u1798\u1781\u17d2\u1793\u17b6\u178f\u178f\u17bc\u1785",
+      "\u17a0\u17b6\u1784\u179a\u1794\u179f\u17cb\u17a2\u17d2\u1793\u1780,",
+      "\u1793\u17c5\u179b\u17be Telegram.",
+      "NEXUS Commerce \u1794\u1784\u17d2\u1780\u17be\u178f\u17a0\u17b6\u1784 Telegram \u179f\u1798\u17d2\u179a\u17b6\u1794\u17cb\u17a2\u17b6\u1787\u17b8\u179c\u1780\u1798\u17d2\u1798\u1781\u17d2\u1793\u17b6\u178f\u178f\u17bc\u1785 \u2014 \u1791\u1791\u17bd\u179b\u1780\u17b6\u179a\u1794\u1789\u17d2\u1787\u17b6\u1791\u17b7\u1789 \u1791\u17bc\u1791\u17b6\u178f\u17cb\u178f\u17b6\u1798 PayWay \u1793\u17b7\u1784 KHQR \u1793\u17b7\u1784\u1782\u17d2\u179a\u1794\u17cb\u1782\u17d2\u179a\u1784\u17a2\u17d2\u179c\u17b8\u17d7\u1782\u17d2\u179a\u1794\u17cb\u1799\u17c9\u17b6\u1784\u1796\u17b8\u1791\u17bc\u179a\u179f\u17d0\u1796\u17d2\u1791\u179a\u1794\u179f\u17cb\u17a2\u17d2\u1793\u1780\u17d4 \u1798\u17b7\u1793\u178f\u17d2\u179a\u17bc\u179c\u1780\u17b6\u179a\u1785\u17c6\u178e\u17c1\u17c7\u178a\u17b9\u1784\u1794\u1785\u17d2\u1785\u17c1\u1780\u1791\u17c1\u179f\u1791\u17c1\u17d4",
+      "\u1798\u17bb\u1781\u1784\u17b6\u179a",
+      "\u17a0\u17b6\u1784\u1795\u17d2\u179b\u17c2\u1788\u17be\u179f\u17d2\u179a\u179f\u17cb \u1797\u17bc\u1798\u17b7\u1782\u17b7\u179a\u17b8",
+      "\u1794\u17be\u1780\u179b\u17be Telegram",
+      "0",
+      "$15.00",
+      "+",
+      "WO Tangerine",
+      "$150.00",
+      "+",
+      "Strawberry Pack",
+      "$120.00",
+      "+",
+      "Fruit Set",
+      "$250.00",
+      "+",
+      "VIP Fruit Pack",
+      "\u17a0\u17b6\u1784",
+      "\u1780\u1793\u17d2\u178f\u17d2\u179a\u1780\u17cb",
+      "\u1794\u1789\u17d2\u1787\u17b6\u1791\u17b7\u1789",
+      "\u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a",
+      "1",
+      "\u1787\u1787\u17c2\u1780\u1787\u17b6\u1798\u17bd\u1799\u1799\u17be\u1784\u178f\u17b6\u1798 Telegram \u17a2\u17c6\u1796\u17b8\u17a2\u17b6\u1787\u17b8\u179c\u1780\u1798\u17d2\u1798\u179a\u1794\u179f\u17cb\u17a2\u17d2\u1793\u1780 \u1793\u17b7\u1784\u17a2\u17d2\u179c\u17b8\u178a\u17c2\u179b\u17a2\u17d2\u1793\u1780\u179b\u1780\u17cb\u17d4",
+      "2",
+      "\u1795\u179b\u17b7\u178f\u1795\u179b \u1780\u17b6\u179a\u1791\u17bc\u1791\u17b6\u178f\u17cb PayWay \u1793\u17b7\u1784 KHQR \u1793\u17b7\u1784 bot Telegram \u2014 \u179a\u17c0\u1794\u1785\u17c6\u179a\u17bd\u1785\u179f\u17d2\u179a\u17c1\u1785\u179f\u1798\u17d2\u179a\u17b6\u1794\u17cb\u17a2\u17d2\u1793\u1780\u17d4"
+    ]
+  },
+  "Nexusfinance": {
+    "url": "https://nexusfinance.asia/",
+    "final_url": "https://nexusfinance.asia/",
+    "title": "Nexusfinance \u2014 All-in-One FinTech Ecosystem Nexus Finance \u2013 Nexus Finance",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "robots": "max-image-preview:large",
+      "generator": "WordPress 7.1.4",
+      "msapplication-TileImage": "https://nexusfinance.asia/wp-content/uploads/2026/08/cropped-logo-nexus-finance-1-270x270.png"
+    },
+    "frameworks": [],
+    "headings": [],
+    "login_links": [],
+    "nexus_links": [
+      {
+        "href": "https://www.facebook.com/Nexusdigital.asia",
+        "text": "",
+        "class": "social-link"
+      },
+      {
+        "href": "https://kh.linkedin.com/company/nexus-digital-aisolutions",
+        "text": "",
+        "class": "social-link"
+      },
+      {
+        "href": "mailto:info@nexusfinance.asia",
+        "text": "info@nexusfinance.asia",
+        "class": ""
+      },
+      {
+        "href": "https://www.nexusfinance.asia",
+        "text": "www.nexusfinance.asia",
+        "class": ""
+      }
+    ],
+    "all_links_count": 22,
+    "top_links": [
+      {
+        "href": "#hero",
+        "text": "Home \u1791\u17c6\u1796\u17d0\u179a\u178a\u17be\u1798",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "Services \u179f\u17c1\u179c\u17b6\u1780\u1798\u17d2\u1798",
+        "class": ""
+      },
+      {
+        "href": "#how-it-works",
+        "text": "How It Works \u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a",
+        "class": ""
+      },
+      {
+        "href": "#highlights",
+        "text": "Highlights \u179b\u1780\u17d2\u1781\u178e\u17c8\u1796\u17b7\u179f\u17c1\u179f",
+        "class": ""
+      },
+      {
+        "href": "#hero",
+        "text": "",
+        "class": "nav-logo"
+      },
+      {
+        "href": "#hero",
+        "text": "Home \u1791\u17c6\u1796\u17d0\u179a\u178a\u17be\u1798",
+        "class": "active"
+      },
+      {
+        "href": "#services",
+        "text": "Services \u179f\u17c1\u179c\u17b6\u1780\u1798\u17d2\u1798",
+        "class": ""
+      },
+      {
+        "href": "#how-it-works",
+        "text": "How It Works \u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a",
+        "class": ""
+      },
+      {
+        "href": "#highlights",
+        "text": "Highlights \u179b\u1780\u17d2\u1781\u178e\u17c8\u1796\u17b7\u179f\u17c1\u179f",
+        "class": ""
+      },
+      {
+        "href": "#hero",
+        "text": "Nexus Finance",
+        "class": ""
+      },
+      {
+        "href": "https://t.me/ndxdigital_support",
+        "text": "",
+        "class": "social-link"
+      },
+      {
+        "href": "https://www.facebook.com/Nexusdigital.asia",
+        "text": "",
+        "class": "social-link"
+      },
+      {
+        "href": "https://kh.linkedin.com/company/nexus-digital-aisolutions",
+        "text": "",
+        "class": "social-link"
+      },
+      {
+        "href": "#hero",
+        "text": "Overview Profile \u1791\u17c6\u1796\u17d0\u179a\u178a\u17be\u1798",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "Core FinTech Services \u179f\u17c1\u179c\u17b6\u1780\u1798\u17d2\u1798\u1785\u1798\u17d2\u1794\u1784",
+        "class": ""
+      },
+      {
+        "href": "#how-it-works",
+        "text": "How It Works \u179a\u1794\u17c0\u1794\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a",
+        "class": ""
+      },
+      {
+        "href": "#highlights",
+        "text": "Platform Highlights \u179b\u1780\u17d2\u1781\u178e\u17c8\u1796\u17b7\u179f\u17c1\u179f",
+        "class": ""
+      },
+      {
+        "href": "tel:+85581311033",
+        "text": "+855 81 311 033",
+        "class": ""
+      },
+      {
+        "href": "mailto:info@nexusfinance.asia",
+        "text": "info@nexusfinance.asia",
+        "class": ""
+      },
+      {
+        "href": "https://www.nexusfinance.asia",
+        "text": "www.nexusfinance.asia",
+        "class": ""
+      },
+      {
+        "href": "#hero",
+        "text": "Privacy Policy \u1782\u17c4\u179b\u1780\u17b6\u179a\u178e\u17cd\u17af\u1780\u1787\u1793\u1797\u17b6\u1796",
+        "class": ""
+      },
+      {
+        "href": "#hero",
+        "text": "Terms of Service \u179b\u1780\u17d2\u1781\u1781\u178e\u17d2\u178c\u1794\u17d2\u179a\u17be\u1794\u17d2\u179a\u17b6\u179f\u17cb",
+        "class": ""
+      }
+    ],
+    "forms_count": 1,
+    "inputs": [
+      {
+        "type": "email",
+        "placeholder": "",
+        "name": ""
+      }
+    ],
+    "hex_colors": [
+      "#8ed1fc",
+      "#005a87",
+      "#f78da7",
+      "#cf2e2e",
+      "#ddd",
+      "#fdd79a",
+      "#00d4be",
+      "#111827",
+      "#0F172A",
+      "#1AB7A0",
+      "#fafae1",
+      "#011B2A",
+      "#0693e3",
+      "#ffffff",
+      "#34e2e4",
+      "#00d084",
+      "#ab1dfe",
+      "#9b51e0",
+      "#00BDAA",
+      "#7a00df",
+      "#ff6900",
+      "#dad0ec",
+      "#007cba",
+      "#4721fb",
+      "#020381"
+    ],
+    "stylesheets": [
+      "https://nexusfinance.asia/wp-includes/css/dashicons.min.css?ver=7.1.4",
+      "https://nexusfinance.asia/wp-content/plugins/formlayer/assets/css/frontend.css?ver=1.1.2",
+      "https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300..700;1,300..700&family=Koulen&family=Noto+Sans+Khmer:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    ],
+    "scripts": [
+      "https://nexusfinance.asia/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "https://nexusfinance.asia/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "https://nexusfinance.asia/wp-content/plugins/formlayer/assets/js/frontend.js?ver=1.1.2"
+    ],
+    "sample_content": [
+      "\u2600",
+      "EN",
+      "KH",
+      "Get Started",
+      "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798",
+      "All-in-One FinTech Ecosystem",
+      "\u1794\u17d2\u179a\u1796\u17d0\u1793\u17d2\u1792\u1794\u1785\u17d2\u1785\u17c1\u1780\u179c\u17b7\u1791\u17d2\u1799\u17b6\u17a0\u17b7\u179a\u1789\u17d2\u1789\u179c\u178f\u17d2\u1790\u17bb\u179a\u17bd\u1798\u1794\u1789\u17d2\u1785\u17bc\u179b\u1782\u17d2\u1793\u17b6",
+      "Made Finance",
+      "Simple with You.",
+      "\u1792\u17d2\u179c\u17be\u17b1\u17d2\u1799\u17a0\u17b7\u179a\u1789\u17d2\u1789\u179c\u178f\u17d2\u1790\u17bb",
+      "\u1780\u17b6\u1793\u17cb\u178f\u17c2\u179f\u17b6\u1798\u1789\u17d2\u1789\u1787\u17b6\u1798\u17bd\u1799\u179b\u17c4\u1780\u17a2\u17d2\u1793\u1780",
+      "Nexusfinance unifies payments, lending, wallets, and analytics into one seamless platform, built for Southeast Asia's fast-growing digital economy.",
+      "Nexusfinance \u1794\u1789\u17d2\u1785\u17bc\u179b\u1780\u17b6\u179a\u1794\u1784\u17cb\u1794\u17d2\u179a\u17b6\u1780\u17cb \u1780\u17b6\u179a\u1795\u17d2\u178f\u179b\u17cb\u1780\u1798\u17d2\u1785\u17b8 \u1780\u17b6\u1794\u17bc\u1794\u179b\u17bb\u1799 \u1793\u17b7\u1784\u1794\u17d2\u179a\u1796\u17d0\u1793\u17d2\u1792\u179c\u17b7\u1797\u17b6\u1782\u1791\u17c5\u1780\u17d2\u1793\u17bb\u1784\u1794\u17d2\u179a\u1796\u17d0\u1793\u17d2\u1792\u178f\u17c2\u1798\u17bd\u1799 \u1794\u1784\u17d2\u1780\u17be\u178f\u17a1\u17be\u1784\u179f\u1798\u17d2\u179a\u17b6\u1794\u17cb\u179f\u17c1\u178a\u17d2\u178b\u1780\u17b7\u1785\u17d2\u1785\u178c\u17b8\u1787\u17b8\u1790\u179b\u17a2\u17b6\u179f\u17ca\u17b8\u17a2\u17b6\u1782\u17d2\u1793\u17c1\u1799\u17cd\u17d4",
+      "Get Started Free",
+      "\u1785\u17b6\u1794\u17cb\u1795\u17d2\u178f\u17be\u1798\u178a\u17c4\u1799\u179f\u17c1\u179a\u17b8",
+      "Explore Products",
+      "\u179f\u17d2\u179c\u17c2\u1784\u1799\u179b\u17cb\u1796\u17b8\u1795\u179b\u17b7\u178f\u1795\u179b",
+      "0",
+      "+18% YoY",
+      "Active Enterprise Partners",
+      "\u178a\u17c3\u1782\u17bc\u179f\u17a0\u1782\u17d2\u179a\u17b6\u179f\u179f\u1780\u1798\u17d2\u1798",
+      "0",
+      "100% Secure",
+      "Total Capital Processed",
+      "\u1791\u17bb\u1793\u1780\u1798\u17d2\u1785\u17b8\u179f\u179a\u17bb\u1794",
+      "0",
+      "Optimal",
+      "Average Platform Uptime",
+      "\u17a2\u178f\u17d2\u179a\u17b6\u178a\u17c6\u178e\u17be\u179a\u1780\u17b6\u179a\u1794\u17d2\u179a\u1796\u17d0\u1793\u17d2\u1792",
+      "0"
+    ]
+  },
+  "Nexus Affiliate": {
+    "url": "https://nexus-digital-affiliates.vercel.app/join.html",
+    "final_url": "https://nexus-digital-affiliates.vercel.app/join.html",
+    "title": "Become a Partner \u2014 Nexus Digital Affiliate Program",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "description": "Promote digital products, earn commission on every sale, get paid via ABA. Join the Nexus Digital affiliate program.",
+      "theme-color": "#0B192C"
+    },
+    "frameworks": [],
+    "headings": [
+      [
+        "h1",
+        "Promote digital products."
+      ],
+      [
+        "h2",
+        "How it works"
+      ],
+      [
+        "h3",
+        "Get your tracked link"
+      ],
+      [
+        "h3",
+        "Share it anywhere"
+      ],
+      [
+        "h3",
+        "Get paid via ABA"
+      ],
+      [
+        "h2",
+        "Products you can promote"
+      ],
+      [
+        "h2",
+        "Grow your tier, grow your rate"
+      ],
+      [
+        "h2",
+        "Top partners this month"
+      ],
+      [
+        "h2",
+        "Questions"
+      ],
+      [
+        "h4",
+        "How is a sale credited to me?"
+      ],
+      [
+        "h4",
+        "When and how do I get paid?"
+      ],
+      [
+        "h4",
+        "What does it cost to join?"
+      ],
+      [
+        "h4",
+        "What are the rules?"
+      ],
+      [
+        "h2",
+        "Your audience is already buying."
+      ]
+    ],
+    "login_links": [],
+    "nexus_links": [
+      {
+        "href": "https://t.me/nexusdigital_affiliates_bot",
+        "text": "telegram Join via Telegram",
+        "class": "btn btn-outline-light"
+      },
+      {
+        "href": "https://t.me/nexusdigital_affiliates_bot",
+        "text": "Telegram bot",
+        "class": ""
+      }
+    ],
+    "all_links_count": 9,
+    "top_links": [
+      {
+        "href": "index.html",
+        "text": "Sign in",
+        "class": "btn btn-ghost btn-sm"
+      },
+      {
+        "href": "index.html",
+        "text": "Become a partner",
+        "class": "btn btn-primary btn-sm"
+      },
+      {
+        "href": "index.html",
+        "text": "rocket_launch Start earning \u2014 join free",
+        "class": "btn btn-light"
+      },
+      {
+        "href": "https://t.me/nexusdigital_affiliates_bot",
+        "text": "telegram Join via Telegram",
+        "class": "btn btn-outline-light"
+      },
+      {
+        "href": "terms.html",
+        "text": "Partner Terms",
+        "class": ""
+      },
+      {
+        "href": "index.html",
+        "text": "rocket_launch Become a partner",
+        "class": "btn btn-light"
+      },
+      {
+        "href": "terms.html",
+        "text": "Partner Terms",
+        "class": ""
+      },
+      {
+        "href": "index.html",
+        "text": "Partner sign in",
+        "class": ""
+      },
+      {
+        "href": "https://t.me/nexusdigital_affiliates_bot",
+        "text": "Telegram bot",
+        "class": ""
+      }
+    ],
+    "forms_count": 0,
+    "inputs": [],
+    "hex_colors": [
+      "#0d2f5c",
+      "#0B192C",
+      "#dbe3ec",
+      "#bcd3f5",
+      "#e7c66a",
+      "#fff",
+      "#cfe3ff",
+      "#f6f9ff",
+      "#0052cc",
+      "#0066FF",
+      "#b9c6d8",
+      "#eef6ff",
+      "#fffdf4"
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap",
+      "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap",
+      "assets/style.css?v=7"
+    ],
+    "scripts": [
+      "assets/i18n.js?v=7"
+    ],
+    "sample_content": [
+      "hub",
+      "NexusDigital",
+      "\u1781\u17d2\u1798\u17c2\u179a",
+      "Earn on every sale.",
+      "Join the Nexus Digital affiliate program: share tracked links for real products, watch your clicks and sales live, and cash out to your ABA account. Free to join \u2014 no experience needed.",
+      "10%+",
+      "Commission per sale",
+      "+5%",
+      "Top-tier bonus",
+      "$50",
+      "Minimum payout",
+      "ABA",
+      "Paid to your bank",
+      "Three steps between you and your first commission.",
+      "1",
+      "Sign up in two minutes with Telegram. Every product gets you a personal link \u2014 plus a QR code and ready-to-post captions.",
+      "2",
+      "Facebook, TikTok, Telegram, your blog \u2014 channel-tagged links show you exactly which platform brings the sales.",
+      "3",
+      "Sales add commission to your balance instantly. Request a payout from $50 and receive it by ABA Bank Transfer.",
+      "Live in the program right now \u2014 more are added regularly, and partners are notified the moment a new one drops.",
+      "Loading products\u2026",
+      "Your lifetime sales promote you automatically \u2014 the bonus applies to every commission.",
+      "Standard",
+      "FROM DAY ONE",
+      "Full product commission rate on every sale, live dashboard, promo kit included.",
+      "Gold",
+      "$300+ LIFETIME SALES",
+      "+2.5% bonus",
+      "added to every commission, on top of the product rate."
+    ]
+  },
+  "Talently Careers": {
+    "url": "https://talentlycareers.site/",
+    "final_url": "https://talentlycareers.site/",
+    "title": "Talently Careers \u2014 Find jobs in Cambodia",
+    "meta": {
+      "theme-color": "#00288e",
+      "mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "black-translucent",
+      "apple-mobile-web-app-title": "Talently",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "description": "Cambodia's job marketplace \u2014 jobs posted directly by companies. Apply in minutes."
+    },
+    "frameworks": [],
+    "headings": [
+      [
+        "h1",
+        "Find The"
+      ],
+      [
+        "h2",
+        "Popular Categories"
+      ],
+      [
+        "h2",
+        "Featured Jobs of the Week"
+      ],
+      [
+        "h2",
+        "Featured Employers"
+      ],
+      [
+        "h2",
+        "1-Click Apply & Job Alerts"
+      ],
+      [
+        "h2",
+        "Hire Top Talent 3x Faster"
+      ],
+      [
+        "h2",
+        "How it works"
+      ],
+      [
+        "h2",
+        "Never miss a job"
+      ],
+      [
+        "h4",
+        "Job Seekers"
+      ],
+      [
+        "h4",
+        "Employers"
+      ],
+      [
+        "h4",
+        "Company"
+      ]
+    ],
+    "login_links": [
+      {
+        "href": "login.html",
+        "text": "Sign in",
+        "class": "btn btn-ghost btn-sm"
+      },
+      {
+        "href": "candidate.html",
+        "text": "Candidate Dashboard",
+        "class": ""
+      }
+    ],
+    "nexus_links": [
+      {
+        "href": "https://t.me/talently_job_alerts_bot",
+        "text": "Telegram Bot",
+        "class": ""
+      }
+    ],
+    "all_links_count": 33,
+    "top_links": [
+      {
+        "href": "index.html",
+        "text": "work Talently Careers",
+        "class": "brand"
+      },
+      {
+        "href": "index.html",
+        "text": "Find Jobs",
+        "class": "active"
+      },
+      {
+        "href": "jobs.html",
+        "text": "Browse All",
+        "class": ""
+      },
+      {
+        "href": "pricing.html",
+        "text": "Pricing",
+        "class": ""
+      },
+      {
+        "href": "employer.html",
+        "text": "For Employers",
+        "class": ""
+      },
+      {
+        "href": "login.html",
+        "text": "Sign in",
+        "class": "btn btn-ghost btn-sm"
+      },
+      {
+        "href": "employer.html",
+        "text": "Post a Job",
+        "class": "btn btn-primary btn-sm"
+      },
+      {
+        "href": "#how",
+        "text": "How it works \u2192",
+        "class": ""
+      },
+      {
+        "href": "candidate.html",
+        "text": "Create Free Account",
+        "class": "btn btn-primary btn-sm btn-block hv2-btn"
+      },
+      {
+        "href": "jobs.html",
+        "text": "View all jobs arrow_forward",
+        "class": ""
+      },
+      {
+        "href": "jobs.html",
+        "text": "Explore all active roles open_in_new",
+        "class": "btn btn-ghost"
+      },
+      {
+        "href": "candidate.html",
+        "text": "upload_file Build My Profile (Free)",
+        "class": "btn btn-primary"
+      },
+      {
+        "href": "jobs.html",
+        "text": "Browse jobs chevron_right",
+        "class": ""
+      },
+      {
+        "href": "employer.html",
+        "text": "add_circle Post a Job Free",
+        "class": "btn btn-ghost"
+      },
+      {
+        "href": "pricing.html",
+        "text": "Explore plans chevron_right",
+        "class": ""
+      },
+      {
+        "href": "candidate.html",
+        "text": "Set up job alerts",
+        "class": "btn btn-primary"
+      },
+      {
+        "href": "index.html",
+        "text": "work Talently Careers",
+        "class": "brand"
+      },
+      {
+        "href": "jobs.html",
+        "text": "Search Jobs",
+        "class": ""
+      },
+      {
+        "href": "candidate.html",
+        "text": "Candidate Dashboard",
+        "class": ""
+      },
+      {
+        "href": "candidate.html",
+        "text": "Job Alerts",
+        "class": ""
+      },
+      {
+        "href": "employer.html",
+        "text": "Post Open Roles",
+        "class": ""
+      },
+      {
+        "href": "employer.html",
+        "text": "Talent Search",
+        "class": ""
+      },
+      {
+        "href": "pricing.html",
+        "text": "Hiring Pricing",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "About Us",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "Contact",
+        "class": ""
+      }
+    ],
+    "forms_count": 1,
+    "inputs": [
+      {
+        "type": "",
+        "placeholder": "Job title, skill, or company",
+        "name": ""
+      },
+      {
+        "type": "",
+        "placeholder": "City or location",
+        "name": ""
+      }
+    ],
+    "hex_colors": [
+      "#10b981",
+      "#dbeafe",
+      "#00288e",
+      "#3b82f6",
+      "#34d399",
+      "#f472b6",
+      "#229ED9",
+      "#60a5fa",
+      "#ec4899",
+      "#fff",
+      "#dcfce7"
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap",
+      "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
+      "styles.css?v=78"
+    ],
+    "scripts": [
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+      "js/i18n.js?v=76",
+      "js/i18n-common.js?v=76",
+      "js/config.js?v=76",
+      "js/tracking.js?v=78",
+      "js/db.js?v=76",
+      "js/ui.js?v=76",
+      "js/home.js?v=76",
+      "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ],
+    "sample_content": [
+      "\ud83c\uddf0\ud83c\udded \u1797\u17b6\u179f\u17b6\u1781\u17d2\u1798\u17c2\u179a",
+      "auto_awesome",
+      "HIRING SPRINT 2026",
+      "New verified roles added daily across tech, finance, and creative",
+      "search",
+      "Search Jobs",
+      "Find the right opportunity",
+      "description",
+      "Upload Resume",
+      "Showcase your skills",
+      "work_history",
+      "Apply Easily",
+      "1-click instant submission",
+      "group",
+      "Top Employers",
+      "Connect with vetted teams",
+      "Cambodia's Career Marketplace",
+      "Right Job",
+      "For You",
+      "Explore thousands of job opportunities and kickstart your career today. Connect directly with hiring managers, from fast-scaling startups to established enterprises.",
+      "search",
+      "location_on",
+      "tune",
+      "All types",
+      "Full-time",
+      "Part-time",
+      "Contract",
+      "Internship",
+      "Search Jobs",
+      "arrow_forward"
+    ]
+  },
+  "Nexus Digital": {
+    "url": "https://nexusintelligence-agency.vercel.app/",
+    "final_url": "https://nexusintelligence-agency.vercel.app/",
+    "title": "AI-Powered Digital Agency for Websites, Automation & Growth | Nexus Intelligence",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1",
+      "theme-color": "#101828",
+      "description": "Nexus Intelligence builds high-performance websites, implements AI automation and runs growth marketing programs for businesses in Cambodia and across the region.",
+      "robots": "index, follow",
+      "og:title": "AI-Powered Digital Agency for Websites, Automation & Growth | Nexus Intelligence",
+      "og:description": "Nexus Intelligence builds high-performance websites, implements AI automation and runs growth marketing programs for businesses in Cambodia and across the region.",
+      "og:url": "https://nexusintelligence-agency.vercel.app",
+      "og:site_name": "Nexus Intelligence",
+      "og:locale": "en_US",
+      "og:type": "website",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "AI-Powered Digital Agency for Websites, Automation & Growth | Nexus Intelligence",
+      "twitter:description": "Nexus Intelligence builds high-performance websites, implements AI automation and runs growth marketing programs for businesses in Cambodia and across the region."
+    },
+    "frameworks": [
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "headings": [
+      [
+        "h1",
+        "Building Beautiful Websites That"
+      ],
+      [
+        "h2",
+        "More Than Digital. Built Around Your Business."
+      ],
+      [
+        "h2",
+        "Everything You Need to Move Your Business Forward."
+      ],
+      [
+        "h3",
+        "Web Experience"
+      ],
+      [
+        "h3",
+        "AI Automation"
+      ],
+      [
+        "h3",
+        "Growth Marketing"
+      ],
+      [
+        "h3",
+        "Managed Services"
+      ],
+      [
+        "h2",
+        "Your Business Has Goals. Your Technology Should Support Them."
+      ],
+      [
+        "h3",
+        "Your digital presence needs to build credibility."
+      ],
+      [
+        "h3",
+        "Your operations rely on too many manual processes."
+      ],
+      [
+        "h3",
+        "Your marketing generates visibility but needs better conversion."
+      ],
+      [
+        "h3",
+        "Your digital infrastructure requires reliable ongoing support."
+      ],
+      [
+        "h2",
+        "Technology With Purpose. Strategy With Direction."
+      ],
+      [
+        "h3",
+        "Business-first thinking"
+      ],
+      [
+        "h3",
+        "Integrated digital capabilities"
+      ],
+      [
+        "h3",
+        "AI-enabled solutions"
+      ],
+      [
+        "h3",
+        "User-centered experiences"
+      ],
+      [
+        "h3",
+        "Data-informed decisions"
+      ],
+      [
+        "h3",
+        "Long-term technical support"
+      ],
+      [
+        "h2",
+        "Digital Solutions Designed to Make an Impact."
+      ]
+    ],
+    "login_links": [
+      {
+        "href": "/work/camed-learning-institute",
+        "text": "Demo concept Student Portal CamEd Learning Institute",
+        "class": "relative block overflow-hidden bg-gradient-to-br from-navy-900 via-navy to-[#2A1E5C] p-8"
+      }
+    ],
+    "nexus_links": [
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20talk%20about%20a%20project.",
+        "text": "Let's Talk",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-white text-navy hover:bg-electric-light hover:-translate-y-0.5 !px-6 !py-2.5 !text-sm"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20talk%20about%20a%20project.",
+        "text": "Let's Talk",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 w-full"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20build%20something%20great%20with%20you.",
+        "text": "Let's Build Something Great",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 "
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20have%20a%20question%20about%20your%20services.",
+        "text": "Ask us on Telegram \u2192",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 mt-6 w-full justify-center !px-6 !py-3.5 !text-sm sm:w-auto"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20want%20to%20start%20a%20project.",
+        "text": "Start Your Project",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 "
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20have%20a%20question%20about%20your%20services.",
+        "text": "Talk to Our Team",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 text-white border border-white/25 hover:border-white/60 hover:bg-white/10 "
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20have%20a%20question%20about%20your%20services.",
+        "text": "Chat on Telegram",
+        "class": "fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#229ED9] px-4 py-3 text-sm font-bold text-white shadow-[0_12px_30px_-8px_rgba(34,158,217,0.6)] transition-transform duration-300 hover:-translate-y-0.5 sm:bottom-6 sm:right-6"
+      }
+    ],
+    "all_links_count": 77,
+    "top_links": [
+      {
+        "href": "#main-content",
+        "text": "Skip to main content",
+        "class": "sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-electric focus:px-5 focus:py-2.5 focus:font-bold focus:text-white"
+      },
+      {
+        "href": "/",
+        "text": "NI Nexus\u00a0Intelligence",
+        "class": ""
+      },
+      {
+        "href": "/",
+        "text": "Home",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors bg-white/15 text-white"
+      },
+      {
+        "href": "/about",
+        "text": "About",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "/services",
+        "text": "Services",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "/industries",
+        "text": "Industries",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "/work",
+        "text": "Work",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "/insights",
+        "text": "Insights",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "/contact",
+        "text": "Contact",
+        "class": "rounded-full px-4 py-2 text-[15px] font-semibold transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20talk%20about%20a%20project.",
+        "text": "Let's Talk",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-white text-navy hover:bg-electric-light hover:-translate-y-0.5 !px-6 !py-2.5 !text-sm"
+      },
+      {
+        "href": "/",
+        "text": "Home",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors bg-electric-light text-electric-dark"
+      },
+      {
+        "href": "/about",
+        "text": "About",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "/services",
+        "text": "Services",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "/industries",
+        "text": "Industries",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "/work",
+        "text": "Work",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "/insights",
+        "text": "Insights",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "/contact",
+        "text": "Contact",
+        "class": "rounded-2xl px-5 py-4 font-display text-xl font-bold transition-colors text-navy hover:bg-canvas"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20talk%20about%20a%20project.",
+        "text": "Let's Talk",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 w-full"
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20would%20like%20to%20build%20something%20great%20with%20you.",
+        "text": "Let's Build Something Great",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 "
+      },
+      {
+        "href": "/services",
+        "text": "Explore Our Services",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 text-white border border-white/25 hover:border-white/60 hover:bg-white/10 "
+      },
+      {
+        "href": "https://t.me/DanLP18?text=Hi%20Nexus%20Intelligence%2C%20I%20have%20a%20question%20about%20your%20services.",
+        "text": "Ask us on Telegram \u2192",
+        "class": "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-bold transition-all duration-300 bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:shadow-lift hover:-translate-y-0.5 mt-6 w-full justify-center !px-6 !py-3.5 !text-sm sm:w-auto"
+      },
+      {
+        "href": "/services/web-experience",
+        "text": "Explore Web Experience \u2192",
+        "class": "group inline-flex items-center gap-2 text-[15px] font-bold text-electric"
+      },
+      {
+        "href": "/services/ai-automation",
+        "text": "Explore AI Automation \u2192",
+        "class": "group inline-flex items-center gap-2 text-[15px] font-bold text-electric"
+      },
+      {
+        "href": "/services/growth-marketing",
+        "text": "Explore Growth Marketing \u2192",
+        "class": "group inline-flex items-center gap-2 text-[15px] font-bold text-electric"
+      },
+      {
+        "href": "/services/managed-services",
+        "text": "Explore Managed Services \u2192",
+        "class": "group inline-flex items-center gap-2 text-[15px] font-bold text-electric"
+      }
+    ],
+    "forms_count": 1,
+    "inputs": [
+      {
+        "type": "email",
+        "placeholder": "you@company.com",
+        "name": ""
+      }
+    ],
+    "hex_colors": [
+      "#101828",
+      "#8066E8",
+      "#2B3BFF",
+      "#229ED9",
+      "#5B7BF7",
+      "#4568F5",
+      "#2A1E5C"
+    ],
+    "stylesheets": [
+      "/_next/static/css/fc6018e71bcb90aa.css"
+    ],
+    "scripts": [
+      "/_next/static/chunks/fd9d1056-006cf153f48a890a.js",
+      "/_next/static/chunks/117-b72a03d0452fdffb.js",
+      "/_next/static/chunks/main-app-b840e258ff6945a0.js",
+      "/_next/static/chunks/216-fc8382a59ac42af1.js",
+      "/_next/static/chunks/991-b1285286405297d3.js",
+      "/_next/static/chunks/app/page-7b71b0fb7957ee22.js",
+      "/_next/static/chunks/app/layout-41c656b03861b8d6.js",
+      "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "/_next/static/chunks/webpack-3d52137af418da16.js"
+    ],
+    "sample_content": [
+      "AI-Powered Digital Solutions",
+      "Grow Your Business.",
+      "From high-performance websites to intelligent AI automation and digital growth strategies, Nexus Intelligence helps businesses turn technology into meaningful opportunities.",
+      "Websites \u00b7 AI Automation \u00b7 Growth Marketing \u00b7 Managed Services",
+      "\u00b7",
+      "Phnom Penh, Cambodia",
+      "Nexus Intelligence",
+      "Web, AI & growth \u2014 under one roof.",
+      "NI",
+      "Chat on Telegram",
+      "1-day reply",
+      "A real human reply within one business day \u2014 not an autoresponder.",
+      "Why Nexus Intelligence exists",
+      "Most agencies sell services. We solve business problems that happen to need technology: credibility that wins customers, automation that removes busywork, visibility that produces inquiries, and infrastructure you never have to think about.",
+      "Digital experiences, AI automation, growth marketing and managed technology \u2014 connected into one program, accountable to one partner.",
+      "At a glance",
+      "Phnom Penh, Cambodia",
+      "4",
+      "Integrated capabilities",
+      "Web, AI, growth & managed services under one roof.",
+      "7",
+      "Industries covered",
+      "Retail, hospitality, education, NGOs, startups & more.",
+      "1",
+      "Single partner",
+      "One program, one team accountable \u2014 not four vendors.",
+      "1 day",
+      "First response",
+      "A real human reply within one business day.",
+      "Web Experience"
+    ]
+  },
+  "Ai Consulting": {
+    "url": "https://www.nexusaipro.site/",
+    "final_url": "https://www.nexusaipro.site/",
+    "title": "Nexus AI \u2014 The AI assistant that thinks ahead",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Nexus AI is a premium AI assistant platform for modern teams. Reason, remember, and act across your entire workflow \u2014 with cinematic speed and human warmth.",
+      "og:title": "Nexus AI \u2014 The AI assistant that thinks ahead",
+      "og:description": "A premium AI assistant platform for modern teams. Intelligent, luxurious, futuristic, human-friendly.",
+      "og:type": "website",
+      "twitter:card": "summary"
+    },
+    "frameworks": [
+      "Tailwind CSS"
+    ],
+    "headings": [
+      [
+        "h1",
+        "The assistant that"
+      ],
+      [
+        "h2",
+        "The tools you already use, in one system"
+      ],
+      [
+        "h2",
+        "Not another chatbot."
+      ],
+      [
+        "h3",
+        "Reasoning that feels human"
+      ],
+      [
+        "h3",
+        "Memory that never sleeps"
+      ],
+      [
+        "h3",
+        "Action at the speed of thought"
+      ],
+      [
+        "h2",
+        "One core."
+      ],
+      [
+        "h3",
+        "Think through anything, step by step"
+      ],
+      [
+        "h3",
+        "It remembers what matters"
+      ],
+      [
+        "h3",
+        "Forty tools, one command"
+      ],
+      [
+        "h3",
+        "Luxury-grade privacy, by default"
+      ],
+      [
+        "h2",
+        "Watch it"
+      ],
+      [
+        "h2",
+        "Your business, running \u2014 in one view"
+      ],
+      [
+        "h4",
+        "YOUR WORKSPACE"
+      ],
+      [
+        "h3",
+        "Welcome back"
+      ],
+      [
+        "h2",
+        "Teams that switched,"
+      ],
+      [
+        "h2",
+        "Everyone has the same models."
+      ],
+      [
+        "h3",
+        "Stop chasing AI tools."
+      ],
+      [
+        "h3",
+        "Build your AI operating system."
+      ],
+      [
+        "h2",
+        "Luxury intelligence,"
+      ]
+    ],
+    "login_links": [],
+    "nexus_links": [],
+    "all_links_count": 49,
+    "top_links": [
+      {
+        "href": "#top",
+        "text": "Nexus AI",
+        "class": "group flex items-center gap-2.5"
+      },
+      {
+        "href": "#features",
+        "text": "Features",
+        "class": "nav-link text-sm font-medium text-gray-300 transition-colors hover:text-white"
+      },
+      {
+        "href": "#platform",
+        "text": "Platform",
+        "class": "nav-link text-sm font-medium text-gray-300 transition-colors hover:text-white"
+      },
+      {
+        "href": "#demo",
+        "text": "Demo",
+        "class": "nav-link text-sm font-medium text-gray-300 transition-colors hover:text-white"
+      },
+      {
+        "href": "#pricing",
+        "text": "Pricing",
+        "class": "nav-link text-sm font-medium text-gray-300 transition-colors hover:text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Get started",
+        "class": "btn-primary hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white sm:inline-block"
+      },
+      {
+        "href": "#features",
+        "text": "Features",
+        "class": "block rounded-2xl px-4 py-3 text-base font-medium text-gray-200 transition-colors hover:bg-white/5 hover:text-white"
+      },
+      {
+        "href": "#platform",
+        "text": "Platform",
+        "class": "block rounded-2xl px-4 py-3 text-base font-medium text-gray-200 transition-colors hover:bg-white/5 hover:text-white"
+      },
+      {
+        "href": "#demo",
+        "text": "Demo",
+        "class": "block rounded-2xl px-4 py-3 text-base font-medium text-gray-200 transition-colors hover:bg-white/5 hover:text-white"
+      },
+      {
+        "href": "#pricing",
+        "text": "Pricing",
+        "class": "block rounded-2xl px-4 py-3 text-base font-medium text-gray-200 transition-colors hover:bg-white/5 hover:text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Get started",
+        "class": "btn-primary mt-2 block rounded-2xl px-4 py-3 text-center text-base font-semibold text-white"
+      },
+      {
+        "href": "#platform",
+        "text": "NEW Introducing Nexus AI OS v2.0",
+        "class": "glass group inline-flex items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 text-xs font-medium text-gray-300 transition-colors hover:text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Start building free",
+        "class": "btn-primary w-full rounded-2xl px-8 py-4 text-base font-semibold text-white sm:w-auto"
+      },
+      {
+        "href": "#demo",
+        "text": "Watch the demo",
+        "class": "btn-ghost group flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-4 text-base font-semibold text-white sm:w-auto"
+      },
+      {
+        "href": "app.html",
+        "text": "Connect your tools in the workspace \u2192",
+        "class": "btn-primary rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+      },
+      {
+        "href": "#platform",
+        "text": "Learn more",
+        "class": "mt-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-300 transition-colors hover:text-violet-200"
+      },
+      {
+        "href": "#platform",
+        "text": "Learn more",
+        "class": "mt-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-300 transition-colors hover:text-violet-200"
+      },
+      {
+        "href": "#platform",
+        "text": "Learn more",
+        "class": "mt-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-300 transition-colors hover:text-violet-200"
+      },
+      {
+        "href": "app.html",
+        "text": "Open your workspace \u2192",
+        "class": "btn-primary rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Start for free",
+        "class": "mt-7 block rounded-2xl px-6 py-3.5 text-center text-sm font-semibold btn-ghost text-white"
+      },
+      {
+        "href": "app.html#billing",
+        "text": "Start 14-day trial",
+        "class": "mt-7 block rounded-2xl px-6 py-3.5 text-center text-sm font-semibold btn-primary text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Talk to sales",
+        "class": "mt-7 block rounded-2xl px-6 py-3.5 text-center text-sm font-semibold btn-ghost text-white"
+      },
+      {
+        "href": "app.html",
+        "text": "Get started free",
+        "class": "btn-primary w-full rounded-2xl px-10 py-4 text-base font-semibold text-white sm:w-auto"
+      },
+      {
+        "href": "app.html",
+        "text": "Talk to sales",
+        "class": "btn-ghost w-full rounded-2xl px-10 py-4 text-base font-semibold text-white sm:w-auto"
+      },
+      {
+        "href": "#top",
+        "text": "Nexus AI",
+        "class": "flex items-center gap-2.5"
+      }
+    ],
+    "forms_count": 0,
+    "inputs": [],
+    "hex_colors": [
+      "#d1d5db",
+      "#f59e0b",
+      "#fbbf24",
+      "#febc2e",
+      "#c4b5fd",
+      "#28c840",
+      "#9ca3af",
+      "#312e81",
+      "#6ee7b7",
+      "#a78bfa",
+      "#67e8f9",
+      "#ff5f57",
+      "#000",
+      "#7c3aed",
+      "#1b1b28",
+      "#06060c",
+      "#e5e7eb",
+      "#fff",
+      "#0a0a12"
+    ],
+    "stylesheets": [
+      "assets/original.css"
+    ],
+    "scripts": [
+      "assets/landing.js"
+    ],
+    "sample_content": [
+      "thinks",
+      "ahead of you.",
+      "Nexus AI is a premium AI assistant platform that reasons, remembers, and acts across your entire workflow \u2014 turning hours of busywork into moments of clarity. Intelligent, effortless, unmistakably yours.",
+      "40k+",
+      "teams onboard",
+      "99.99%",
+      "uptime SLA",
+      "12ms",
+      "median latency",
+      "CORE_ONLINE",
+      "neural mesh \u00b7 stable",
+      "LATENCY",
+      "12ms",
+      "AI ACTIVE",
+      "reasoning engine v2",
+      "LIVE SYNC",
+      "42 tools connected",
+      "Works with your stack",
+      "Tap a tool to see how it fits. Your Nexus system does not replace your stack \u2014 it connects it, so context flows between tools instead of getting lost in them.",
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Google Calendar",
+      "Gmail",
+      "Google Drive",
+      "Slack",
+      "Notion",
+      "Trello",
+      "HubSpot",
+      "GitHub"
+    ]
+  },
+  "Business Consultant": {
+    "url": "https://vertexpartners.asia/",
+    "final_url": "https://vertexpartners.asia/",
+    "title": "Vertex Partners \u2013 Vertex Partners Vertex Partners \u2014 Executive Management & HR Consulting | Singapore",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "robots": "max-image-preview:large",
+      "generator": "Elementor 4.3.6; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap",
+      "msapplication-TileImage": "https://vertexpartners.asia/wp-content/uploads/2026/06/cropped-Untitled-June-19-2026-at-16.42.43-1-270x270.png",
+      "description": "Singapore-based executive search and HR consulting firm. We help businesses across APAC build high-performing leadership teams through strategic recruitment and workforce solutions.",
+      "theme-color": "#0B2343",
+      "author": "Vertex Partners",
+      "og:type": "website",
+      "og:title": "Vertex Partners \u2014 Executive Management & HR Consulting",
+      "og:description": "Singapore-based executive search and HR consulting firm helping APAC businesses build leadership teams that deliver measurable impact.",
+      "og:image": "logo-no-bg.png",
+      "og:url": "https://vertexpartners.sg",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Vertex Partners \u2014 Executive Management & HR Consulting",
+      "twitter:description": "Singapore-based executive search firm helping APAC businesses build leadership teams."
+    },
+    "frameworks": [
+      "Tailwind CSS"
+    ],
+    "headings": [
+      [
+        "h1",
+        "Building"
+      ],
+      [
+        "h4",
+        "Senior Expertise"
+      ],
+      [
+        "h4",
+        "APAC Network"
+      ],
+      [
+        "h4",
+        "Proven Track Record"
+      ],
+      [
+        "h4",
+        "12-Month Guarantee"
+      ],
+      [
+        "h2",
+        "A trusted partner in"
+      ],
+      [
+        "h2",
+        "HR strategies for"
+      ],
+      [
+        "h3",
+        "Strategy Consulting"
+      ],
+      [
+        "h3",
+        "HR Transformation"
+      ],
+      [
+        "h3",
+        "Management Consulting"
+      ],
+      [
+        "h2",
+        "Numbers that"
+      ],
+      [
+        "h2",
+        "Ready to elevate your"
+      ],
+      [
+        "h4",
+        "Explore"
+      ],
+      [
+        "h4",
+        "Company"
+      ],
+      [
+        "h4",
+        "Newsletter"
+      ],
+      [
+        "h3",
+        "Built on"
+      ],
+      [
+        "h3",
+        "Singapore HQ"
+      ],
+      [
+        "h3",
+        "Strategy"
+      ],
+      [
+        "h3",
+        "Strategy Consulting"
+      ],
+      [
+        "h3",
+        "HR"
+      ]
+    ],
+    "login_links": [],
+    "nexus_links": [],
+    "all_links_count": 28,
+    "top_links": [
+      {
+        "href": "#content",
+        "text": "Skip to content",
+        "class": "skip-link screen-reader-text"
+      },
+      {
+        "href": "#home",
+        "text": "Skip to main content",
+        "class": "skip-link"
+      },
+      {
+        "href": "#",
+        "text": "",
+        "class": "logo"
+      },
+      {
+        "href": "#home",
+        "text": "Home",
+        "class": "active"
+      },
+      {
+        "href": "#about",
+        "text": "About",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "Services",
+        "class": ""
+      },
+      {
+        "href": "#contact",
+        "text": "Contact",
+        "class": ""
+      },
+      {
+        "href": "#contact",
+        "text": "Contact Us",
+        "class": "nav-cta"
+      },
+      {
+        "href": "https://wa.me/6591234567",
+        "text": "Book Appointment",
+        "class": "btn-primary"
+      },
+      {
+        "href": "#services",
+        "text": "Explore services",
+        "class": "btn-secondary"
+      },
+      {
+        "href": "#",
+        "text": "Learn more",
+        "class": "btn-primary on-light"
+      },
+      {
+        "href": "#",
+        "text": "Contact Us",
+        "class": "contact-btn-outline"
+      },
+      {
+        "href": "#",
+        "text": "",
+        "class": "logo"
+      },
+      {
+        "href": "#",
+        "text": "",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "Strategy Consulting",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "HR Transformation",
+        "class": ""
+      },
+      {
+        "href": "#services",
+        "text": "Management Consulting",
+        "class": ""
+      },
+      {
+        "href": "#about",
+        "text": "About Us",
+        "class": "highlighted"
+      },
+      {
+        "href": "#",
+        "text": "Privacy Policy",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "Terms of Service",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "Privacy",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "Terms",
+        "class": ""
+      },
+      {
+        "href": "#",
+        "text": "Cookies",
+        "class": ""
+      },
+      {
+        "href": "#contact",
+        "text": "Get in touch",
+        "class": "about-modal-cta"
+      }
+    ],
+    "forms_count": 2,
+    "inputs": [
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "access_key"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "to"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "subject"
+      },
+      {
+        "type": "email",
+        "placeholder": "Your email address",
+        "name": "email"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "access_key"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "to"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "subject"
+      },
+      {
+        "type": "hidden",
+        "placeholder": "",
+        "name": "from_name"
+      },
+      {
+        "type": "text",
+        "placeholder": "Enter Full Name",
+        "name": "Full Name"
+      },
+      {
+        "type": "email",
+        "placeholder": "Enter Email",
+        "name": "Email"
+      }
+    ],
+    "hex_colors": [
+      "#eeeeee",
+      "#8ed1fc",
+      "#038",
+      "#fafafa",
+      "#f78da7",
+      "#cf2e2e",
+      "#A0A8B0",
+      "#046bd2",
+      "#111111",
+      "#111827",
+      "#636B74",
+      "#1E2330",
+      "#0B2343",
+      "#ffffff",
+      "#0693e3",
+      "#00d084",
+      "#9b51e0",
+      "#475569",
+      "#FFF",
+      "#e6e6e6",
+      "#2C303A",
+      "#ff6900",
+      "#b89555",
+      "#ccc",
+      "#F9FAFB"
+    ],
+    "stylesheets": [
+      "https://vertexpartners.asia/wp-content/themes/astra/assets/css/minified/main.min.css?ver=4.14.2",
+      "https://vertexpartners.asia/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=4.3.6",
+      "https://vertexpartners.asia/wp-content/uploads/elementor/css/post-6.css?ver=1793739290",
+      "https://vertexpartners.asia/wp-content/uploads/elementor/css/post-22.css?ver=1793739290",
+      "https://vertexpartners.asia/wp-content/uploads/elementor/css/base-desktop.css?ver=6aea4a1a1f8c3",
+      "https://vertexpartners.asia/wp-content/uploads/elementor/css/base-mobile.css?ver=6aea4a1a1f8c3",
+      "https://fonts.googleapis.com/css?family=Roboto:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap",
+      "https://fonts.googleapis.com/css?family=Roboto+Slab:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&display=swap",
+      "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    ],
+    "scripts": [
+      "https://vertexpartners.asia/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "https://vertexpartners.asia/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "https://vertexpartners.asia/wp-content/themes/astra/assets/js/minified/frontend.min.js?ver=4.14.2",
+      "https://vertexpartners.asia/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.3.6",
+      "https://vertexpartners.asia/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.3.6",
+      "https://vertexpartners.asia/wp-includes/js/jquery/ui/core.min.js?ver=1.14.2",
+      "https://vertexpartners.asia/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.3.6"
+    ],
+    "sample_content": [
+      "Executive Management \u00b7 Singapore",
+      "Solutions",
+      "that",
+      "deliver impact",
+      "Singapore-based Business growth, market expansion, competitive positioning.",
+      "Trusted by 100+ companies including DBS, CapitaLand & Singtel",
+      "Scroll",
+      "20+ consultants with 10+ years experience across industries with expertise.",
+      "Regional offices and act locally and serve regionally with strategic consulting across Singapore, Hong Kong, and Tokyo.",
+      "100+ replacements and a 12-month guarantee on every executive engagement.",
+      "Risk-free placements backed by post-hire follow-up and full onboarding support.",
+      "Who we are",
+      "leadership and talent",
+      "Founded in 2016, Vertex Partners has grown into one of Asia-Pacific's most respected names in executive search. Our consultants combine deep sector expertise with rigorous methodology to deliver placements that drive measurable business impact.",
+      "We partner with boards, CEOs, and HR leaders to build leadership teams capable of executing ambitious strategies.",
+      "Senior sector specialists",
+      "Proprietary talent platform",
+      "12-month guarantee",
+      "APAC coverage",
+      "Our expertise",
+      "your business",
+      "01",
+      "Business growth, market expansion, and competitive positioning \u2014 strategies that move your business forward.",
+      "Learn more",
+      "02",
+      "Modernizing people operations through data-driven processes, technology, and organizational design.",
+      "Learn more",
+      "03",
+      "Improving organizational structure and processes to build lean, high-performing teams that execute with clarity.",
+      "Learn more"
+    ]
+  }
+}

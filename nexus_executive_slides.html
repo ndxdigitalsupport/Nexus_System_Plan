@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Ecosystem — Executive Presentation Slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&family=Kantumruy+Pro:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --card-bg: #12121A;
+      --border: #232332;
+      --text: #F4F4F8;
+      --text-muted: #9494A8;
+      --primary: #7C5CFC;
+      --cobalt: #2B3BFF;
+      --cyan: #00D4BE;
+      --coral: #E1251B;
+      --emerald: #10B981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+    }
+
+    .slide-deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 80px;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.97);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      background: radial-gradient(circle at 50% 20%, rgba(124, 92, 252, 0.08) 0%, rgba(10, 10, 15, 1) 75%);
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1);
+    }
+
+    .slide-container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(124, 92, 252, 0.15);
+      border: 1px solid rgba(124, 92, 252, 0.35);
+      color: #A78BFA;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    p.lead {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 840px;
+      margin-bottom: 30px;
+    }
+
+    /* GRID LAYOUTS FOR SLIDES */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #373552;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-stat {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    /* CONTROLS & PROGRESS */
+    .slide-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      z-index: 999;
+    }
+
+    .slide-nav {
+      position: fixed;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 999;
+    }
+
+    .nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .slide-counter {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* SPECIFIC ACCENTS */
+    .tag-green { color: var(--emerald); }
+    .tag-purple { color: #A78BFA; }
+    .tag-cyan { color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <div class="slide-progress" id="progress"></div>
+
+  <div class="slide-deck">
+
+    <!-- SLIDE 1: TITLE -->
+    <div class="slide active">
+      <div class="slide-container" style="text-align: center;">
+        <span class="badge">Executive Portfolio Presentation</span>
+        <h1>NEXUS ECOSYSTEM</h1>
+        <p class="lead" style="margin: 0 auto 30px auto;">Strategic Inspection, Branded Guidebook & Asset Packaging for 9 Digital Properties</p>
+        <div style="font-size: 0.9rem; color: var(--text-muted);">
+          Prepared for: <strong>Oum Naro & Leadership Team</strong> · November 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: THE 9 PROPERTIES -->
+    <div class="slide">
+      <div class="slide-container">
+        <span class="badge">Ecosystem Scope</span>
+        <h2>Two Pillars, Nine Live Properties</h2>
+        <div class="grid-2">
+          <div class="card" style="border-left: 4px solid var(--primary);">
+            <div class="card-title tag-purple">Pillar 1: Digital Products (6)</div>
+            <div class="card-body">
+              • <strong>Nexus AiOS:</strong> Telegram AI Operating System for SME Owners<br>
+              • <strong>Nexus Pro CRM:</strong> B2B Firm Engagements & KHQR Invoicing<br>
+              • <strong>Nexus Commerce:</strong> Telegram Mobile Mini-Shops & PayWay<br>
+              • <strong>Nexus Finance:</strong> Integrated FinTech & Multi-Currency<br>
+              • <strong>Nexus Affiliate:</strong> Performance Partner Commission Network<br>
+              • <strong>Talently Careers:</strong> Modern Job Board & Candidate Portal
+            </div>
+          </div>
+          <div class="card" style="border-left: 4px solid var(--cobalt);">
+            <div class="card-title" style="color: #60A5FA;">Pillar 2: Professional Services (3)</div>
+            <div class="card-body">
+              • <strong>Nexus Digital / Intelligence:</strong> Full-Stack AI & Web Agency (Phnom Penh)<br>
+              • <strong>Nexus AI Consulting:</strong> Enterprise Workflow Automation & LLMs<br>
+              • <strong>Vertex Partners:</strong> Executive Search & Management Advisory (Singapore)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: KEY AUDIT FINDINGS -->
+    <div class="slide">
+      <div class="slide-container">
+        <span class="badge">Audit Findings</span>
+        <h2>What We Found: Strengths & Bottlenecks</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-stat tag-green">9.2 / 10</div>
+            <div class="card-title">Design Maturity</div>
+            <div class="card-body">World-class modern aesthetic across Next.js, dark-mode styling, and bilingual Khmer localization.</div>
+          </div>
+          <div class="card">
+            <div class="card-stat" style="color: #F59E0B;">4 Sites</div>
+            <div class="card-title">On Vercel Subdomains</div>
+            <div class="card-body">AiOS, CRM, Affiliate, and Agency need migration to official apex domains under *.nexus.asia.</div>
+          </div>
+          <div class="card">
+            <div class="card-stat tag-purple">Silos</div>
+            <div class="card-title">The "Island" Challenge</div>
+            <div class="card-body">Products do not cross-link. Visitors cannot discover the rest of the ecosystem without a global bar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: THE SOLUTION -->
+    <div class="slide">
+      <div class="slide-container">
+        <span class="badge">Action Plan</span>
+        <h2>The 3 Immediate Technical Upgrades</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title tag-purple">1. Universal Nav Bar</div>
+            <div class="card-body">Drop <code>nexus-global-bar.js</code> into all 9 sites. Solves cross-linking in 5 minutes with zero backend changes.</div>
+          </div>
+          <div class="card">
+            <div class="card-title tag-cyan">2. Domain Apex Routing</div>
+            <div class="card-body">Map <code>aios.nexus.asia</code>, <code>crm.nexus.asia</code>, and <code>agency.nexus.asia</code> to consolidate authority and SEO.</div>
+          </div>
+          <div class="card">
+            <div class="card-title tag-green">3. Nexus SSO (Pass)</div>
+            <div class="card-body">Unify authentication via Telegram OAuth so one business login unlocks AiOS, CRM, and Commerce.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: BRAND ARCHITECTURE -->
+    <div class="slide">
+      <div class="slide-container">
+        <span class="badge">Brand Identity</span>
+        <h2>Standardized Corporate Hierarchy</h2>
+        <div class="card" style="padding: 30px;">
+          <div style="font-family: 'Space Grotesk', monospace; font-size: 1.1rem; line-height: 2;">
+            <span style="color: #A78BFA; font-weight: 700;">NEXUS HOLDINGS / NEXUS GROUP</span><br>
+            &nbsp;&nbsp;├── <strong>Nexus Digital Products:</strong> AiOS · CRM · Commerce · Finance · Affiliates<br>
+            &nbsp;&nbsp;├── <strong>Nexus Intelligence Agency:</strong> AI Automation · Web Systems · Growth<br>
+            &nbsp;&nbsp;└── <strong>Vertex Partners & Talently:</strong> Executive HR Strategy · Job Marketplace
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: READY DELIVERABLES -->
+    <div class="slide">
+      <div class="slide-container" style="text-align: center;">
+        <span class="badge tag-green">Ready to Deploy</span>
+        <h2>Deliverables Packaged in Workspace</h2>
+        <p class="lead" style="margin: 0 auto 30px auto;">Full audit report, interactive visual dashboard, design tokens, and universal navigation script are ready.</p>
+        <div style="font-size: 1.1rem; color: #A78BFA; font-weight: 700;">
+          Press [ → ] to restart or Esc to exit.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-nav">
+    <button class="nav-btn" onclick="prevSlide()">←</button>
+    <span class="slide-counter" id="counter">1 / 6</span>
+    <button class="nav-btn" onclick="nextSlide()">→</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function update() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === current);
+      });
+      document.getElementById('counter').innerText = `${current + 1} / ${slides.length}`;
+      document.getElementById('progress').style.width = `${((current + 1) / slides.length) * 100}%`;
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      update();
+    }
+
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      update();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    update();
+  </script>
+</body>
+</html>
+

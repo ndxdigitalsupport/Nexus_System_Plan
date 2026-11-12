@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Pro CRM — Multi-Currency Invoicing &amp; Client Pipeline for Southeast Asia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #080E1A;
+      --surface: #0E172A;
+      --card: #131E36;
+      --card-border: rgba(59, 130, 246, 0.18);
+      --card-hover: rgba(59, 130, 246, 0.45);
+      
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+
+      --blue: #3B82F6;
+      --blue-light: #93C5FD;
+      --blue-deep: #1D4ED8;
+      --blue-glow: rgba(59, 130, 246, 0.35);
+
+      --emerald: #10B981;
+      --emerald-light: #6EE7B7;
+      --amber: #F59E0B;
+      --danger: #EF4444;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 85% 0%, rgba(59, 130, 246, 0.2) 0%, transparent 55%),
+        radial-gradient(circle at 10% 45%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 60% 85%, rgba(29, 78, 216, 0.15) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: rgba(8, 14, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+    }
+    .nexus-global-bar a { color: var(--text-sub); text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #fff; font-weight: 700; }
+    .nexus-global-bar a.active { color: var(--blue-light); }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(8, 14, 26, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px var(--blue-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-portal {
+      color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-portal:hover { border-color: var(--blue-light); background: rgba(59, 130, 246, 0.1); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--blue-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: 100svh SPLIT HERO */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue-light);
+      box-shadow: 0 0 10px var(--blue);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+      margin-bottom: 18px;
+      color: #fff;
+      text-wrap: balance;
+    }
+    .hero-headline span {
+      background: linear-gradient(135deg, #93C5FD 0%, #3B82F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--blue-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59, 130, 246, 0.45); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-portal:active, .c-tab:active, .k-card:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { background: rgba(59, 130, 246, 0.12); border-color: var(--blue-light); }
+
+    /* TRUST BADGES */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      max-width: 520px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--blue-light); flex-shrink: 0; }
+
+    /* RIGHT HERO: LIVE BAKONG KHQR SIMULATOR */
+    .invoice-card-frame {
+      background: #FFFFFF;
+      color: #0F172A;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 24px rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+    .khqr-badge {
+      background: #D92D20;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .invoice-header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #64748B;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 10px;
+    }
+    .currency-toggle-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+    .curr-pill {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .curr-pill.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+    .qr-box {
+      width: 145px;
+      height: 145px;
+      margin: 10px auto;
+      background: repeating-conic-gradient(#0F172A 0% 25%, #FFFFFF 0% 50%) 50% / 14px 14px;
+      border: 5px solid #0F172A;
+      border-radius: 10px;
+      position: relative;
+    }
+    .qr-scan-line {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: #EF4444;
+      box-shadow: 0 0 8px #EF4444;
+      animation: scanAnim 2.2s infinite ease-in-out alternate;
+    }
+    @keyframes scanAnim {
+      0% { top: 5%; }
+      100% { top: 90%; }
+    }
+    .btn-simulate-scan {
+      background: #10B981;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-simulate-scan:hover { background: #059669; }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--card-hover);
+      box-shadow: 0 16px 36px -10px rgba(0,0,0,0.7), 0 0 20px -5px rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+
+    /* KANBAN COLS */
+    .pipeline-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .kanban-col {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .col-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .deal-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .deal-card:hover, .deal-card.active {
+      border-color: var(--blue-light);
+      background: rgba(59, 130, 246, 0.12);
+      transform: translateY(-1px);
+    }
+    .deal-title { font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .deal-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: var(--text-sub); }
+    .deal-amount { font-family: var(--font-mono); font-weight: 700; color: var(--emerald-light); }
+
+    /* SCREEN 3: PRICING */
+    .pricing-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 32px 26px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s;
+    }
+    .pricing-card.popular {
+      border-color: var(--blue);
+      box-shadow: 0 10px 30px -10px var(--blue-glow);
+    }
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .price-val {
+      font-family: var(--font-mono);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 16px 0 8px;
+    }
+    .price-val span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+    .feature-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+    .feature-list li { display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-sub); }
+    .feature-list li svg { width: 16px; height: 16px; stroke: var(--emerald-light); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 0 40px;
+      background: rgba(4, 7, 14, 0.95);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-5, .col-6, .col-7, .col-12 { grid-column: span 1; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pipeline-cols { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #fff; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(59, 130, 246, 0.2); color: var(--blue-light); padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">ENTERPRISE SUITE</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html" class="active">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">AI Enterprise</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div>Nexus <span style="color: var(--blue-light);">CRM</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#pipeline">Client Pipeline</a>
+      <a href="#invoicing">Bakong KHQR</a>
+      <a href="#retainers">Retainers</a>
+      <a href="#compliance">GDT Tax</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="portal.html" class="btn-portal">Client Portal</a>
+      <a href="#pricing" class="btn-cta">
+        <span>Start 14-Day Trial</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: EDITORIAL VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Nexus CRM v2.4 • Multi-Currency Southeast Asia Edition
+          </div>
+          <h1 class="hero-headline">
+            Close Engagements Faster.<br>
+            Invoice with <span>Instant Bakong KHQR</span>.
+          </h1>
+          <p class="hero-sub">
+            Engineered specifically for consulting firms, creative agencies, and regional enterprises. Run your client pipeline, automate contract milestones, and settle invoices in 1.4 seconds in USD and Cambodian Riel.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#pipeline" class="btn-hero-primary">
+              <span>Inspect Live Pipeline</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#pricing" class="btn-hero-secondary">
+              <span>View Corporate Tiers</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>National Bank of Cambodia (NBC) Compliant</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Dual Currency: USD &amp; KHR Real-Time</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+              <span>Telegram Instant Settlement Alerts</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line></svg>
+              <span>General Dept of Taxation (GDT) E-Filing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE BAKONG KHQR SIMULATOR -->
+        <div class="invoice-card-frame" id="invoicing">
+          <div class="khqr-badge">BAKONG KHQR VERIFIED</div>
+          
+          <div class="invoice-header-meta">
+            <div>Invoice <strong>#NX-2026-089</strong></div>
+            <div id="invoice-status" style="font-family: var(--font-mono); font-size: 0.72rem; background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 4px; font-weight: 700;">
+              AWAITING SCAN
+            </div>
+          </div>
+
+          <div style="font-size: 0.76rem; color: #64748B; margin-top: 4px;">Client Mandate</div>
+          <div style="font-weight: 800; font-size: 1rem; color: #0F172A;" id="inv-client">ABA Bank Digital</div>
+
+          <div class="currency-toggle-wrap">
+            <button class="curr-pill active" id="btn-usd" onclick="setCurrency('USD')">USD ($)</button>
+            <button class="curr-pill" id="btn-khr" onclick="setCurrency('KHR')">KHR (៛)</button>
+          </div>
+
+          <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;" id="inv-amount-display">
+            $148,000.00
+          </div>
+
+          <div class="qr-box">
+            <div class="qr-scan-line"></div>
+          </div>
+
+          <p style="font-size: 0.74rem; color: #64748B; margin-top: 6px;">
+            Scan with any Cambodian mobile banking app (ABA, Canadia, Wing, Acleda)
+          </p>
+
+          <button class="btn-simulate-scan" id="simulate-btn" onclick="simulatePayment()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Simulate Client Bakong Scan</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO SECTION -->
+    <section class="container bento-section" id="pipeline">
+      <div class="section-tag">Enterprise Workflow Suite</div>
+      <h2 class="section-title">One Unified Operating Canvas</h2>
+      <p class="section-lead">Replace disconnected spreadsheets, manual messaging billing, and foreign CRM tools with a purpose-built Asian corporate workflow.</p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: KANBAN DEAL PIPELINE -->
+        <div class="bento-card col-7">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--blue-light); text-transform: uppercase;">Real-Time Pipeline</span>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-top: 4px;">Dynamic Stage Progression</h3>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(59, 130, 246, 0.15); color: var(--blue-light); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
+                Active: $467,500 USD
+              </div>
+            </div>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 14px;">
+              Click any engagement below to load into the live Bakong KHQR generator above.
+            </p>
+
+            <div class="pipeline-cols">
+              <div class="kanban-col">
+                <div class="col-head">
+                  <span>Proposal (2)</span>
+                  <span>$124.5k</span>
+                </div>
+                <div class="deal-card" onclick="selectDeal('Vertex M&A Restructure', 85000, 'Vertex Partners', '94%')">
+                  <div class="deal-title">Vertex M&amp;A Advisory</div>
+                  <div class="deal-meta">
+                    <span>Vertex</span>
+                    <span class="deal-amount">$85,000</span>
+                  </div>
+                </div>
+                <div class="deal-card" onclick="selectDeal('Aeon Mall Omnichannel App', 39500, 'Aeon Retail Asia', '88%')">
+                  <div class="deal-title">Aeon Mall App</div>
+                  <div class="deal-meta">
+                    <span>Aeon Retail</span>
+                    <span class="deal-amount">$39,500</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kanban-col">
+                <div class="col-head">
+                  <span>Negotiation (1)</span>
+                  <span>$148k</span>
+                </div>
+                <div class="deal-card active" onclick="selectDeal('ABA Micro-Frontend Core', 148000, 'ABA Bank Digital', '96%')">
+                  <div class="deal-title">ABA Core Frontend</div>
+                  <div class="deal-meta">
+                    <span>ABA Bank</span>
+                    <span class="deal-amount">$148,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kanban-col">
+                <div class="col-head">
+                  <span>Won Retainer (2)</span>
+                  <span>$195k</span>
+                </div>
+                <div class="deal-card" onclick="selectDeal('Chip Mong Logistics Cloud', 120000, 'Chip Mong Group', '100%')">
+                  <div class="deal-title">Chip Mong Cloud</div>
+                  <div class="deal-meta">
+                    <span>Chip Mong</span>
+                    <span class="deal-amount">$120,000</span>
+                  </div>
+                </div>
+                <div class="deal-card" onclick="selectDeal('Canadia HR Automation', 75000, 'Canadia Bank', '100%')">
+                  <div class="deal-title">Canadia HR Suite</div>
+                  <div class="deal-meta">
+                    <span>Canadia Bank</span>
+                    <span class="deal-amount">$75,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 0.78rem; color: var(--text-sub);">
+              Selected: <strong id="selected-deal-name" style="color: #fff;">ABA Micro-Frontend Core</strong> (Win: <strong id="selected-deal-prob" style="color: var(--emerald-light);">96%</strong>)
+            </div>
+            <button onclick="pushToInvoice()" style="background: var(--blue); color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+              <span>Push to Hero Invoice</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2: GDT TAX BREAKDOWN -->
+        <div class="bento-card col-5" id="compliance">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 800; color: var(--blue-light); text-transform: uppercase;">Tax Automation</span>
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 4px;">GDT Tax Calculation</h3>
+            <p style="color: var(--text-sub); font-size: 0.82rem; margin-top: 4px;">
+              Automated 10% VAT and Withholding Tax (WHT) calculations with exportable monthly filing sheets.
+            </p>
+
+            <table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.8rem;">
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); padding: 8px 0;">
+                <td style="padding: 8px 0; color: var(--text-sub);">Gross Contract Value:</td>
+                <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: #fff;">$148,000.00</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); padding: 8px 0;">
+                <td style="padding: 8px 0; color: var(--text-sub);">Standard VAT (10%):</td>
+                <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--blue-light);">+$14,800.00</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); padding: 8px 0;">
+                <td style="padding: 8px 0; color: var(--text-sub);">Withholding Tax (15%):</td>
+                <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--amber);">-$22,200.00</td>
+              </tr>
+              <tr style="padding: 10px 0;">
+                <td style="padding: 10px 0; font-weight: 700; color: #fff;">Net Bank Disbursement:</td>
+                <td style="text-align: right; font-family: var(--font-mono); font-weight: 800; color: var(--emerald-light); font-size: 1rem;">$140,600.00</td>
+              </tr>
+            </table>
+          </div>
+
+          <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--text-muted);">
+            ✓ GDT E-Tax Form 01 Ready for 20th Monthly Deadline
+          </div>
+        </div>
+
+        <!-- CARD 3: RETAINER BUILDER -->
+        <div class="bento-card col-4" id="retainers">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Recurring Retainer Engine</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Set up monthly recurring advisory or retainer invoices with automated Telegram payment link delivery.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--blue-light); font-size: 0.8rem;">
+            ✓ 0% Manual Invoice Chasing
+          </div>
+        </div>
+
+        <!-- CARD 4: CONTRACT MILESTONES -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Milestone Escrow Locking</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Release client deliverable stages only upon cryptographic Bakong payment verification webhook confirmation.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--emerald-light); font-size: 0.8rem;">
+            ✓ Cryptographic Delivery Proof
+          </div>
+        </div>
+
+        <!-- CARD 5: DUAL-CURRENCY LEDGER -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">USD / KHR Parallel Book</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Maintain dual general ledgers with NBC daily official exchange rate synchronization, eliminating FX reconciliation loss.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--amber); font-size: 0.8rem;">
+            ✓ Real-time NBC Rate Sync
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: PRICING -->
+    <section class="container pricing-section" id="pricing">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Predictable Plans</div>
+        <h2 class="section-title">Transparent Regional Pricing</h2>
+        <p class="section-lead">Deploy across your sales and finance teams with zero per-seat penalty fees.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Studio</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For boutique agencies &amp; solo advisors.</p>
+            <div class="price-val">
+              $49 <span>/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5 Team Seats</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Bakong KHQR Invoices</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> USD &amp; KHR Dual Ledger</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard Email Support</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Start Free Trial</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-tag">Most Popular</div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Enterprise Scale</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For regional consulting &amp; tech firms.</p>
+            <div class="price-val" style="color: var(--blue-light);">
+              $149 <span>/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 25 Team Seats</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated Telegram Payment Webhooks</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> GDT E-Filing Tax Export Module</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority 1-Hour SLA Support</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center;">Deploy Enterprise</a>
+        </div>
+
+        <div class="pricing-card">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Custom Sovereign</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For banking &amp; conglomerate infrastructure.</p>
+            <div class="price-val">
+              Custom <span>/ Dedicated VPC</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Team Seats</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> On-Premises or Private Cloud Hosting</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct Core Banking API Connectors</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Account Executive</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div>Nexus <span style="color: var(--blue-light);">CRM</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          Enterprise multi-currency customer pipeline and instant Bakong KHQR settlement platform for high-growth Southeast Asian firms.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product Capabilities</h4>
+        <ul>
+          <li><a href="#pipeline">Engagement Pipeline</a></li>
+          <li><a href="#invoicing">Dynamic Bakong KHQR</a></li>
+          <li><a href="#retainers">Retainer Builder</a></li>
+          <li><a href="#compliance">GDT Tax Preparation</a></li>
+          <li><a href="#pricing">Corporate Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../04_finance/index.html">Nexus Finance</a></li>
+          <li><a href="../05_affiliate/index.html">Nexus Affiliates</a></li>
+          <li><a href="../09_vertex/index.html">Vertex Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Head Office</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          Exchange Square Tower, Level 18<br>
+          Phnom Penh, Kingdom of Cambodia<br>
+          crm@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Nexus Group International. All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Security &amp; NBC Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentDeal = {
+      name: 'ABA Core Frontend',
+      amountUSD: 148000,
+      client: 'ABA Bank Digital',
+      prob: '96%'
+    };
+    let currentCurrency = 'USD';
+
+    function selectDeal(name, amount, client, prob) {
+      currentDeal = { name, amountUSD: amount, client, prob };
+      document.querySelectorAll('.deal-card').forEach(el => el.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('selected-deal-name').innerText = name;
+      document.getElementById('selected-deal-prob').innerText = prob;
+    }
+
+    function pushToInvoice() {
+      document.getElementById('inv-client').innerText = currentDeal.client;
+      updateInvoiceAmount();
+      const statusPill = document.getElementById('invoice-status');
+      statusPill.innerText = 'AWAITING SCAN';
+      statusPill.style.background = 'rgba(245, 158, 11, 0.15)';
+      statusPill.style.color = '#F59E0B';
+      statusPill.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+      document.getElementById('simulate-btn').innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Simulate Client Bakong Scan</span>
+      `;
+      document.getElementById('simulate-btn').style.background = '#10B981';
+      document.getElementById('invoicing').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      document.getElementById('btn-usd').classList.toggle('active', curr === 'USD');
+      document.getElementById('btn-khr').classList.toggle('active', curr === 'KHR');
+      updateInvoiceAmount();
+    }
+
+    function updateInvoiceAmount() {
+      const display = document.getElementById('inv-amount-display');
+      if (currentCurrency === 'USD') {
+        display.innerText = '$' + currentDeal.amountUSD.toLocaleString() + '.00';
+      } else {
+        const khrAmount = currentDeal.amountUSD * 4100;
+        display.innerText = '៛' + khrAmount.toLocaleString();
+      }
+    }
+
+    function simulatePayment() {
+      const btn = document.getElementById('simulate-btn');
+      const statusPill = document.getElementById('invoice-status');
+      btn.innerHTML = '<span>Verifying on Bakong Blockchain...</span>';
+      btn.style.background = '#2563EB';
+
+      setTimeout(() => {
+        statusPill.innerText = 'PAID & SETTLED';
+        statusPill.style.background = 'rgba(16, 185, 129, 0.2)';
+        statusPill.style.color = '#10B981';
+        statusPill.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Settled in 1.4s (Tx #BKNG-9842)</span>
+        `;
+        btn.style.background = '#059669';
+      }, 1400);
+    }
+  </script>
+</body>
+</html>

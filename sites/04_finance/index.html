@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Finance — Multi-Currency Treasury &amp; Bakong Clearing Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #020B18;
+      --surface: #071529;
+      --card: #0D203D;
+      --card-border: rgba(16, 185, 129, 0.2);
+      --card-hover: rgba(16, 185, 129, 0.45);
+      
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+
+      --emerald: #10B981;
+      --emerald-light: #6EE7B7;
+      --emerald-glow: rgba(16, 185, 129, 0.35);
+
+      --cyan: #06B6D4;
+      --cyan-light: #67E8F9;
+      --cyan-glow: rgba(6, 182, 212, 0.35);
+
+      --blue: #2563EB;
+      --amber: #F59E0B;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.16) 0%, transparent 55%),
+        radial-gradient(circle at 10% 45%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 60% 85%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: rgba(2, 11, 24, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+    }
+    .nexus-global-bar a { color: var(--text-sub); text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #fff; font-weight: 700; }
+    .nexus-global-bar a.active { color: var(--emerald-light); }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(2, 11, 24, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--emerald), #047857);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px var(--emerald-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-login {
+      color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-login:hover { border-color: var(--emerald-light); background: rgba(16, 185, 129, 0.1); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--emerald), #047857);
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--emerald-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(16, 185, 129, 0.6); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: 100svh SPLIT HERO */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--emerald-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+      margin-bottom: 18px;
+      color: #fff;
+      text-wrap: balance;
+    }
+    .hero-headline span {
+      background: linear-gradient(135deg, #6EE7B7 0%, #10B981 70%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--emerald), #047857);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--emerald-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-login:active, .vault-btn:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { background: rgba(16, 185, 129, 0.12); border-color: var(--emerald-light); }
+
+    /* TRUST BADGES */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      max-width: 520px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--emerald-light); flex-shrink: 0; }
+
+    /* RIGHT HERO: LIVE CASH RUNWAY & LIQUIDITY SIMULATOR */
+    .hero-console {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 24px rgba(16, 185, 129, 0.2);
+      position: relative;
+    }
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .console-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .console-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-light);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .chart-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .stat-block { display: flex; flex-direction: column; }
+    .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .stat-val { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 800; color: #fff; }
+    .stat-val.highlight { color: var(--emerald-light); }
+
+    .svg-chart {
+      width: 100%;
+      height: 150px;
+      overflow: visible;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .runway-slider-box {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+    .custom-range {
+      width: 100%;
+      accent-color: var(--emerald);
+      cursor: pointer;
+    }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--emerald-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--card-hover);
+      box-shadow: 0 16px 36px -10px rgba(0,0,0,0.7), 0 0 20px -5px rgba(16, 185, 129, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    /* BANK ROWS */
+    .bank-row {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bank-meta { display: flex; align-items: center; gap: 10px; }
+    .bank-logo {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.72rem; color: var(--emerald-light);
+    }
+
+    /* SCREEN 3: PRICING */
+    .pricing-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 32px 26px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s;
+    }
+    .pricing-card.popular {
+      border-color: var(--emerald);
+      box-shadow: 0 10px 30px -10px var(--emerald-glow);
+    }
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--emerald);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .price-val {
+      font-family: var(--font-mono);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 16px 0 8px;
+    }
+    .price-val span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+    .feature-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+    .feature-list li { display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-sub); }
+    .feature-list li svg { width: 16px; height: 16px; stroke: var(--emerald-light); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 0 40px;
+      background: rgba(1, 7, 16, 0.95);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-6, .col-8, .col-12 { grid-column: span 1; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #fff; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(16, 185, 129, 0.2); color: var(--emerald-light); padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">TREASURY &amp; CLEARING</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html" class="active">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">AI Enterprise</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      </div>
+      <div>Nexus <span style="color: var(--emerald-light);">Finance</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#runway">Liquidity Simulator</a>
+      <a href="#treasury">Connected Vaults</a>
+      <a href="#payouts">Batch Clearing</a>
+      <a href="#fx">Interbank FX</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Treasury Portal</a>
+      <a href="#pricing" class="btn-cta">
+        <span>Connect Accounts</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: EDITORIAL VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Nexus Treasury v3.0 • Multi-Currency Clearinghouse
+          </div>
+          <h1 class="hero-headline">
+            Institutional Cash Flow.<br>
+            Real-Time <span>Bakong Liquidity</span>.
+          </h1>
+          <p class="hero-sub">
+            Consolidate corporate bank accounts across Cambodia, Singapore, and Thailand. Execute automated multi-currency payroll disbursements, track runway projections, and bridge interbank FX with zero spread markup.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#treasury" class="btn-hero-primary">
+              <span>Inspect Connected Vaults</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#pricing" class="btn-hero-secondary">
+              <span>Institutional SLA</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>National Bank of Cambodia Direct Node</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>Sub-Second Settlement Finality</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Hardware-Backed Multi-Sig Vaults</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>NBC Official Rate USD/KHR Parity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE INTERACTIVE RUNWAY SIMULATOR -->
+        <div class="hero-console" id="runway">
+          <div class="console-header">
+            <div>
+              <div class="console-title">Live Treasury Runway Engine</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Simulate monthly burn against pooled liquidity</div>
+            </div>
+            <span class="console-badge">Synced via Bakong Node</span>
+          </div>
+
+          <div class="chart-stats-row">
+            <div class="stat-block">
+              <span class="stat-label">Total Liquid Cash</span>
+              <span class="stat-val">$5,005,500</span>
+            </div>
+            <div class="stat-block" style="text-align: right;">
+              <span class="stat-label">Projected Runway</span>
+              <span class="stat-val highlight" id="runway-display">33.4 Months</span>
+            </div>
+          </div>
+
+          <!-- SVG TRENDLINE -->
+          <svg class="svg-chart" viewBox="0 0 700 160">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
+              </linearGradient>
+            </defs>
+            <path id="trend-line" d="M 20,40 Q 150,55 300,75 T 550,110 T 680,125" fill="none" stroke="var(--emerald-light)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 20,40 Q 150,55 300,75 T 550,110 T 680,125 L 680,160 L 20,160 Z" fill="url(#chartGrad)"/>
+            <circle cx="20" cy="40" r="4" fill="var(--emerald-light)"/>
+            <circle cx="300" cy="75" r="4" fill="var(--emerald-light)"/>
+            <circle cx="680" cy="125" r="4" fill="var(--cyan-light)"/>
+          </svg>
+
+          <!-- SLIDER -->
+          <div class="runway-slider-box">
+            <div class="slider-header">
+              <span>Adjust Monthly Corporate Burn:</span>
+              <strong id="slider-val" style="color: #fff; font-family: var(--font-mono);">$150,000</strong>
+            </div>
+            <input type="range" min="30000" max="300000" step="5000" value="150000" class="custom-range" oninput="updateRunway(this.value)">
+          </div>
+
+          <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-sub);">
+            <span>Target Monthly Burn: <strong id="burn-display" style="color: #fff;">$150,000 / mo</strong></span>
+            <span style="color: var(--emerald-light); font-weight: 700;">✓ Healthy Buffer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO SECTION -->
+    <section class="container bento-section" id="treasury">
+      <div class="section-tag">Enterprise Treasury Architecture</div>
+      <h2 class="section-title">Centralized Multi-Bank Orchestration</h2>
+      <p class="section-lead">Aggregate regional operating accounts into a unified liquidity canvas with real-time clearing.</p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: CONNECTED VAULTS -->
+        <div class="bento-card col-7">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--emerald-light); text-transform: uppercase;">Active Vaults</span>
+                <h3 style="font-size: 1.35rem; font-weight: 700; margin-top: 4px;">Connected Operating Accounts</h3>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(16, 185, 129, 0.15); color: var(--emerald-light); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
+                4 Banks Live
+              </div>
+            </div>
+
+            <div class="bank-row">
+              <div class="bank-meta">
+                <div class="bank-logo">ABA</div>
+                <div>
+                  <div style="font-size: 0.84rem; font-weight: 700; color: #fff;">ABA Bank Commercial</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Acct: ****8842 • Operating USD</div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-family: var(--font-mono); font-weight: 800; color: #fff; font-size: 0.95rem;">$2,480,000.00</div>
+                <div style="font-size: 0.7rem; color: var(--emerald-light); font-weight: 600;">✓ Live API Synced</div>
+              </div>
+            </div>
+
+            <div class="bank-row">
+              <div class="bank-meta">
+                <div class="bank-logo" style="color: var(--cyan-light);">DBS</div>
+                <div>
+                  <div style="font-size: 0.84rem; font-weight: 700; color: #fff;">DBS Singapore Treasury</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Acct: ****1092 • International SGD/USD</div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-family: var(--font-mono); font-weight: 800; color: #fff; font-size: 0.95rem;">$1,850,500.00</div>
+                <div style="font-size: 0.7rem; color: var(--emerald-light); font-weight: 600;">✓ SWIFT ISO 20022</div>
+              </div>
+            </div>
+
+            <div class="bank-row">
+              <div class="bank-meta">
+                <div class="bank-logo" style="color: var(--amber);">CNB</div>
+                <div>
+                  <div style="font-size: 0.84rem; font-weight: 700; color: #fff;">Canadia Bank Enterprise</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Acct: ****4421 • Dual USD &amp; KHR Vault</div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-family: var(--font-mono); font-weight: 800; color: #fff; font-size: 0.95rem;">$675,000.00</div>
+                <div style="font-size: 0.7rem; color: var(--emerald-light); font-weight: 600;">✓ Real-Time Bakong</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: BATCH PAYROLL CLEARING -->
+        <div class="bento-card col-5" id="payouts">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 800; color: var(--emerald-light); text-transform: uppercase;">Batch Payouts</span>
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 4px;">1-Click Regional Payroll</h3>
+            <p style="color: var(--text-sub); font-size: 0.82rem; margin-top: 4px;">
+              Disburse salaries and contractor invoices to 500+ bank accounts across ASEAN in 1.4 seconds with zero manual wire delays.
+            </p>
+
+            <div style="background: rgba(0, 0, 0, 0.35); border-radius: 12px; padding: 14px; margin-top: 14px; border: 1px solid rgba(255, 255, 255, 0.05);">
+              <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-sub); margin-bottom: 6px;">
+                <span>Pending Monthly Run:</span>
+                <strong style="color: #fff; font-family: var(--font-mono);">142 Payees</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-sub); margin-bottom: 10px;">
+                <span>Disbursement Total:</span>
+                <strong style="color: var(--emerald-light); font-family: var(--font-mono); font-size: 0.9rem;">$128,450.00 USD</strong>
+              </div>
+              <button onclick="alert('Disbursement batch executed across Bakong node. 142 payment receipts dispatched via Telegram.')" style="width: 100%; background: var(--emerald); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">
+                Authorize Batch Disbursement
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: ZERO-SPREAD FX -->
+        <div class="bento-card col-4" id="fx">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Zero-Spread Interbank FX</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Swap USD, KHR, SGD, and THB at interbank wholesale rates with automated NBC daily reference synchronizations.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--emerald-light); font-size: 0.8rem;">
+            ✓ 0.0% Hidden Retail FX Spread
+          </div>
+        </div>
+
+        <!-- CARD 4: RECONCILIATION -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6, 182, 212, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-light)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Automated Ledger Match</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Match incoming customer payments directly with CRM invoices and ERP books, achieving 99.4% auto-reconciliation rate.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--cyan-light); font-size: 0.8rem;">
+            ✓ Big 4 Audit-Ready Ledgers
+          </div>
+        </div>
+
+        <!-- CARD 5: HARDWARE SECURITY -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(37, 99, 235, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Multi-Sig Governance</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Enforce 2-of-3 or 3-of-5 executive sign-offs for wire transactions exceeding custom liquidity thresholds ($50,000+).
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: #60A5FA; font-size: 0.8rem;">
+            ✓ Tier-1 Air-Gapped Key Custody
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: PRICING -->
+    <section class="container pricing-section" id="pricing">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Institutional Pricing</div>
+        <h2 class="section-title">Transparent Treasury Infrastructure</h2>
+        <p class="section-lead">Deploy institutional liquidity rails tailored to your group volume.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Growth Treasury</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For regional enterprises managing up to $2M liquidity.</p>
+            <div class="price-val">
+              $199 <span>/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5 Bank Account Integrations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 500 Automated Batch Payouts / Month</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-Time Cash Flow Runway Simulator</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard Banking Support</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-login" style="text-align: center; font-weight: 700;">Start Growth Node</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-tag">Most Popular</div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Conglomerate Core</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For diversified groups operating across ASEAN.</p>
+            <div class="price-val" style="color: var(--emerald-light);">
+              $599 <span>/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Bank &amp; Vault Connectors</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated Batch Payouts (1,000+ tx/min)</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-Entity Group Consolidation</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Zero-Spread Interbank FX Execution</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center;">Deploy Core Node</a>
+        </div>
+
+        <div class="pricing-card">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Banking Partner SLA</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Custom deployment for licensed financial institutions.</p>
+            <div class="price-val">
+              Custom <span>/ Dedicated Node</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Private Bakong Clearing Node</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Swift &amp; ISO 20022 Direct Bridges</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Air-Gapped HSM Key Custody</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 99.999% SLA Uptime Guarantee</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-login" style="text-align: center; font-weight: 700;">Schedule Bank Review</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <div>Nexus <span style="color: var(--emerald-light);">Finance</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          Institutional multi-currency treasury, automated Bakong batch clearinghouse, and AI liquidity intelligence for Southeast Asia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Treasury Engine</h4>
+        <ul>
+          <li><a href="#runway">Liquidity Simulator</a></li>
+          <li><a href="#treasury">Connected Vaults</a></li>
+          <li><a href="#payouts">Batch Disbursements</a></li>
+          <li><a href="#fx">Interbank FX Rates</a></li>
+          <li><a href="#pricing">Institutional Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../02_crm/index.html">Nexus CRM</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../05_affiliate/index.html">Nexus Affiliates</a></li>
+          <li><a href="../09_vertex/index.html">Vertex Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Head Office</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          Exchange Square Tower, Level 18<br>
+          Phnom Penh, Kingdom of Cambodia<br>
+          finance@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Nexus Group International. All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Security &amp; NBC Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const totalLiquidReserves = 5005500;
+
+    function updateRunway(burn) {
+      document.getElementById('slider-val').innerText = '$' + Number(burn).toLocaleString();
+      document.getElementById('burn-display').innerText = '$' + Number(burn).toLocaleString() + ' / mo';
+      
+      const runwayMonths = (totalLiquidReserves / burn).toFixed(1);
+      document.getElementById('runway-display').innerText = runwayMonths + ' Months';
+
+      // Adjust trendline slope visually
+      const factor = (burn - 50000) / 250000;
+      const endY = 90 + (factor * 50);
+      document.getElementById('trend-line').setAttribute('d', `M 20,40 Q 150,55 300,75 T 550,${endY - 15} T 680,${endY}`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEXUS Commerce — Telegram Shops for Small Businesses</title>
+<meta name="description" content="NEXUS Commerce builds Telegram mini shops for small businesses. Take orders, accept PayWay & KHQR, manage everything from your phone.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none' stroke='%23E1251B' stroke-width='14'%3E%3Crect x='14' y='14' width='50' height='50' rx='21'/%3E%3Crect x='56' y='14' width='50' height='50' rx='21'/%3E%3Crect x='14' y='56' width='50' height='50' rx='21'/%3E%3Crect x='56' y='56' width='50' height='50' rx='21'/%3E%3C/svg%3E">
+<style>
+:root{--red:#E1251B;--red-dark:#b71a13;--ink:#191d33;--muted:#6f7794;--bg:#f5f7ff;--card:#fff;--line:#e6e9f5;--navy:#141a35;--r:18px;--shadow:0 6px 24px rgba(25,29,51,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Khmer",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:18px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;text-decoration:none;color:var(--ink);margin-right:auto}
+.brandmark{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:11px;background:#fff;box-shadow:0 2px 10px rgba(20,20,60,.14);flex:none}
+.brandmark svg{width:23px;height:23px;display:block}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600}
+.nav-links a:hover{color:var(--ink)}
+.lang{display:flex;background:#eef1fa;border-radius:999px;padding:3px;gap:2px}
+.lang button{border:0;background:none;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit}
+.lang button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(20,20,60,.12)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;transition:transform .12s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(225,37,27,.35);background:var(--red-dark)}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{box-shadow:var(--shadow);background:#fff}
+.btn .ic{width:18px;height:18px}
+/* ---------- hero (v3: bold banner, reference-style) ---------- */
+.hero{padding:26px 0 60px}
+.hero-banner{position:relative;overflow:hidden;border-radius:28px;padding:54px 48px;color:#fff;
+  background:linear-gradient(135deg,#b3120c 0%,#e1251b 55%,#f2675c 100%);
+  box-shadow:0 24px 60px rgba(225,37,27,.30)}
+.hero-banner::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px 220px at 85% 15%,rgba(255,255,255,.16),transparent 60%),radial-gradient(360px 240px at 8% 90%,rgba(0,0,0,.14),transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative;z-index:1}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.14em;color:#ffd9d6;margin-bottom:16px}
+.hero-copy h1{font-size:clamp(34px,5vw,54px);line-height:1.15;letter-spacing:-.02em;margin-bottom:18px;font-weight:800;color:#fff}
+.hero-copy h1 .accent{color:#ffe08a}
+.hero-copy p.sub{font-size:17px;color:rgba(255,255,255,.88);max-width:480px;margin-bottom:30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-white{background:#fff;color:#b3120c}
+.btn-white:hover{background:#fff;color:#b3120c;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.btn-dark{background:#141414;color:#fff}
+.btn-dark:hover{background:#000;color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.32)}
+.btn-ghostw{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn-ghostw:hover{background:rgba(255,255,255,.24);box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.feat-dd-panel{position:fixed;z-index:200;min-width:250px;max-width:300px;background:#fff;border-radius:14px;box-shadow:0 24px 60px rgba(10,20,40,.25);padding:6px;display:none;max-height:70vh;overflow-y:auto}
+.feat-dd-panel.open{display:block;animation:ddpop .16s ease}
+@keyframes ddpop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.feat-dd-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;text-decoration:none;color:var(--ink);font-size:13.5px;font-weight:600;cursor:pointer}
+.feat-dd-item:hover{background:#f4f6fb}
+.feat-dd-item .fic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none}
+.feat-dd-item .fic svg{width:18px;height:18px}
+/* floating chips (v3: SVG icons, reference-style) */
+.fchip{position:absolute;z-index:2;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;
+  padding:10px 14px;border-radius:14px;box-shadow:0 10px 30px rgba(20,20,60,.20);
+  animation:floaty 5s ease-in-out infinite;white-space:nowrap;text-decoration:none}
+.fchip.blue{background:#2563eb;color:#fff}
+.fchip.price{background:#fff;color:#141414}
+.fchip .ic{width:16px;height:16px;flex-shrink:0}
+.fchip.price b{color:#15803d}
+/* phone mockup */
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:min(300px,80vw);background:#fff;border-radius:38px;border:10px solid #10142b;box-shadow:0 30px 70px rgba(20,20,60,.25);overflow:hidden}
+.phone-top{background:linear-gradient(135deg,#232a55,#3b2f7a);color:#fff;padding:18px 16px 14px;text-align:center}
+.phone-top b{font-size:15px}
+.phone-top small{display:block;opacity:.75;font-size:11px;margin-top:2px}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px}
+.prod{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(10,20,40,.08)}
+.prod .ph{height:78px;overflow:hidden;background:#eef1f7;position:relative}
+.prod .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.prod .pprice{position:absolute;left:8px;bottom:8px;background:#fff;color:var(--red);font-weight:800;font-size:12.5px;padding:4px 11px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.prod .pb{padding:10px 11px 12px}
+.prod .pb b{display:block;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phone-bar{display:flex;border-top:1px solid var(--line);padding:10px 6px calc(10px + env(safe-area-inset-bottom))}
+.phone-bar span{flex:1;text-align:center;font-size:10px;color:var(--muted);font-weight:700}
+.phone-bar span.on{color:var(--red)}
+/* interactive hero demo: tap-to-cart (v10) */
+.phone-top{position:relative}
+.cartbadge{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;color:#fff}
+.cartbadge svg{width:18px;height:18px}
+.cartbadge .cnt{position:absolute;top:-7px;right:-7px;min-width:19px;height:19px;border-radius:999px;background:#E1251B;color:#fff;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center;padding:0 5px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.cartbadge.on .cnt{display:flex}
+.cartbadge.pop{animation:cartpop .35s ease}
+@keyframes cartpop{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+.prod{cursor:pointer;transition:transform .15s ease}
+.prod:active{transform:scale(.96)}
+.padd{position:absolute;right:8px;bottom:8px;width:28px;height:28px;border-radius:999px;border:none;background:#E1251B;color:#fff;font-size:18px;font-weight:800;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(225,37,27,.45);pointer-events:none;font-family:inherit}
+.flyclone{position:fixed;z-index:9999;object-fit:cover;border-radius:12px;pointer-events:none;transition:left .55s cubic-bezier(.3,.7,.4,1),top .55s cubic-bezier(.3,.7,.4,1),width .55s cubic-bezier(.3,.7,.4,1),height .55s cubic-bezier(.3,.7,.4,1),opacity .55s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* ---------- sections ---------- */
+section{padding:64px 0}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 40px}
+.sec-head .kicker{font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--red);margin-bottom:10px}
+.sec-head h2{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.02em;margin-bottom:12px;font-weight:800}
+.sec-head p{color:var(--muted);font-size:16px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--card);border-radius:var(--r);padding:30px 26px;box-shadow:var(--shadow);position:relative}
+.step .n{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--red),#f0665f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;margin-bottom:16px}
+.step h3{font-size:17px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted)}
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--card);border-radius:var(--r);padding:28px 24px;box-shadow:var(--shadow)}
+.feat .fic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feat .fic svg{width:24px;height:24px}
+.feat h3{font-size:16.5px;margin-bottom:8px}
+.feat p{font-size:14px;color:var(--muted)}
+/* stores */
+.stores{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;margin:0 auto}
+.store-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.store-banner-img{width:100%;height:190px;object-fit:cover;display:block}
+.store-body{padding:22px}
+.store-body h3{font-size:18px;margin-bottom:6px}
+.store-body p{font-size:14px;color:var(--muted);margin-bottom:16px}
+/* pricing */
+.bill-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px;font-size:14px;font-weight:700;color:var(--muted)}
+.bill-toggle .lang button{padding:8px 18px}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.plan{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:28px 24px;display:flex;flex-direction:column;position:relative;border:2px solid transparent}
+.plan.hot{border-color:var(--red);transform:scale(1.03)}
+.plan .pop{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:12px;font-weight:800;padding:4px 14px;border-radius:999px;white-space:nowrap}
+.plan h3{font-size:17px;margin-bottom:4px}
+.plan .price{font-size:32px;font-weight:800;margin:10px 0 2px}
+.plan .price small{font-size:14px;font-weight:600;color:var(--muted)}
+.plan .save{display:none;font-size:12.5px;font-weight:800;color:#15803d;background:#e7f7ee;border-radius:999px;padding:5px 13px;margin:8px 0 0;align-self:flex-start}
+.plans.annual .save{display:inline-block}
+.plan .per{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.plan ul{list-style:none;margin-bottom:22px;flex:1}
+.plan li{font-size:13.5px;color:var(--muted);padding:6px 0 6px 26px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:2px;color:var(--red);font-weight:800}
+.plan .btn{justify-content:center;width:100%}
+/* faq */
+.faq{max-width:720px;margin:0 auto}
+.faq-item{background:var(--card);border-radius:14px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 22px;font-size:15.5px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:inherit;color:var(--ink)}
+.faq-q .pm{font-size:20px;color:var(--red);flex:none}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-a p{padding:0 22px 20px;font-size:14.5px;color:var(--muted)}
+.faq-item.open .faq-a{max-height:220px}
+/* cta banner */
+.cta-band{background:linear-gradient(135deg,#c11f16,#e1251b 55%,#f0665f);border-radius:26px;color:#fff;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-band h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px;font-weight:800;letter-spacing:-.01em}
+.cta-band p{opacity:.92;max-width:520px;margin:0 auto 28px;font-size:16px}
+.cta-band .btn{background:#fff;color:var(--red)}
+.cta-band .btn:hover{background:#fff;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.cta-band .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none}
+/* footer */
+footer{background:var(--navy);color:#aab0d0;padding:44px 0 30px;margin-top:20px}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.foot .brand{color:#fff}
+.foot p{font-size:13.5px;max-width:340px;margin-top:10px}
+.foot-links{display:flex;gap:44px}
+.foot-links b{display:block;color:#fff;font-size:14px;margin-bottom:10px}
+.foot-links a{display:block;color:#aab0d0;text-decoration:none;font-size:13.5px;padding:3px 0}
+.foot-links a:hover{color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.1);margin-top:30px;padding-top:20px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* ---------- mobile ---------- */
+@media(max-width:900px){
+  .hero{padding:16px 0 48px}
+  .hero-banner{padding:38px 24px;border-radius:22px}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-copy p.sub{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+  .phone-wrap{order:-1}
+  .phone{width:min(260px,72vw)}
+  .steps,.feats{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .plan.hot{transform:none}
+  .stores{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-in{gap:10px}
+  .brand{font-size:15px}
+  section{padding:48px 0}
+  .cta-band{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="brandmark"><svg viewBox="0 0 120 120" fill="none" stroke="#E1251B" stroke-width="11" aria-hidden="true"><rect x="14" y="14" width="50" height="50" rx="21"/><rect x="56" y="14" width="50" height="50" rx="21"/><rect x="14" y="56" width="50" height="50" rx="21"/><rect x="56" y="56" width="50" height="50" rx="21"/></svg></span>NEXUS Commerce</a>
+    <nav class="nav-links">
+      <a href="#features" data-en="Features" data-kh="មុខងារ">មុខងារ</a>
+      <a href="#stores" data-en="Stores" data-kh="ហាង">ហាង</a>
+      <a href="#pricing" data-en="Pricing" data-kh="តម្លៃ">តម្លៃ</a>
+      <a href="#faq" data-en="FAQ" data-kh="សំណួរញឹកញាប់">សំណួរញឹកញាប់</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="langKh" class="on" onclick="setLang('kh')">ខ្មែរ</button>
+      <button id="langEn" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="btn" style="padding:10px 18px" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener" data-en="Get in Touch" data-kh="ទាក់ទងមក">ទាក់ទងមក</a>
+  </div>
+</header>
+<div class="feat-dd-panel" id="featDdPanel" role="menu" aria-label="Features"></div>
+<!-- ================= HERO (v3: bold banner) ================= -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-banner">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-en="TELEGRAM SHOPS FOR SMALL BUSINESSES" data-kh="ហាង TELEGRAM សម្រាប់អាជីវកម្មខ្នាតតូច">ហាង TELEGRAM សម្រាប់អាជីវកម្មខ្នាតតូច</span>
+          <h1><span data-en="Your shop," data-kh="ហាងរបស់អ្នក,">ហាងរបស់អ្នក,</span><br><span class="accent" data-en="inside Telegram." data-kh="នៅលើ Telegram.">នៅលើ Telegram.</span></h1>
+          <p class="sub" data-en="NEXUS Commerce builds Telegram mini shops for small businesses — take orders, accept PayWay & KHQR, and manage everything from your phone. No tech skills needed." data-kh="NEXUS Commerce បង្កើតហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច — ទទួលការបញ្ជាទិញ ទូទាត់តាម PayWay និង KHQR និងគ្រប់គ្រងអ្វីៗគ្រប់យ៉ាងពីទូរស័ព្ទរបស់អ្នក។ មិនត្រូវការចំណេះដឹងបច្ចេកទេសទេ។">NEXUS Commerce បង្កើតហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច — ទទួលការបញ្ជាទិញ ទូទាត់តាម PayWay និង KHQR និងគ្រប់គ្រងអ្វីៗគ្រប់យ៉ាងពីទូរស័ព្ទរបស់អ្នក។ មិនត្រូវការចំណេះដឹងបច្ចេកទេសទេ។</p>
+          <div class="hero-cta">
+            <a class="btn btn-white" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6 18.8 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.7c-1-.3-1-1 .2-1.5l18-6.9c.8-.3 1.5.2 1.6 1.3z"/></svg><span data-en="Chat on Telegram" data-kh="ជជែកតាម Telegram">ជជែកតាម Telegram</span></a>
+            <a class="btn btn-dark" href="#stores"><span data-en="See live stores" data-kh="មើលហាងផ្ទាល់">មើលហាងផ្ទាល់</span></a>
+            <button class="btn btn-ghostw" id="featDdBtn" type="button"><span data-en="Features" data-kh="មុខងារ">មុខងារ</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="phone-wrap" style="position:relative">
+          <a class="fchip blue" href="#stores" style="top:2%;left:-6%"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span data-en="2 live stores" data-kh="ហាង 2 កំពុងដំណើរការ">ហាង 2 កំពុងដំណើរការ</span><span aria-hidden="true">→</span></a>
+          <a class="fchip price" href="#pricing" style="bottom:8%;right:-4%;animation-delay:-2.5s"><span data-en="from" data-kh="ចាប់ពី">ចាប់ពី</span>&nbsp;<b data-en="$11.99/mo" data-kh="$11.99/ខែ">$11.99/ខែ</b></a>
+          <div class="phone">
+            <div class="phone-top"><b data-en="Phum Kiri Fruit Store" data-kh="ហាងផ្លែឈើស្រស់ ភូមិគិរី">ហាងផ្លែឈើស្រស់ ភូមិគិរី</b><small data-en="Open in Telegram" data-kh="បើកលើ Telegram">បើកលើ Telegram</small><span class="cartbadge" id="phoneCart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><b class="cnt" id="phoneCartCount">0</b></span></div>
+            <div class="shop-grid">
+              <div class="prod"><div class="ph"><img src="img/prod-tangerine.jpg" alt="WO Tangerine"><span class="pprice">$15.00</span><span class="padd" aria-hidden="true">+</span></div><div class="pb"><b>WO Tangerine</b></div></div>
+              <div class="prod"><div class="ph"><img src="img/prod-strawberry.jpg" alt="Strawberry Pack"><span class="pprice">$150.00</span><span class="padd" aria-hidden="true">+</span></div><div class="pb"><b>Strawberry Pack</b></div></div>
+              <div class="prod"><div class="ph"><img src="img/prod-fruitset.jpg" alt="Fruit Set"><span class="pprice">$120.00</span><span class="padd" aria-hidden="true">+</span></div><div class="pb"><b>Fruit Set</b></div></div>
+              <div class="prod"><div class="ph"><img src="img/prod-vip.jpg" alt="VIP Fruit Pack"><span class="pprice">$250.00</span><span class="padd" aria-hidden="true">+</span></div><div class="pb"><b>VIP Fruit Pack</b></div></div>
+            </div>
+            <div class="phone-bar"><span class="on" data-en="Shop" data-kh="ហាង">ហាង</span><span data-en="Cart" data-kh="កន្ត្រក់">កន្ត្រក់</span><span data-en="Orders" data-kh="បញ្ជាទិញ">បញ្ជាទិញ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" data-en="HOW IT WORKS" data-kh="របៀបដំណើរការ">របៀបដំណើរការ</div>
+      <h2 data-en="From chat to shop in three steps" data-kh="ពីការជជែកទៅជាហាង ត្រឹមបីជំហាន">ពីការជជែកទៅជាហាង ត្រឹមបីជំហាន</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-en="Say hello" data-kh="និយាយគ្នាសិន">និយាយគ្នាសិន</h3><p data-en="Chat with us on Telegram about your business and what you sell." data-kh="ជជែកជាមួយយើងតាម Telegram អំពីអាជីវកម្មរបស់អ្នក និងអ្វីដែលអ្នកលក់។">ជជែកជាមួយយើងតាម Telegram អំពីអាជីវកម្មរបស់អ្នក និងអ្វីដែលអ្នកលក់។</p></div>
+      <div class="step"><div class="n">2</div><h3 data-en="We build your shop" data-kh="យើងបង្កើតហាងឱ្យ">យើងបង្កើតហាងឱ្យ</h3><p data-en="Products, PayWay & KHQR payments, and your Telegram bot — set up for you." data-kh="ផលិតផល ការទូទាត់ PayWay និង KHQR និង bot Telegram — រៀបចំរួចស្រេចសម្រាប់អ្នក។">ផលិតផល ការទូទាត់ PayWay និង KHQR និង bot Telegram — រៀបចំរួចស្រេចសម្រាប់អ្នក។</p></div>
+      <div class="step"><div class="n">3</div><h3 data-en="You sell" data-kh="អ្នកលក់">អ្នកលក់</h3><p data-en="Share your shop link and take orders from your phone, every day." data-kh="ចែករំលែកតំណហាងរបស់អ្នក ហើយទទួលការបញ្ជាទិញពីទូរស័ព្ទជារៀងរាល់ថ្ងៃ។">ចែករំលែកតំណហាងរបស់អ្នក ហើយទទួលការបញ្ជាទិញពីទូរស័ព្ទជារៀងរាល់ថ្ងៃ។</p></div>
+    </div>
+  </div>
+</section>
+<!-- ================= FEATURES ================= -->
+<section id="features" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" data-en="FEATURES" data-kh="មុខងារ">មុខងារ</div>
+      <h2 data-en="Everything a small shop needs" data-kh="អ្វីៗគ្រប់យ៉ាងដែលហាងតូចមួយត្រូវការ">អ្វីៗគ្រប់យ៉ាងដែលហាងតូចមួយត្រូវការ</h2>
+      <p data-en="One platform: your storefront, your orders, your customers." data-kh="វេទិកាតែមួយ៖ ហាងរបស់អ្នក ការបញ្ជាទិញរបស់អ្នក អតិថិជនរបស់អ្នក។">វេទិកាតែមួយ៖ ហាងរបស់អ្នក ការបញ្ជាទិញរបស់អ្នក អតិថិជនរបស់អ្នក។</p>
+    </div>
+    <div class="feats">
+      <div class="feat"><div class="fic" style="background:#e8f0ff;color:#2456d6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.8 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.7c-1-.3-1-1 .2-1.5l18-6.9c.8-.3 1.5.2 1.6 1.3z"/></svg></div><h3 data-en="Shop inside Telegram" data-kh="ហាងនៅលើ Telegram">ហាងនៅលើ Telegram</h3><p data-en="Customers browse and order without leaving Telegram or installing anything." data-kh="អតិថិជនមើលនិងបញ្ជាទិញដោយមិនចាំបាច់ចាកចេញពី Telegram ឬដំឡើងអ្វីទាំងអស់។">អតិថិជនមើលនិងបញ្ជាទិញដោយមិនចាំបាច់ចាកចេញពី Telegram ឬដំឡើងអ្វីទាំងអស់។</p></div>
+      <div class="feat"><div class="fic" style="background:#e7f7ee;color:#15803d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/></svg></div><h3 data-en="Orders dashboard" data-kh="ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ">ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ</h3><p data-en="Every order in one clean dashboard, in real time, on any device." data-kh="ការបញ្ជាទិញទាំងអស់នៅកន្លែងតែមួយ តាមពេលវេលាជាក់ស្តែង លើឧបករណ៍ណាក៏បាន។">ការបញ្ជាទិញទាំងអស់នៅកន្លែងតែមួយ តាមពេលវេលាជាក់ស្តែង លើឧបករណ៍ណាក៏បាន។</p></div>
+      <div class="feat"><div class="fic" style="background:#fef3e2;color:#b45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><h3 data-en="PayWay & KHQR" data-kh="PayWay និង KHQR">PayWay និង KHQR</h3><p data-en="Accept ABA PayWay and KHQR payments, plus cash on delivery." data-kh="ទទួលការទូទាត់តាម ABA PayWay និង KHQR ព្រមទាំងសាច់ប្រាក់ពេលដឹកជញ្ជូន។">ទទួលការទូទាត់តាម ABA PayWay និង KHQR ព្រមទាំងសាច់ប្រាក់ពេលដឹកជញ្ជូន។</p></div>
+      <div class="feat"><div class="fic" style="background:#fde8f1;color:#d6336c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></div><h3 data-en="Broadcasts" data-kh="ការផ្សព្វផ្សាយ">ការផ្សព្វផ្សាយ</h3><p data-en="Reach every customer directly in their Telegram inbox — no ad spend, no algorithm deciding who sees it." data-kh="ទៅដល់អតិថិជនគ្រប់រូបផ្ទាល់ក្នុងប្រអប់សារ Telegram — មិនចាំបាច់ចំណាយលើការផ្សាយពាណិជ្ជកម្ម គ្មាន algorithm កំណត់អ្នកមើល។">ទៅដល់អតិថិជនគ្រប់រូបផ្ទាល់ក្នុងប្រអប់សារ Telegram — មិនចាំបាច់ចំណាយលើការផ្សាយពាណិជ្ជកម្ម គ្មាន algorithm កំណត់អ្នកមើល។</p></div>
+      <div class="feat"><div class="fic" style="background:#f3e8ff;color:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3 data-en="Analytics" data-kh="ការវិភាគ">ការវិភាគ</h3><p data-en="Revenue, best sellers, and customer insights that guide your next move." data-kh="ចំណូល ផលិតផលលក់ដាច់ និងទិន្នន័យអតិថិជន ជួយអ្នកសម្រេចចិត្ត។">ចំណូល ផលិតផលលក់ដាច់ និងទិន្នន័យអតិថិជន ជួយអ្នកសម្រេចចិត្ត។</p></div>
+      <div class="feat"><div class="fic" style="background:#e0f2f1;color:#0f766e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3 data-en="Khmer + English" data-kh="ខ្មែរ + អង់គ្លេស">ខ្មែរ + អង់គ្លេស</h3><p data-en="Your shop speaks your customers' language — both of them." data-kh="ហាងរបស់អ្នកនិយាយភាសារបស់អតិថិជន — ទាំងពីរភាសា។">ហាងរបស់អ្នកនិយាយភាសារបស់អតិថិជន — ទាំងពីរភាសា។</p></div>
+      <div class="feat"><div class="fic" style="background:#e8f4fd;color:#0369a1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><h3 data-en="Delivery Tracking" data-kh="តាមដានការដឹកជញ្ជូន">តាមដានការដឹកជញ្ជូន</h3><p data-en="Customers track their order live — from packing to their doorstep." data-kh="អតិថិជនតាមដានការបញ្ជាទិញផ្ទាល់ — ពីការវេចខ្ចប់ដល់មុខទ្វារផ្ទះ។">អតិថិជនតាមដានការបញ្ជាទិញផ្ទាល់ — ពីការវេចខ្ចប់ដល់មុខទ្វារផ្ទះ។</p></div>
+      <div class="feat"><div class="fic" style="background:#eef2ff;color:#4338ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3 data-en="Customer Dashboard" data-kh="ផ្ទាំងអតិថិជន">ផ្ទាំងអតិថិជន</h3><p data-en="Your shoppers get their own space — order history, live tracking, and one-tap reorder." data-kh="អតិថិជនរបស់អ្នកមានកន្លែងផ្ទាល់ខ្លួន — ប្រវត្តិការបញ្ជាទិញ ការតាមដានផ្ទាល់ និងការបញ្ជាទិញឡើងវិញដោយចុចតែម្តង។">អតិថិជនរបស់អ្នកមានកន្លែងផ្ទាល់ខ្លួន — ប្រវត្តិការបញ្ជាទិញ ការតាមដានផ្ទាល់ និងការបញ្ជាទិញឡើងវិញដោយចុចតែម្តង។</p></div>
+      <div class="feat"><div class="fic" style="background:#fef9e7;color:#a16207"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div><h3 data-en="Abandoned Cart Reminders" data-kh="រំលឹករទេះដែលបោះបង់">រំលឹករទេះដែលបោះបង់</h3><p data-en="Automatically nudge shoppers on Telegram when they leave items behind — win back lost sales. Signature & Custom plans." data-kh="រំលឹកអតិថិជនដោយស្វ័យប្រវត្តិតាម Telegram ពេលពួកគេទុកឥវ៉ាន់ចោល — ទាញយកការលក់ដែលបាត់បង់មកវិញ។ ផែនការ Signature និង Custom។">រំលឹកអតិថិជនដោយស្វ័យប្រវត្តិតាម Telegram ពេលពួកគេទុកឥវ៉ាន់ចោល — ទាញយកការលក់ដែលបាត់បង់មកវិញ។ ផែនការ Signature និង Custom។</p></div>
+    </div>
+  </div>
+</section>
+<!-- ================= LIVE STORES ================= -->
+<section id="stores" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" data-en="LIVE STORES" data-kh="ហាងកំពុងដំណើរការ">ហាងកំពុងដំណើរការ</div>
+      <h2 data-en="Already selling on NEXUS Commerce" data-kh="កំពុងលក់លើ NEXUS Commerce ហើយ">កំពុងលក់លើ NEXUS Commerce ហើយ</h2>
+    </div>
+    <div class="stores">
+      <div class="store-card">
+        <img class="store-banner-img" src="img/store-durger.webp" alt="Durger King">
+        <div class="store-body"><h3>Durger King</h3><p data-en="Burgers, fries & more — ordering in seconds on Telegram." data-kh="ប៊ឺហ្គឺ ដំឡូវបារាំង និងច្រើនទៀត — បញ្ជាទិញបានក្នុងប៉ុន្មានវិនាទីលើ Telegram។">ប៊ឺហ្គឺ ដំឡូវបារាំង និងច្រើនទៀត — បញ្ជាទិញបានក្នុងប៉ុន្មានវិនាទីលើ Telegram។</p><a class="btn ghost" style="padding:10px 18px" href="https://app.nexuscommerce.asia/?store=durger-king" target="_blank" rel="noopener"><span data-en="Visit shop" data-kh="មើលហាង">មើលហាង</span></a></div>
+      </div>
+      <div class="store-card">
+        <img class="store-banner-img" src="img/store-phumkiri.webp" alt="Phum Kiri">
+        <div class="store-body"><h3><span data-en="Phum Kiri" data-kh="ភូមិគិរី">ភូមិគិរី</span> <small style="color:var(--muted);font-weight:600" data-en="· Fresh Fruit Store" data-kh="· ហាងផ្លែឈើស្រស់">· ហាងផ្លែឈើស្រស់</small></h3><p data-en="Fresh tropical fruits, ordered the easy way — right inside Telegram." data-kh="ផ្លែឈើស្រស់ៗ បញ្ជាទិញបានយ៉ាងងាយ — នៅលើ Telegram ផ្ទាល់។">ផ្លែឈើស្រស់ៗ បញ្ជាទិញបានយ៉ាងងាយ — នៅលើ Telegram ផ្ទាល់។</p><a class="btn ghost" style="padding:10px 18px" href="https://app.nexuscommerce.asia/?store=phumkiri" target="_blank" rel="noopener"><span data-en="Visit shop" data-kh="មើលហាង">មើលហាង</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= PRICING ================= -->
+<section id="pricing" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" data-en="PRICING" data-kh="តម្លៃ">តម្លៃ</div>
+      <h2 data-en="Simple plans that grow with you" data-kh="គម្រោងសាមញ្ញ រីកចម្រើនជាមួយអ្នក">គម្រោងសាមញ្ញ រីកចម្រើនជាមួយអ្នក</h2>
+      <p data-en="Every plan includes your Telegram shop, orders dashboard, and PayWay & KHQR payments." data-kh="គ្រប់គម្រោងរួមមានហាង Telegram ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់ PayWay និង KHQR។">គ្រប់គម្រោងរួមមានហាង Telegram ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់ PayWay និង KHQR។</p>
+    </div>
+    <div class="bill-toggle">
+      <div class="lang"><button id="billM" class="on" onclick="setBill('m')"><span data-en="Monthly" data-kh="ប្រចាំខែ">ប្រចាំខែ</span></button><button id="billY" onclick="setBill('y')"><span data-en="Annual −17%" data-kh="ប្រចាំឆ្នាំ −17%">ប្រចាំឆ្នាំ −17%</span></button></div>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>Standard</h3>
+        <div class="price"><span class="pval" data-m="$11.99" data-y="$119">$11.99</span><small class="pper" data-en-m="/mo" data-en-y="/yr" data-kh-m="/ខែ" data-kh-y="/ឆ្នាំ">/ខែ</small></div>
+        <div class="save" data-en="Save $24.88/yr" data-kh="សន្សំ $24.88/ឆ្នាំ">សន្សំ $24.88/ឆ្នាំ</div>
+        <div class="per" data-en="Perfect for getting started" data-kh="ល្អសម្រាប់ចាប់ផ្តើម">ល្អសម្រាប់ចាប់ផ្តើម</div>
+        <ul>
+          <li data-en="Up to 50 products" data-kh="ផលិតផលរហូតដល់ 50">ផលិតផលរហូតដល់ 50</li>
+          <li data-en="Orders dashboard" data-kh="ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ">ផ្ទាំងគ្រប់គ្រងការបញ្ជាទិញ</li>
+          <li data-en="Khmer + English shop" data-kh="ហាងជាភាសាខ្មែរ + អង់គ្លេស">ហាងជាភាសាខ្មែរ + អង់គ្លេស</li>
+        </ul>
+        <a class="btn ghost" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><span data-en="Start on Telegram" data-kh="ចាប់ផ្តើមតាម Telegram">ចាប់ផ្តើមតាម Telegram</span></a>
+      </div>
+      <div class="plan hot">
+        <span class="pop" data-en="MOST POPULAR" data-kh="ពេញនិយមបំផុត">ពេញនិយមបំផុត</span>
+        <h3>Pro</h3>
+        <div class="price"><span class="pval" data-m="$15.99" data-y="$159">$15.99</span><small class="pper" data-en-m="/mo" data-en-y="/yr" data-kh-m="/ខែ" data-kh-y="/ឆ្នាំ">/ខែ</small></div>
+        <div class="save" data-en="Save $32.88/yr" data-kh="សន្សំ $32.88/ឆ្នាំ">សន្សំ $32.88/ឆ្នាំ</div>
+        <div class="per" data-en="For shops ready to grow" data-kh="សម្រាប់ហាងដែលចង់រីកចម្រើន">សម្រាប់ហាងដែលចង់រីកចម្រើន</div>
+        <ul>
+          <li data-en="Up to 200 products" data-kh="ផលិតផលរហូតដល់ 200">ផលិតផលរហូតដល់ 200</li>
+          <li data-en="Full analytics" data-kh="ការវិភាគពេញលេញ">ការវិភាគពេញលេញ</li>
+          <li data-en="Daily sales digest" data-kh="របាយការណ៍លក់ប្រចាំថ្ងៃ">របាយការណ៍លក់ប្រចាំថ្ងៃ</li>
+          <li data-en="Promo banners & flash sales" data-kh="បដាព្រូម៉ូសិន និង flash sale">បដាព្រូម៉ូសិន និង flash sale</li>
+        </ul>
+        <a class="btn" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><span data-en="Start on Telegram" data-kh="ចាប់ផ្តើមតាម Telegram">ចាប់ផ្តើមតាម Telegram</span></a>
+      </div>
+      <div class="plan">
+        <h3>Signature</h3>
+        <div class="price"><span class="pval" data-m="$21.99" data-y="$219">$21.99</span><small class="pper" data-en-m="/mo" data-en-y="/yr" data-kh-m="/ខែ" data-kh-y="/ឆ្នាំ">/ខែ</small></div>
+        <div class="save" data-en="Save $44.88/yr" data-kh="សន្សំ $44.88/ឆ្នាំ">សន្សំ $44.88/ឆ្នាំ</div>
+        <div class="per" data-en="For serious sellers" data-kh="សម្រាប់អ្នកលក់អាជីព">សម្រាប់អ្នកលក់អាជីព</div>
+        <ul>
+          <li data-en="Up to 1,000 products" data-kh="ផលិតផលរហូតដល់ 1,000">ផលិតផលរហូតដល់ 1,000</li>
+          <li data-en="Reports + CSV export" data-kh="របាយការណ៍ + ទាញយក CSV">របាយការណ៍ + ទាញយក CSV</li>
+          <li data-en="Customer broadcasts" data-kh="ផ្ញើប្រូម៉ូសិនទៅអតិថិជន">ផ្ញើប្រូម៉ូសិនទៅអតិថិជន</li>
+          <li data-en="Abandoned-cart reminders" data-kh="រំលឹកកន្ត្រក់ដែលភ្លេច">រំលឹកកន្ត្រក់ដែលភ្លេច</li>
+        </ul>
+        <a class="btn ghost" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><span data-en="Start on Telegram" data-kh="ចាប់ផ្តើមតាម Telegram">ចាប់ផ្តើមតាម Telegram</span></a>
+      </div>
+      <div class="plan">
+        <h3>Custom</h3>
+        <div class="price"><span data-en="Quoted" data-kh="តាមការពិភាក្សា">តាមការពិភាក្សា</span></div>
+        <div class="per" data-en="Built around your business" data-kh="រៀបចំតាមអាជីវកម្មរបស់អ្នក">រៀបចំតាមអាជីវកម្មរបស់អ្នក</div>
+        <ul>
+          <li data-en="Up to 5,000 products" data-kh="ផលិតផលរហូតដល់ 5,000">ផលិតផលរហូតដល់ 5,000</li>
+          <li data-en="Your own domain & branding" data-kh="ដូមែន និង branding ផ្ទាល់ខ្លួន">ដូមែន និង branding ផ្ទាល់ខ្លួន</li>
+          <li data-en="Tailored setup" data-kh="រៀបចំតាមតម្រូវការ">រៀបចំតាមតម្រូវការ</li>
+          <li data-en="Priority support" data-kh="ជំនួយអាទិភាព">ជំនួយអាទិភាព</li>
+        </ul>
+        <a class="btn ghost" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><span data-en="Talk to us" data-kh="ពិភាក្សាជាមួយយើង">ពិភាក្សាជាមួយយើង</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= FAQ ================= -->
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" data-en="FAQ" data-kh="សំណួរញឹកញាប់">សំណួរញឹកញាប់</div>
+      <h2 data-en="Questions, answered" data-kh="សំណួរ និងចម្លើយ">សំណួរ និងចម្លើយ</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q"><span data-en="Do I need technical skills?" data-kh="តើខ្ញុំត្រូវការចំណេះដឹងបច្ចេកទេសទេ?">តើខ្ញុំត្រូវការចំណេះដឹងបច្ចេកទេសទេ?</span><span class="pm">+</span></button><div class="faq-a"><p data-en="None. We set up your shop, your Telegram bot, and payments. You just add products and take orders from your phone." data-kh="មិនត្រូវការទេ។ យើងរៀបចំហាង bot Telegram និងការទូទាត់ឱ្យអ្នក។ អ្នកគ្រាន់តែបន្ថែមផលិតផល និងទទួលការបញ្ជាទិញពីទូរស័ព្ទ។">មិនត្រូវការទេ។ យើងរៀបចំហាង bot Telegram និងការទូទាត់ឱ្យអ្នក។ អ្នកគ្រាន់តែបន្ថែមផលិតផល និងទទួលការបញ្ជាទិញពីទូរស័ព្ទ។</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="How do my customers pay?" data-kh="តើអតិថិជនរបស់ខ្ញុំទូទាត់យ៉ាងដូចម្តេច?">តើអតិថិជនរបស់ខ្ញុំទូទាត់យ៉ាងដូចម្តេច?</span><span class="pm">+</span></button><div class="faq-a"><p data-en="ABA PayWay, KHQR, or cash on delivery. You verify every payment in your dashboard." data-kh="តាម ABA PayWay KHQR ឬសាច់ប្រាក់ពេលដឹកជញ្ជូន។ អ្នកផ្ទៀងផ្ទាត់ការទូទាត់នីមួយៗនៅក្នុងផ្ទាំងគ្រប់គ្រង។">តាម ABA PayWay KHQR ឬសាច់ប្រាក់ពេលដឹកជញ្ជូន។ អ្នកផ្ទៀងផ្ទាត់ការទូទាត់នីមួយៗនៅក្នុងផ្ទាំងគ្រប់គ្រង។</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="What do I need to start?" data-kh="តើខ្ញុំត្រូវការអ្វីខ្លះដើម្បីចាប់ផ្តើម?">តើខ្ញុំត្រូវការអ្វីខ្លះដើម្បីចាប់ផ្តើម?</span><span class="pm">+</span></button><div class="faq-a"><p data-en="Your products, your prices, and a chat with us. We handle the bot, the shop, and the setup." data-kh="ផលិតផល តម្លៃរបស់អ្នក និងការជជែកជាមួយយើង។ យើងរៀបចំ bot ហាង និងការដំឡើងទាំងអស់។">ផលិតផល តម្លៃរបស់អ្នក និងការជជែកជាមួយយើង។ យើងរៀបចំ bot ហាង និងការដំឡើងទាំងអស់។</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="How long until my shop is live?" data-kh="ត្រូវការពេលប៉ុន្មានទើបហាងរបស់ខ្ញុំដំណើរការ?">ត្រូវការពេលប៉ុន្មានទើបហាងរបស់ខ្ញុំដំណើរការ?</span><span class="pm">+</span></button><div class="faq-a"><p data-en="Most shops launch within a few days of our first chat." data-kh="ហាងភាគច្រើនដំណើរការក្នុងរយៈពេលពីរបីថ្ងៃបន្ទាប់ពីការជជែកលើកដំបូង។">ហាងភាគច្រើនដំណើរការក្នុងរយៈពេលពីរបីថ្ងៃបន្ទាប់ពីការជជែកលើកដំបូង។</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Can I upgrade my plan later?" data-kh="តើខ្ញុំអាចដំឡើងគម្រោងនៅពេលក្រោយបានទេ?">តើខ្ញុំអាចដំឡើងគម្រោងនៅពេលក្រោយបានទេ?</span><span class="pm">+</span></button><div class="faq-a"><p data-en="Anytime. Start small, upgrade when your orders grow — your shop and data stay intact." data-kh="បានគ្រប់ពេល។ ចាប់ផ្តើមតូចសិន ដំឡើងនៅពេលការបញ្ជាទិញកើនឡើង — ហាងនិងទិន្នន័យរបស់អ្នកនៅដដែល។">បានគ្រប់ពេល។ ចាប់ផ្តើមតូចសិន ដំឡើងនៅពេលការបញ្ជាទិញកើនឡើង — ហាងនិងទិន្នន័យរបស់អ្នកនៅដដែល។</p></div></div>
+    </div>
+  </div>
+</section>
+<!-- ================= CTA ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta-band">
+      <span class="blob" style="width:220px;height:220px;left:-70px;top:-70px"></span>
+      <span class="blob" style="width:160px;height:160px;right:-50px;bottom:-60px"></span>
+      <h2 data-en="Let's build your Telegram shop." data-kh="តោះបង្កើតហាង Telegram របស់អ្នក!">តោះបង្កើតហាង Telegram របស់អ្នក!</h2>
+      <p data-en="Tell us about your business on Telegram — we'll take it from there." data-kh="ប្រាប់យើងអំពីអាជីវកម្មរបស់អ្នកតាម Telegram — យើងនឹងមើលថែនៅសល់។">ប្រាប់យើងអំពីអាជីវកម្មរបស់អ្នកតាម Telegram — យើងនឹងមើលថែនៅសល់។</p>
+      <a class="btn" style="font-size:16px;padding:15px 34px" href="https://t.me/ndxdigital_support" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6 18.8 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.7 13.2 2.1 11.7c-1-.3-1-1 .2-1.5l18-6.9c.8-.3 1.5.2 1.6 1.3z"/></svg><span data-en="Chat on Telegram" data-kh="ជជែកតាម Telegram">ជជែកតាម Telegram</span></a>
+    </div>
+  </div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span class="brandmark"><svg viewBox="0 0 120 120" fill="none" stroke="#E1251B" stroke-width="11" aria-hidden="true"><rect x="14" y="14" width="50" height="50" rx="21"/><rect x="56" y="14" width="50" height="50" rx="21"/><rect x="14" y="56" width="50" height="50" rx="21"/><rect x="56" y="56" width="50" height="50" rx="21"/></svg></span>NEXUS Commerce</a>
+        <p data-en="Telegram shops for small businesses. Built in Cambodia, for Cambodian sellers." data-kh="ហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច។ បង្កើតនៅកម្ពុជា សម្រាប់អ្នកលក់កម្ពុជា។">ហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច។ បង្កើតនៅកម្ពុជា សម្រាប់អ្នកលក់កម្ពុជា។</p>
+      </div>
+      <div class="foot-links">
+        <div><b data-en="Product" data-kh="ផលិតផល">ផលិតផល</b><a href="#features" data-en="Features" data-kh="មុខងារ">មុខងារ</a><a href="#stores" data-en="Stores" data-kh="ហាង">ហាង</a><a href="#pricing" data-en="Pricing" data-kh="តម្លៃ">តម្លៃ</a><a href="#faq" data-en="FAQ" data-kh="សំណួរញឹកញាប់">សំណួរញឹកញាប់</a></div>
+        <div><b data-en="Contact" data-kh="ទាក់ទង">ទាក់ទង</b><a href="https://t.me/ndxdigital_support" target="_blank" rel="noopener">Telegram</a><a href="https://app.nexuscommerce.asia" target="_blank" rel="noopener" data-en="Platform login" data-kh="ចូលប្រើវេទិកា">ចូលប្រើវេទិកា</a></div>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 NEXUS Commerce.</span><span data-en="Telegram shops for small businesses." data-kh="ហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច។">ហាង Telegram សម្រាប់អាជីវកម្មខ្នាតតូច។</span></div>
+  </div>
+</footer>
+<script>
+var LANG = "kh", BILL = "m";
+function setLang(l){
+  LANG = l;
+  try{ localStorage.setItem("nexus_site_lang", l); }catch(e){}
+  document.documentElement.lang = (l === "kh" ? "km" : "en");
+  document.getElementById("langKh").classList.toggle("on", l === "kh");
+  document.getElementById("langEn").classList.toggle("on", l === "en");
+  document.querySelectorAll("[data-en]").forEach(function(el){
+    el.textContent = el.getAttribute("data-" + l);
+  });
+  applyBill();
+}
+function setBill(b){
+  BILL = b;
+  document.getElementById("billM").classList.toggle("on", b === "m");
+  document.getElementById("billY").classList.toggle("on", b === "y");
+  applyBill();
+}
+function applyBill(){
+  document.querySelectorAll(".pval").forEach(function(el){
+    el.textContent = el.getAttribute(BILL === "m" ? "data-m" : "data-y");
+  });
+  document.querySelectorAll(".pper").forEach(function(el){
+    var k = BILL === "m" ? (LANG === "kh" ? "data-kh-m" : "data-en-m") : (LANG === "kh" ? "data-kh-y" : "data-en-y");
+    el.textContent = el.getAttribute(k);
+  });
+  var plans = document.querySelector(".plans");
+  if(plans) plans.classList.toggle("annual", BILL !== "m");
+}
+document.querySelectorAll(".faq-q").forEach(function(q){
+  q.addEventListener("click", function(){
+    var item = q.parentElement, was = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(function(i){ i.classList.remove("open"); });
+    if(!was) item.classList.add("open");
+  });
+});
+try{ var s = localStorage.getItem("nexus_site_lang"); if(s === "en" || s === "kh") LANG = s; }catch(e){}
+setLang(LANG);
+
+/* ---------- Features dropdown (hero) ---------- */
+(function(){
+  var btn = document.getElementById('featDdBtn');
+  var panel = document.getElementById('featDdPanel');
+  if(!btn || !panel) return;
+  // Build items from the feature cards so icons + names stay in sync
+  document.querySelectorAll('.feat').forEach(function(f){
+    var h3 = f.querySelector('h3'), fic = f.querySelector('.fic');
+    if(!h3 || !fic) return;
+    var a = document.createElement('a');
+    a.className = 'feat-dd-item'; a.setAttribute('role','menuitem');
+    var nm = document.createElement('span');
+    nm.setAttribute('data-en', h3.getAttribute('data-en') || '');
+    nm.setAttribute('data-kh', h3.getAttribute('data-kh') || '');
+    var ic = document.createElement('span');
+    ic.className = 'fic'; ic.setAttribute('style', fic.getAttribute('style') || '');
+    ic.innerHTML = fic.innerHTML;
+    a.appendChild(ic); a.appendChild(nm);
+    a.addEventListener('click', function(){
+      closeDd();
+      try{ f.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){ location.hash = '#features'; }
+      f.style.transition = 'box-shadow .3s';
+      f.style.boxShadow = '0 0 0 3px #E1251B';
+      setTimeout(function(){ f.style.boxShadow = ''; }, 1600);
+    });
+    panel.appendChild(a);
+  });
+  setLang(LANG); // apply current language to the new items
+  function placeDd(){
+    panel.classList.add('open'); // visible first so offsetHeight measures correctly
+    var r = btn.getBoundingClientRect();
+    var pw = Math.min(300, Math.max(250, r.width));
+    panel.style.minWidth = pw + 'px';
+    var left = Math.max(12, Math.min(r.left, window.innerWidth - pw - 12));
+    panel.style.left = left + 'px';
+    // Always opens below the button; shrink to fit viewport with internal scroll
+    var below = r.bottom + 10;
+    var avail = window.innerHeight - below - 12;
+    panel.style.maxHeight = Math.max(200, Math.min(window.innerHeight * 0.7, avail)) + 'px';
+    panel.style.top = below + 'px';
+  }
+  function closeDd(){ panel.classList.remove('open'); }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(panel.classList.contains('open')){ closeDd(); return; }
+    placeDd();
+  });
+  document.addEventListener('click', function(e){
+    if(!panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDd();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDd(); });
+  window.addEventListener('resize', closeDd);
+})();
+
+/* ---------- Interactive hero demo: tap-to-cart (v10) ---------- */
+(function(){
+  var badge = document.getElementById('phoneCart'),
+      countEl = document.getElementById('phoneCartCount');
+  if(!badge || !countEl) return;
+  var n = 0;
+  function pop(){
+    badge.classList.remove('pop');
+    void badge.offsetWidth;
+    badge.classList.add('pop');
+  }
+  function fly(img){
+    if(!img) return;
+    var r = img.getBoundingClientRect();
+    if(!r || r.width === 0) return; // no layout (headless test): just bump the count
+    var b = badge.getBoundingClientRect();
+    var c = document.createElement('img');
+    c.src = img.currentSrc || img.src;
+    c.className = 'flyclone';
+    c.style.left = r.left + 'px';
+    c.style.top = r.top + 'px';
+    c.style.width = r.width + 'px';
+    c.style.height = r.height + 'px';
+    c.style.opacity = '1';
+    document.body.appendChild(c);
+    function animate(){
+      c.style.left = (b.left + b.width / 2 - 11) + 'px';
+      c.style.top = (b.top + b.height / 2 - 11) + 'px';
+      c.style.width = '22px';
+      c.style.height = '22px';
+      c.style.opacity = '.2';
+    }
+    if(typeof requestAnimationFrame === 'function'){
+      requestAnimationFrame(function(){ requestAnimationFrame(animate); });
+    } else {
+      setTimeout(animate, 30);
+    }
+    var done = false;
+    function remove(){ if(done) return; done = true; if(c.parentNode) c.parentNode.removeChild(c); }
+    c.addEventListener('transitionend', remove);
+    setTimeout(remove, 900);
+  }
+  document.querySelectorAll('.phone .prod').forEach(function(p){
+    p.setAttribute('role', 'button');
+    p.setAttribute('tabindex', '0');
+    function add(){
+      var img = p.querySelector('img');
+      n++;
+      countEl.textContent = n;
+      badge.classList.add('on');
+      fly(img);
+      pop();
+    }
+    p.addEventListener('click', add);
+    p.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); add(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

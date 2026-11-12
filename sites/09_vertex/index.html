@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertex Partners — Cross-Border M&amp;A &amp; Executive Strategy | Singapore • Phnom Penh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #FAF8F5;
+      --surface: #FFFFFF;
+      --surface-warm: #F4EFEA;
+      --surface-card: #FFFFFF;
+      --card-border: rgba(184, 134, 11, 0.22);
+      --card-hover: rgba(184, 134, 11, 0.45);
+      
+      --text-main: #0F172A;
+      --text-sub: #475569;
+      --text-muted: #64748B;
+
+      --gold: #B8860B;
+      --gold-dark: #8C6205;
+      --gold-light: #D4AF37;
+      --gold-champagne: #F5EFEB;
+      --gold-glow: rgba(184, 134, 11, 0.2);
+
+      --navy: #0F172A;
+      --navy-deep: #080D1A;
+      --emerald: #059669;
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 90% 40%, rgba(184, 134, 11, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 10% 75%, rgba(15, 23, 42, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: #080D1A;
+      color: #94A3B8;
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-sans);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .nexus-global-bar a { color: #94A3B8; text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #FFFFFF; font-weight: 700; }
+    .nexus-global-bar a.active { color: #D4AF37; }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(250, 248, 245, 0.94);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+      box-shadow: 0 1px 4px rgba(44, 34, 20, 0.04);
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; font-family: var(--font-sans); }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--gold-dark); }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; font-family: var(--font-sans); }
+    .btn-portal {
+      color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: var(--surface-warm);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-portal:hover { border-color: var(--gold); background: #FFFFFF; color: var(--gold-dark); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #FFFFFF;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 14px var(--gold-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(184, 134, 11, 0.35); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: 100svh SPLIT HERO */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-champagne);
+      border: 1px solid var(--card-border);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      font-family: var(--font-sans);
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(184, 134, 11, 0.6);
+    }
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--text-main);
+      text-wrap: balance;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.65;
+      max-width: 52ch;
+      font-family: var(--font-sans);
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      font-family: var(--font-sans);
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #FFFFFF;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--gold-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(184, 134, 11, 0.35); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-portal:active, .deal-card:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: var(--surface);
+      color: var(--text-main);
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--card-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { border-color: var(--gold); background: var(--surface-warm); color: var(--gold-dark); }
+    .btn-hero-secondary:hover { border-color: var(--gold); background: var(--surface-warm); color: var(--gold-dark); }
+
+    /* TRUST CREDENTIALS */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+      width: 100%;
+      max-width: 520px;
+      font-family: var(--font-sans);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--gold-dark); flex-shrink: 0; }
+
+    /* RIGHT HERO: CONFIDENTIAL DEAL ROOM DOSSIER */
+    .deal-room-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 16px 40px -12px rgba(44, 34, 20, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .dossier-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.15);
+      margin-bottom: 16px;
+    }
+    .dossier-code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--gold-champagne);
+      color: var(--gold-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid var(--card-border);
+    }
+    .dossier-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--emerald);
+      font-family: var(--font-sans);
+    }
+    .dossier-status .pulse-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 6px rgba(5, 150, 105, 0.8);
+    }
+
+    .deal-headline {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .deal-description {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      font-family: var(--font-sans);
+    }
+
+    .deal-docs {
+      background: var(--surface-warm);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    .doc-row {
+      background: #FFFFFF;
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+    }
+    .doc-row:last-child { margin-bottom: 0; }
+    .doc-name { font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .doc-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--gold-dark);
+      background: var(--gold-champagne);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+    }
+
+    .deal-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+      font-family: var(--font-sans);
+    }
+    .metric-box {
+      background: var(--surface-warm);
+      border: 1px solid rgba(184, 134, 11, 0.15);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    .m-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .m-value { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 800; color: var(--gold-dark); margin-top: 2px; }
+
+    .btn-deal-action {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #FFFFFF;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+    .btn-deal-action:hover { background: var(--gold-dark); }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      font-family: var(--font-sans);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+      font-family: var(--font-sans);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px -8px rgba(44, 34, 20, 0.05);
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 16px 36px -10px rgba(44, 34, 20, 0.1), 0 0 20px -5px rgba(184, 134, 11, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .card-text {
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      font-family: var(--font-sans);
+    }
+    .card-badge {
+      margin-top: 14px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+    }
+
+    /* SCREEN 3: ADVISORY MANDATES */
+    .mandates-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .price-val {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+      margin: 16px 0 8px;
+    }
+    .price-list {
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-family: var(--font-sans);
+    }
+    .price-list li { display: flex; align-items: center; gap: 8px; }
+    .price-list svg { width: 16px; height: 16px; stroke: var(--gold-dark); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--card-border);
+      padding: 60px 0 40px;
+      background: #FFFFFF;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: var(--text-main); font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; font-family: var(--font-serif); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold-dark); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-6, .col-8, .col-12 { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(212, 175, 55, 0.2); color: #D4AF37; padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">M&amp;A &amp; STRATEGY</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">AI Enterprise</a>
+      <a href="../09_vertex/index.html" class="active">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+      </div>
+      <div>Vertex <span style="color: var(--gold-dark);">Partners</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#dealroom">Confidential Deal Room</a>
+      <a href="#practices">Practices</a>
+      <a href="#mandates">Advisory Mandates</a>
+      <a href="#credentials">Track Record</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-portal">Principal Portal</a>
+      <a href="#mandates" class="btn-cta">
+        <span>Request Consultation</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: EDITORIAL VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Vertex Partners • Cross-Border M&amp;A Advisory | Singapore • Phnom Penh
+          </div>
+          <h1 class="hero-headline">
+            Architecting Enduring Value for<br>
+            <em>Southeast Asia's Leading Dynasties</em>.
+          </h1>
+          <p class="hero-sub">
+            Direct-mandate corporate finance, cross-border restructuring, and executive succession planning. Trusted by conglomerate chairs, private wealth offices, and regional institutional funds navigating ASEAN expansion.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#dealroom" class="btn-hero-primary">
+              <span>Enter Confidential Deal Room</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#mandates" class="btn-hero-secondary">
+              <span>View Mandate Terms</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>$1.8B+ Aggregate Deal Volume</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>Cross-Border SGX &amp; CSX Advisory</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Strict Swiss-Grade Discretion</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <span>Goldman Sachs &amp; Big 4 Partner Alum</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE ENCRYPTED DEAL ROOM DOSSIER -->
+        <div class="deal-room-card" id="dealroom">
+          <div class="dossier-top">
+            <span class="dossier-code">🔒 AES-256 ENCRYPTED ROOM #VTX-892</span>
+            <div class="dossier-status">
+              <span class="pulse-dot"></span>
+              <span>Blind CIM Active</span>
+            </div>
+          </div>
+
+          <h3 class="deal-headline">Project Mekong Horizon ($120M M&amp;A)</h3>
+          <p class="deal-description">
+            Cross-border renewable infrastructure carve-out and joint-venture syndicate between Singapore capital partners and Cambodian asset owners.
+          </p>
+
+          <div class="deal-docs">
+            <div class="doc-row">
+              <div class="doc-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span>Confidential Information Memorandum (CIM)</span>
+              </div>
+              <span class="doc-badge">Watermarked</span>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                <span>Audited IFRS Financial Model (2022-2026)</span>
+              </div>
+              <span class="doc-badge">Big 4 Audited</span>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-name">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <span>Cross-Border Tax &amp; QIP Concession Treaty</span>
+              </div>
+              <span class="doc-badge">Legally Sealed</span>
+            </div>
+          </div>
+
+          <div class="deal-metrics">
+            <div class="metric-box">
+              <div class="m-label">Enterprise Value</div>
+              <div class="m-value">$120.0M</div>
+            </div>
+            <div class="metric-box">
+              <div class="m-label">FY25 EBITDA</div>
+              <div class="m-value">$14.2M</div>
+            </div>
+            <div class="metric-box">
+              <div class="m-label">EV/EBITDA</div>
+              <div class="m-value">8.4x</div>
+            </div>
+          </div>
+
+          <button class="btn-deal-action" onclick="alert('Dual-key cryptographic signature requested. Your identity will be vetted by our Senior Partner within 2 business hours.')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Request Dual-Key Institutional NDA Access</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO GRID ADVISORY PRACTICES -->
+    <section class="container bento-section" id="practices">
+      <div class="section-tag">Institutional Deal Architecture</div>
+      <h2 class="section-title">Confidential Advisory Practices</h2>
+      <p class="section-lead">
+        Senior-level corporate finance advisory combining Singapore institutional governance with deep Cambodian regulatory execution.
+      </p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: FAMILY OFFICE SUCCESSION -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="card-icon" style="background: var(--gold-champagne);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="card-title">Conglomerate Succession</h3>
+            <p class="card-text">
+              Protect multi-generational family estates through Singapore Variable Capital Companies (VCC) and family governance constitutions.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--gold-dark);">
+            <span>✓ Institutional Wealth Governance</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: M&A VALUATIONS -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="card-icon" style="background: rgba(15, 23, 42, 0.06);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3 class="card-title">Defensible Valuations</h3>
+            <p class="card-text">
+              IFRS and ASEAN-adjusted DCF valuations that stand up to institutional buyer boards and cross-border regulatory scrutiny.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--navy);">
+            <span>✓ Big 4 Standard Modeling</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: PRINCIPAL INTEGRITY -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="card-icon" style="background: rgba(5, 150, 105, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Direct Principal Advisory</h3>
+            <p class="card-text">
+              Zero delegation to junior associates. Your negotiations and structuring are executed directly by seasoned partners.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--emerald);">
+            <span>✓ 100% Senior Partner Execution</span>
+          </div>
+        </div>
+
+        <!-- CARD 4: REGIONAL BLUEPRINT -->
+        <div class="bento-card col-6">
+          <div>
+            <div class="card-icon" style="background: var(--gold-champagne);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Cross-Border Holding Architecture</h3>
+            <p class="card-text">
+              Dual-jurisdiction holding structures linking Singapore Pte Ltd corporate parent entities with Cambodian operating assets, unlocking zero-tax dividend repatriation under bilateral tax treaties.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--gold-dark);">
+            <span>✓ Bilateral Tax Optimization</span>
+          </div>
+        </div>
+
+        <!-- CARD 5: CDC / QIP CONCESSIONS -->
+        <div class="bento-card col-6">
+          <div>
+            <div class="card-icon" style="background: var(--gold-champagne);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="card-title">CDC &amp; QIP Concession Structuring</h3>
+            <p class="card-text">
+              Fast-track Qualified Investment Project (QIP) filing with the Council for the Development of Cambodia, securing 9-year corporate income tax holidays and 0% duty on capital goods imports.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--gold-dark);">
+            <span>✓ Guaranteed Regulatory Compliance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: ADVISORY MANDATES -->
+    <section class="container mandates-section" id="mandates">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Engagement Structures</div>
+        <h2 class="section-title">Confidential Advisory Mandates</h2>
+        <p class="section-lead">Tailored retained partnerships for high-stakes corporate transformations.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; font-family: var(--font-serif);">Corporate Board Retainer</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px; font-family: var(--font-sans);">Independent strategic counsel for conglomerate boards.</p>
+            <div class="price-val">
+              $12,000 <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">/ month</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly Board Representation</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Capital Structure &amp; Debt Review</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Strategic Succession Guidance</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ad-hoc Executive Escalation</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700; margin-top: 20px; font-family: var(--font-sans);">Request Board Seat</a>
+        </div>
+
+        <div class="bento-card col-4" style="border-color: var(--gold); box-shadow: 0 10px 30px -10px var(--gold-glow);">
+          <div style="position: absolute; top: 16px; right: 16px; background: var(--gold-dark); color: #FFFFFF; font-size: 0.7rem; font-weight: 800; padding: 3px 9px; border-radius: 4px; text-transform: uppercase; font-family: var(--font-sans);">
+            Primary Mandate
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; font-family: var(--font-serif);">M&amp;A Sell-Side Mandate</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px; font-family: var(--font-sans);">Comprehensive divestiture, carve-out, or acquisition.</p>
+            <div class="price-val" style="color: var(--gold-dark);">
+              Retainer + Success <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">Fee</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Complete CIM &amp; Encrypted Deal Room</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct Roadshow to 50+ Acquirers</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Negotiation &amp; Defensible Valuation</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Cross-Border Closing &amp; Escrow</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center; margin-top: 20px; font-family: var(--font-sans);">Retain M&amp;A Partner</a>
+        </div>
+
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; font-family: var(--font-serif);">Cross-Border Restructure</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px; font-family: var(--font-sans);">Singapore holding company migration &amp; tax filings.</p>
+            <div class="price-val">
+              Custom <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">/ Phased Scope</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dual-Jurisdiction Legal Structuring</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Cambodian CDC Exemption Registration</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Inter-Company IP Licensing Agreements</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Regulatory Defense Protocol</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700; margin-top: 20px; font-family: var(--font-sans);">Inquire Restructuring</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <div>Vertex <span style="color: var(--gold-dark);">Partners</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          Cross-border M&amp;A advisory, executive governance, and strategic corporate restructuring across Singapore, Cambodia, and Southeast Asia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Advisory Practices</h4>
+        <ul>
+          <li><a href="#dealroom">Confidential Deal Room</a></li>
+          <li><a href="#practices">Corporate Succession</a></li>
+          <li><a href="#practices">M&amp;A Valuations</a></li>
+          <li><a href="#mandates">Advisory Mandates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../02_crm/index.html">Nexus CRM</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../04_finance/index.html">Nexus Finance</a></li>
+          <li><a href="../06_talently/index.html">Talently Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Principal Offices</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          <strong>Singapore:</strong> Marina Bay Financial Centre, Tower 2<br>
+          <strong>Phnom Penh:</strong> Exchange Square, Level 18<br>
+          vertex@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Vertex Partners (Nexus Group International). All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Confidentiality Charter</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">SGX Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Engagement</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+/**
+ * NEXUS ECOSYSTEM — UNIFIED DESIGN SYSTEM TOKENS (v2.1.0)
+ * Integrated with UI-Skills & Taste Skill Design-Engineering Principles.
+ * Multi-Brand Palette, Concentric Geometry, Tabular Numerics & Motion Physics.
+ */
+
+:root {
+  /* =====================================================================
+     BRAND PALETTES (MULTI-ARCHETYPE)
+     ===================================================================== */
+
+  /* 01 AiOS: Midnight Violet */
+  --nexus-violet-primary: #8B5CF6;
+  --nexus-violet-primary-rgb: 139, 92, 246;
+  --nexus-violet-hover: #7C3AED;
+  --nexus-violet-glow: rgba(139, 92, 246, 0.35);
+
+  /* 02 CRM: Cobalt Slate */
+  --nexus-blue-crm: #3B82F6;
+  --nexus-blue-crm-rgb: 59, 130, 246;
+  --nexus-blue-glow: rgba(59, 130, 246, 0.35);
+
+  /* 03 Commerce: Vibrant Retail Light */
+  --nexus-coral-commerce: #FF385C;
+  --nexus-cyan-telegram: #229ED9;
+  --nexus-commerce-bg: #FFFFFF;
+
+  /* 04 Finance: Maritime Mint */
+  --nexus-mint-finance: #10B981;
+  --nexus-ocean-finance: #06B6D4;
+  --nexus-finance-bg: #020B18;
+
+  /* 05 Affiliate: Carbon Gold */
+  --nexus-gold-affiliate: #F59E0B;
+  --nexus-gold-light: #FDE68A;
+  --nexus-affiliate-bg: #0A0B0E;
+
+  /* 06 Talently: Modern Slate Light */
+  --nexus-emerald-talently: #059669;
+  --nexus-talently-bg: #F8FAFC;
+  --nexus-talently-border: rgba(15, 23, 42, 0.08);
+
+  /* 07 Agency / Intelligence: Cyber Neon Cyan */
+  --nexus-cyan-intelligence: #06B6D4;
+  --nexus-agency-bg: #050810;
+
+  /* 08 AI Enterprise: Sovereign Bronze */
+  --nexus-bronze-ai: #CA8A04;
+  --nexus-bronze-light: #FDE047;
+  --nexus-ai-bg: #080A0F;
+
+  /* 09 Vertex Partners: Warm Ivory Paper Editorial */
+  --nexus-gold-vertex: #B8860B;
+  --nexus-vertex-bg: #FAF8F5;
+  --nexus-vertex-navy: #0F172A;
+
+  /* =====================================================================
+     TYPOGRAPHY & UI-SKILLS RULES
+     ===================================================================== */
+  --nexus-font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nexus-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nexus-font-mono: 'Space Grotesk', monospace;
+  --nexus-font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Line-length cap (UI-Skills cap-line-length) */
+  --nexus-prose-max-width: 65ch;
+
+  /* =====================================================================
+     CONCENTRIC BORDER RADII (inner = outer - padding)
+     ===================================================================== */
+  --nexus-radius-outer: 20px;
+  --nexus-radius-inner: 10px;
+  --nexus-radius-chip: 6px;
+  --nexus-radius-full: 9999px;
+
+  /* =====================================================================
+     TACTILE PRESS & MOTION PHYSICS (UI-Skills add-scale-on-press)
+     ===================================================================== */
+  --nexus-press-scale: scale(0.975);
+  --nexus-transition-fast: 0.15s cubic-bezier(0.2, 0, 0, 1);
+  --nexus-transition-smooth: 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* =====================================================================
+   GLOBAL DESIGN-ENGINEERING UTILITIES (UI-Skills Compliance)
+   ===================================================================== */
+
+/* 1. Balanced Headline Typography (prevents widows) */
+.text-balance,
+h1,
+h2,
+h3,
+.hero-headline,
+.section-title,
+.hero-title {
+  text-wrap: balance;
+}
+
+/* 2. Pretty Paragraph Wrapping */
+.text-pretty,
+p,
+.hero-sub,
+.section-lead,
+.hero-lead {
+  text-wrap: pretty;
+}
+
+/* 3. Tabular Numeric Alignment for Financial & Metric Displays */
+.tabular-nums,
+.stat-val,
+.price-val,
+.m-val,
+.m-num,
+.deal-amount,
+.comp-val,
+.stat-block strong {
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
+}
+
+/* 4. Tactile Press Feedback */
+button:active,
+a.btn-cta:active,
+a.btn-hero-primary:active,
+a.btn-hero-secondary:active,
+a.btn-portal:active,
+a.btn-login:active,
+a.btn-launch:active,
+.candidate-card:active,
+.deal-card:active,
+.f-pill:active,
+.c-tab:active {
+  transform: var(--nexus-press-scale) !important;
+}
+
+/* 5. Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

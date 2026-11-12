@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talently Careers — AI-Verified Tech &amp; Executive Talent Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-alt: #F1F5F9;
+      --card: #FFFFFF;
+      --card-border: rgba(15, 23, 42, 0.08);
+      --card-hover: rgba(5, 150, 105, 0.3);
+      
+      --text-main: #0F172A;
+      --text-sub: #475569;
+      --text-muted: #64748B;
+
+      --emerald: #059669;
+      --emerald-dark: #047857;
+      --emerald-light: #10B981;
+      --emerald-subtle: #ECFDF5;
+      --emerald-border: #A7F3D0;
+      --emerald-glow: rgba(5, 150, 105, 0.16);
+
+      --teal: #0D9488;
+      --blue: #2563EB;
+      --amber: #D97706;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(13, 148, 136, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: #0F172A;
+      color: #94A3B8;
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nexus-global-bar a { color: #94A3B8; text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #FFFFFF; font-weight: 700; }
+    .nexus-global-bar a.active { color: #34D399; }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--emerald-light), var(--emerald));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--emerald-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--emerald-dark); }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-portal {
+      color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: var(--surface-alt);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-portal:hover { border-color: var(--emerald); background: var(--emerald-subtle); color: var(--emerald-dark); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--emerald-light), var(--emerald));
+      color: #FFFFFF;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 14px var(--emerald-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: SPLIT HERO (100svh standard) */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--emerald-subtle);
+      border: 1px solid var(--emerald-border);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--emerald-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--text-main);
+      text-wrap: balance;
+    }
+    .hero-headline span {
+      color: var(--emerald);
+      background: linear-gradient(135deg, var(--emerald) 0%, #047857 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--emerald-light), var(--emerald));
+      color: #FFFFFF;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--emerald-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(5, 150, 105, 0.35); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-portal:active, .f-pill:active, .candidate-card:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: var(--surface);
+      color: var(--text-main);
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--card-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { border-color: var(--emerald); background: var(--emerald-subtle); color: var(--emerald-dark); }
+    .btn-hero-secondary:hover { border-color: var(--emerald); background: var(--emerald-subtle); color: var(--emerald-dark); }
+
+    /* TRUST BADGES */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+      width: 100%;
+      max-width: 520px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--emerald); flex-shrink: 0; }
+
+    /* RIGHT HERO: LIVE CANDIDATE RADAR CONSOLE */
+    .hero-console {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 16px 40px -12px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .console-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .console-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: var(--emerald-subtle);
+      color: var(--emerald-dark);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid var(--emerald-border);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .f-pill {
+      background: var(--surface-alt);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .f-pill.active {
+      background: var(--emerald-subtle);
+      border-color: var(--emerald-border);
+      color: var(--emerald-dark);
+      font-weight: 700;
+    }
+
+    .candidate-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .candidate-card {
+      background: var(--surface-alt);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .candidate-card:hover {
+      border-color: var(--emerald);
+      background: #FFFFFF;
+      transform: translateY(-1px);
+    }
+    .candidate-card.active {
+      border-color: var(--emerald);
+      background: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.1);
+    }
+    .c-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .c-name { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
+    .c-match {
+      background: var(--emerald-subtle);
+      color: var(--emerald-dark);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      border: 1px solid var(--emerald-border);
+    }
+    .c-role { font-size: 0.78rem; color: var(--emerald-dark); font-weight: 600; }
+    .c-meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* AUDIT RADAR BOX */
+    .radar-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .radar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .radar-header h4 { font-size: 0.84rem; font-weight: 700; color: var(--text-main); }
+    .radar-header span { font-size: 0.75rem; color: var(--text-muted); }
+    .metric-row { margin-bottom: 8px; }
+    .metric-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 3px;
+    }
+    .metric-bar-bg {
+      height: 6px;
+      background: rgba(15, 23, 42, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .metric-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--emerald-light), var(--emerald));
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+    .comp-row {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .comp-val {
+      font-family: var(--font-mono);
+      color: var(--emerald-dark);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .btn-interview {
+      width: 100%;
+      margin-top: 12px;
+      background: var(--emerald);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-interview:hover { background: var(--emerald-dark); }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--emerald-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.05);
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--emerald-border);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.1), 0 0 20px -5px rgba(5, 150, 105, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .card-text {
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .card-badge {
+      margin-top: 14px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* SCREEN 3: PRICING */
+    .pricing-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .price-val {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 16px 0 8px;
+    }
+    .price-list {
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+    .price-list li { display: flex; align-items: center; gap: 8px; }
+    .price-list svg { width: 16px; height: 16px; stroke: var(--emerald); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--card-border);
+      padding: 60px 0 40px;
+      background: #FFFFFF;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: var(--text-main); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--emerald-dark); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-6, .col-8, .col-12 { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(52, 211, 153, 0.2); color: #34D399; padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">TALENT MARKETPLACE</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html" class="active">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">AI Enterprise</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div>Talently <span style="color: var(--emerald);">Careers</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#candidates">AI Match Pool</a>
+      <a href="#benchmarking">Skill Audits</a>
+      <a href="#guarantee">48-Hr SLA</a>
+      <a href="#compliance">Legal &amp; Visas</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-portal">Candidate Portal</a>
+      <a href="#pricing" class="btn-cta">
+        <span>Post Executive Role</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Talently v3.2 • Executive &amp; Tech Benchmarking
+          </div>
+          <h1 class="hero-headline">
+            Hire the Top 1% of Regional Talent. Screened with <span>Verified Benchmarks</span>.
+          </h1>
+          <p class="hero-sub">
+            The curated talent marketplace connecting high-growth enterprises in Phnom Penh, Singapore, and Bangkok with verified software engineers, growth executives, and finance leaders. Pre-vetted with real-world technical assessments.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#candidates" class="btn-hero-primary">
+              <span>Explore Pre-Vetted Pool</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#pricing" class="btn-hero-secondary">
+              <span>View Retained Terms</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Background &amp; GitHub Verified</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>48-Hour Shortlist Guarantee</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+              <span>Instant Telegram Interview Setup</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Bakong USD/KHR Payroll Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE INTERACTIVE CANDIDATE RADAR CONSOLE -->
+        <div class="hero-console">
+          <div class="console-header">
+            <div>
+              <div class="console-title">Live Candidate Benchmarking</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Interactive scorecard evaluation</div>
+            </div>
+            <span class="console-badge">142 Screened This Week</span>
+          </div>
+
+          <div class="filter-pills">
+            <span class="f-pill active" onclick="filterCandidates('all', this)">All Disciplines</span>
+            <span class="f-pill" onclick="filterCandidates('engineering', this)">Senior Engineering</span>
+            <span class="f-pill" onclick="filterCandidates('growth', this)">Growth &amp; Marketing</span>
+            <span class="f-pill" onclick="filterCandidates('finance', this)">Finance &amp; Audit</span>
+          </div>
+
+          <!-- CANDIDATE CARDS -->
+          <div class="candidate-list">
+            <div class="candidate-card active" data-category="engineering" onclick="selectCandidate('Sophea Meng', 'Staff Backend Architect', '98%', 96, 94, 98, '$4,500 / mo', 'Ex-Grab, ABA Bank • 8 yrs exp', this)">
+              <div class="c-head">
+                <div class="c-name">Sophea Meng</div>
+                <div class="c-match">98% AI Match</div>
+              </div>
+              <div class="c-role">Staff Backend Architect (Golang, Rust, Kafka)</div>
+              <div class="c-meta">Ex-Grab, ABA Bank • 8 Years Exp • Available in 2 Weeks</div>
+            </div>
+
+            <div class="candidate-card" data-category="growth" onclick="selectCandidate('Dara Chan', 'Head of Performance Marketing', '96%', 92, 98, 95, '$3,200 / mo', 'Managed $4M Ad Spend across SEA', this)">
+              <div class="c-head">
+                <div class="c-name">Dara Chan</div>
+                <div class="c-match">96% AI Match</div>
+              </div>
+              <div class="c-role">Head of Performance Marketing (E-com / Meta / TikTok)</div>
+              <div class="c-meta">Managed $4M+ Regional Ad Spend • 4.2x ROAS Benchmark</div>
+            </div>
+
+            <div class="candidate-card" data-category="finance" onclick="selectCandidate('Thida Pich', 'Lead Financial Controller', '99%', 99, 95, 97, '$4,000 / mo', 'CPA, GDT Audit Specialist • Big 4 Alum', this)">
+              <div class="c-head">
+                <div class="c-name">Thida Pich</div>
+                <div class="c-match">99% AI Match</div>
+              </div>
+              <div class="c-role">Lead Financial Controller (CPA / Tax Audit / GDT)</div>
+              <div class="c-meta">Ex-PwC, Regional Fintech • Specializes in GDT &amp; NBC Audits</div>
+            </div>
+          </div>
+
+          <!-- RADAR SCORES -->
+          <div class="radar-box">
+            <div class="radar-header">
+              <h4 id="inspect-name">Sophea Meng</h4>
+              <span id="inspect-sub">Ex-Grab, ABA Bank • 8 yrs exp</span>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-meta">
+                <span>Architecture &amp; Distributed Systems</span>
+                <strong id="m1" style="font-family: var(--font-mono); color: var(--text-main);">96 / 100</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" id="m1-bar" style="width: 96%;"></div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-meta">
+                <span>Code Reliability &amp; Concurrency</span>
+                <strong id="m2" style="font-family: var(--font-mono); color: var(--text-main);">94 / 100</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" id="m2-bar" style="width: 94%;"></div>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-meta">
+                <span>Cross-Border Communication</span>
+                <strong id="m3" style="font-family: var(--font-mono); color: var(--text-main);">98 / 100</strong>
+              </div>
+              <div class="metric-bar-bg">
+                <div class="metric-bar-fill" id="m3-bar" style="width: 98%;"></div>
+              </div>
+            </div>
+
+            <div class="comp-row">
+              <span style="font-size: 0.78rem; color: var(--text-sub);">Expected Compensation:</span>
+              <span class="comp-val" id="inspect-comp">$4,500 / mo</span>
+            </div>
+          </div>
+
+          <button class="btn-interview" onclick="alert('Interview request dispatched via Telegram to candidate and hiring partner.')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+            <span>Schedule 1-Click Telegram Interview</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO GRID VALUE PROPOSITION -->
+    <section class="container bento-section" id="benchmarking">
+      <div class="section-tag">Talent Infrastructure</div>
+      <h2 class="section-title">Built for Rapid Regional Expansion</h2>
+      <p class="section-lead">
+        We handle end-to-end recruitment, technical validation, legal employment contracts, and direct digital payroll across Southeast Asia.
+      </p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: 48-HR SLA -->
+        <div class="bento-card col-4" id="guarantee">
+          <div>
+            <div class="card-icon" style="background: var(--emerald-subtle);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3 class="card-title">48-Hour Shortlist SLA</h3>
+            <p class="card-text">
+              Receive 3 battle-tested candidate profiles ready for interviews within 48 hours, or your placement retainer is discounted by 50%.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--emerald-dark);">
+            <span>✓ Guaranteed Rapid Velocity</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: LEGAL & VISAS -->
+        <div class="bento-card col-4" id="compliance">
+          <div>
+            <div class="card-icon" style="background: rgba(13, 148, 136, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h3 class="card-title">ASEAN Legal &amp; Visas</h3>
+            <p class="card-text">
+              Employer of Record (EOR) services covering Cambodia, Singapore, and Thailand with compliant local contracts and work permits.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--teal);">
+            <span>✓ Full Labor Law Compliance</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: BAKONG PAYROLL -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="card-icon" style="background: rgba(37, 99, 235, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 class="card-title">Bakong Payroll Ready</h3>
+            <p class="card-text">
+              Disburse monthly compensation in USD or KHR directly to staff mobile wallets with automated withholding tax deduction statements.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--blue);">
+            <span>✓ 0% Remittance Friction</span>
+          </div>
+        </div>
+
+        <!-- CARD 4: 90-DAY PROBATIONARY REPLACEMENT -->
+        <div class="bento-card col-6">
+          <div>
+            <div class="card-icon" style="background: rgba(217, 119, 6, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="card-title">90-Day Free Replacement Warranty</h3>
+            <p class="card-text">
+              If an executive or engineer resigns or fails to meet documented KPIs within 90 calendar days, Talently conducts a priority replacement search at zero additional cost.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--amber);">
+            <span>✓ 100% Risk-Free Mandate Protection</span>
+          </div>
+        </div>
+
+        <!-- CARD 5: LIVE TELEGRAM INTERVIEW BOT -->
+        <div class="bento-card col-6">
+          <div>
+            <div class="card-icon" style="background: var(--emerald-subtle);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3 class="card-title">Telegram Native Interview Coordination</h3>
+            <p class="card-text">
+              Eliminate calendar back-and-forth. Hiring managers and pre-screened candidates select mutual interview slots directly via our automated Telegram scheduling bot.
+            </p>
+          </div>
+          <div class="card-badge" style="color: var(--emerald-dark);">
+            <span>✓ Average 14-Minute Booking Velocity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: PRICING -->
+    <section class="container pricing-section" id="pricing">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Placement Packages</div>
+        <h2 class="section-title">Transparent Recruiting Terms</h2>
+        <p class="section-lead">Zero upfront search fees for standard roles. Pay only upon successful 90-day probationary hire.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Contingency Search</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For mid-to-senior individual contributor hires.</p>
+            <div class="price-val">
+              15% <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">of First-Year Base</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 48-Hour Shortlist Delivery</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Technical &amp; GitHub Audit</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 90-Day Free Replacement Guarantee</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700; margin-top: 20px;">Initiate Search</a>
+        </div>
+
+        <div class="bento-card col-4" style="border-color: var(--emerald); box-shadow: 0 10px 30px -10px var(--emerald-glow);">
+          <div style="position: absolute; top: 16px; right: 16px; background: var(--emerald); color: #fff; font-size: 0.7rem; font-weight: 800; padding: 3px 9px; border-radius: 4px; text-transform: uppercase;">
+            Most Requested
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Executive Retained</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">For VP, CTO, and C-Suite regional leadership.</p>
+            <div class="price-val" style="color: var(--emerald-dark);">
+              22% <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">Retained Mandate</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Senior Headhunter Partner</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Confidential Executive Outreach</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Psychometric &amp; Board Alignment Assessment</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 180-Day Executive Replacement Guarantee</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center; margin-top: 20px;">Book Executive Search</a>
+        </div>
+
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Dedicated Pod Cloud</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">Managed engineering squads of 5-15 developers.</p>
+            <div class="price-val">
+              Custom <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">/ Monthly SLA</span>
+            </div>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Fully Assembled &amp; Co-located Squad</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Senior Technical Lead Included</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Complete Payroll, Hardware &amp; Office Setup</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Scale Up or Down with 30-Day Notice</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700; margin-top: 20px;">Inquire Pod Terms</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div>Talently <span style="color: var(--emerald-dark);">Careers</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          AI-screened executive and software engineering recruitment marketplace for fast-growing enterprises across Southeast Asia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Talent Solutions</h4>
+        <ul>
+          <li><a href="#candidates">Candidate Roster</a></li>
+          <li><a href="#benchmarking">Skill Audits</a></li>
+          <li><a href="#guarantee">48-Hr SLA</a></li>
+          <li><a href="#compliance">Legal &amp; Visas</a></li>
+          <li><a href="#pricing">Recruiting Fees</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../02_crm/index.html">Nexus CRM</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../04_finance/index.html">Nexus Finance</a></li>
+          <li><a href="../09_vertex/index.html">Vertex Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Head Office</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          Exchange Square Tower, Level 18<br>
+          Phnom Penh, Kingdom of Cambodia<br>
+          talently@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Nexus Group International. All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Security &amp; NBC Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function selectCandidate(name, role, match, s1, s2, s3, comp, sub, el) {
+      document.querySelectorAll('.candidate-card').forEach(card => card.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      document.getElementById('inspect-name').innerText = name;
+      document.getElementById('inspect-sub').innerText = sub;
+      document.getElementById('m1').innerText = s1 + ' / 100';
+      document.getElementById('m1-bar').style.width = s1 + '%';
+      document.getElementById('m2').innerText = s2 + ' / 100';
+      document.getElementById('m2-bar').style.width = s2 + '%';
+      document.getElementById('m3').innerText = s3 + ' / 100';
+      document.getElementById('m3-bar').style.width = s3 + '%';
+      document.getElementById('inspect-comp').innerText = comp;
+    }
+
+    function filterCandidates(cat, pillEl) {
+      document.querySelectorAll('.f-pill').forEach(p => p.classList.remove('active'));
+      pillEl.classList.add('active');
+
+      const cards = document.querySelectorAll('.candidate-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

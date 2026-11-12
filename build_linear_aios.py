@@ -1,0 +1,2083 @@
+# -*- coding: utf-8 -*-
+import os
+
+html_code = """<!DOCTYPE html>
+<html lang="en" data-type="software">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <title>Nexus AiOS — The Autonomous Operating System for High-Growth Founders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      /* OBSIDIAN TITANIUM SYSTEM TOKENS (LINEAR / RAYCAST CRAFT) */
+      --bg: #07080B;
+      --surface: #0C0E14;
+      --card: #10121A;
+      --card-inner: #151822;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-subtle: rgba(255, 255, 255, 0.05);
+      --card-hover: rgba(99, 102, 241, 0.45);
+      
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+
+      --accent: #6366F1;
+      --accent-light: #818CF8;
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      
+      --tg-blue: #2AABEE;
+      --tg-bubble: #1E293B;
+      --tg-bubble-user: #2B5278;
+      --emerald: #10B981;
+      --emerald-light: #34D399;
+      --amber: #F59E0B;
+
+      --font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      /* Architectural micro-grid without muddy purple soup */
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(ellipse 70% 35% at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 80%);
+      background-size: 56px 56px, 56px 56px, 100% 100%;
+      background-position: 0 0, 0 0, center top;
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: rgba(7, 8, 11, 0.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+    }
+    .nexus-global-bar a { color: var(--text-sub); text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #fff; font-weight: 700; }
+    .nexus-global-bar a.active { color: var(--accent-light); }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 48px;
+      background: rgba(7, 8, 11, 0.9);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border-subtle);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), #4338CA);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+    .brand-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-login {
+      color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 16px; border-radius: 8px; transition: color 0.2s;
+    }
+    .btn-cta {
+      background: #FFFFFF;
+      color: #07080B;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); background: #F1F5F9; box-shadow: 0 4px 14px rgba(255,255,255,0.25); }
+    .btn-cta:active, .btn-login:active, button:active { transform: scale(0.975); }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* =========================================================================
+       SCREEN 1: LINEAR-STYLE WORKSTATION HERO (100SVH)
+       ========================================================================= */
+    .hero-screen {
+      min-height: calc(100svh - 105px);
+      display: flex;
+      align-items: center;
+      padding: 36px 0;
+      position: relative;
+    }
+    .hero-split-grid {
+      display: grid;
+      grid-template-columns: 4.8fr 7.2fr;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 22px;
+      font-family: var(--font-mono);
+    }
+    .tg-indicator {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--tg-blue);
+      box-shadow: 0 0 8px var(--tg-blue);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 3.6vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+      text-wrap: balance;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 48ch;
+      text-wrap: pretty;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #FFFFFF;
+      color: #07080B;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.9);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { background: #F1F5F9; transform: translateY(-1px); }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.22); }
+
+    /* INSTITUTIONAL TELEMETRY STRIP (REPLACES CHEESY CHECKMARK ROW) */
+    .institutional-strip {
+      display: flex;
+      gap: 14px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--card-border-subtle);
+      padding-top: 18px;
+      font-family: var(--font-mono);
+      flex-wrap: wrap;
+    }
+    .inst-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .inst-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--emerald); }
+
+    /* =========================================================================
+       AUTHENTIC TELEGRAM ENTERPRISE WORKSTATION (HERO RIGHT VIEWPORT)
+       ========================================================================= */
+    .workstation-frame {
+      background: #0E1017;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.95), 0 0 40px -10px rgba(99, 102, 241, 0.15);
+      overflow: hidden;
+    }
+    .workstation-chrome {
+      background: #141620;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+    .window-controls {
+      display: flex;
+      gap: 6px;
+    }
+    .win-btn {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .workstation-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-sub);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+    .workstation-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--emerald-light);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .workstation-body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: 430px;
+    }
+
+    /* LEFT CHANNELS RAIL */
+    .ws-sidebar {
+      background: #10121A;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .ws-channel-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ws-channel-item.active {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+    .ws-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      font-size: 10px; font-weight: 700; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ai-avatar { background: linear-gradient(135deg, var(--accent), #4338CA); }
+    .mkt-avatar { background: #6366F1; }
+    .ops-avatar { background: #10B981; }
+    .fin-avatar { background: #F59E0B; }
+
+    .ws-channel-info { flex: 1; overflow: hidden; }
+    .ws-channel-name {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ws-badge-verified {
+      color: var(--tg-blue);
+      font-size: 0.7rem;
+    }
+    .ws-channel-preview {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ws-time {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* RIGHT CHAT PANE */
+    .ws-chat-pane {
+      background: #0B0D13;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ws-chat-header {
+      background: #0E1017;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-header-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #4338CA);
+      color: #fff; font-weight: 800; font-size: 11px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .header-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .verified-pill {
+      font-size: 0.6rem;
+      background: rgba(42, 171, 238, 0.15);
+      color: var(--tg-blue);
+      border: 1px solid rgba(42, 171, 238, 0.3);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .header-status {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .encryption-tag {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .ws-msg-stream {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .ws-msg-bubble {
+      border-radius: 12px;
+      padding: 14px;
+      max-width: 96%;
+    }
+    .voice-bubble {
+      background: #171A24;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--accent);
+    }
+    .bubble-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .bubble-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-light);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .speed-selector {
+      display: flex;
+      gap: 3px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 2px;
+      border-radius: 4px;
+    }
+    .spd-btn {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .spd-btn.active { background: var(--accent); color: #fff; }
+
+    .voice-player-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .voice-play-trigger {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #4338CA);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px var(--accent-glow);
+      transition: transform 0.15s;
+      flex-shrink: 0;
+    }
+    .voice-play-trigger:hover { transform: scale(1.06); }
+    .voice-play-trigger:active { transform: scale(0.95); }
+
+    .voice-waveform {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      height: 24px;
+    }
+    .wf-bar {
+      width: 3px;
+      background: var(--accent-light);
+      border-radius: 2px;
+      animation: pulseBar 1.2s ease-in-out infinite alternate;
+      animation-play-state: paused;
+    }
+    @keyframes pulseBar {
+      0% { height: 3px; opacity: 0.3; }
+      100% { height: 22px; opacity: 1; }
+    }
+    .voice-timer {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+    .voice-transcript {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    /* BAKONG KHQR RECEIPT BUBBLE */
+    .receipt-bubble {
+      background: #141822;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-left: 3px solid var(--emerald);
+    }
+    .receipt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+    }
+    .receipt-amounts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .amount-col {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    .amount-curr {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+    .amount-val {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      font-variant-numeric: tabular-nums;
+    }
+    .receipt-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .receipt-check {
+      color: var(--emerald-light);
+      font-weight: 600;
+    }
+    .receipt-time {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    /* BOTTOM INTERACTIVE INPUT BAR */
+    .ws-input-bar {
+      background: #0E1017;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .ws-input-field {
+      flex: 1;
+      background: #161922;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+    }
+    .ws-send-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ws-send-btn:hover { background: #4F46E5; }
+
+    /* =========================================================================
+       SCREEN 2: PRECISION BENTO GRID (#bento)
+       ========================================================================= */
+    .bento-section {
+      min-height: 100svh;
+      padding: 80px 0 60px;
+      border-top: 1px solid var(--card-border-subtle);
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+      text-wrap: balance;
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 48ch;
+      margin-bottom: 32px;
+      text-wrap: pretty;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+    }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+
+    .bento-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .micro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: var(--font-mono);
+    }
+    .badge-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+    }
+    .badge-metric {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--emerald);
+      font-variant-numeric: tabular-nums;
+      font-family: var(--font-mono);
+    }
+    .bento-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+    .bento-card-sub {
+      color: var(--text-sub);
+      font-size: 0.86rem;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    /* CARD 1: MINI TELEGRAM CHAT WIDGET */
+    .tg-mini-chat {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tg-msg {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .tg-msg.user-msg {
+      justify-content: flex-end;
+    }
+    .tg-msg-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--tg-blue);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tg-msg-bubble {
+      background: #171A24;
+      border-radius: 8px 8px 8px 2px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      max-width: 85%;
+    }
+    .user-bubble {
+      background: #23354D;
+      border-radius: 8px 8px 2px 8px;
+      color: #fff;
+    }
+    .tg-sender {
+      color: var(--tg-blue);
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .tg-time {
+      font-size: 0.65rem;
+      color: #94A3B8;
+      text-align: right;
+      margin-top: 3px;
+      font-family: var(--font-mono);
+    }
+    .checks { color: var(--tg-blue); margin-left: 3px; }
+
+    /* CARD 2: RADAR ALERT WIDGET */
+    .radar-widget {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .radar-alert-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+    .radar-pulse-ring {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .radar-pulse-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 6px var(--amber);
+    }
+    .radar-alert-info { flex: 1; }
+    .radar-alert-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #FDE68A;
+    }
+    .radar-alert-sub {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+    }
+    .radar-action-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      color: var(--emerald-light);
+      font-weight: 600;
+    }
+
+    /* CARD 3: SYNC TELEMETRY BOX */
+    .sync-telemetry-box {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sync-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .sync-row:last-child { border-bottom: none; }
+    .sync-label { color: var(--text-sub); }
+    .sync-val { font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+
+    /* CARD 4: DUAL CURRENCY CARD */
+    .currency-card-widget {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .curr-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .curr-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .curr-amount {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .curr-status {
+      font-size: 0.68rem;
+      color: var(--emerald);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .status-indicator {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--emerald);
+    }
+
+    /* CARD 5: MINI AUDIO CARD */
+    .audio-mini-card {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-play-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #4338CA);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .mini-wave-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex: 1;
+      height: 22px;
+    }
+    .m-bar {
+      width: 3px;
+      background: var(--accent-light);
+      border-radius: 2px;
+    }
+    .mini-duration {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-sub);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* CARD 6: CLEAN PIPELINE STRIP */
+    .clean-pipeline-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+    .step-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .step-desc {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+    }
+
+    /* =========================================================================
+       SCREEN 3: PRECISION FOUNDER ROI CALCULATOR (#roi)
+       ========================================================================= */
+    .roi-section {
+      min-height: 100svh;
+      padding: 80px 0 60px;
+      border-top: 1px solid var(--card-border-subtle);
+      scroll-margin-top: 80px;
+    }
+    .roi-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    }
+    .slider-group { margin-bottom: 24px; }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+    .slider-val {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-light);
+      background: rgba(99, 102, 241, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 5px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 5px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+      transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+    .roi-display-box {
+      background: #0B0D13;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+    }
+    .roi-stat-main {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin: 8px 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .roi-grid-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 16px;
+    }
+    .roi-mini-num {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--emerald);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================================================
+       SCREEN 4: TRANSPARENT 3-TIER ENTERPRISE PRICING (#pricing)
+       ========================================================================= */
+    .pricing-section {
+      min-height: 100svh;
+      padding: 80px 0 60px;
+      border-top: 1px solid var(--card-border-subtle);
+      scroll-margin-top: 80px;
+    }
+    .billing-toggle-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .cycle-btn {
+      background: transparent;
+      border: 1px solid var(--card-border-subtle);
+      color: var(--text-sub);
+      padding: 7px 18px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cycle-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    .discount-chip {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      transition: all 0.25s;
+    }
+    .price-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+    .price-card:hover { transform: translateY(-3px); }
+    .featured-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+    .tier-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .tier-desc {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      margin-bottom: 18px;
+      min-height: 38px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .price-val {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .price-period {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .feature-list {
+      list-style: none;
+      margin-bottom: 26px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+    .feature-item svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--emerald);
+      stroke-width: 2.5;
+      flex-shrink: 0;
+    }
+    .tier-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 11px 0;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-tier-default {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid var(--card-border-subtle);
+    }
+    .btn-tier-default:hover { background: rgba(255,255,255,0.1); }
+    .btn-tier-featured {
+      background: #FFFFFF;
+      color: #07080B;
+    }
+    .btn-tier-featured:hover { background: #F1F5F9; }
+
+    /* =========================================================================
+       SCREEN 5: EXECUTIVE FAQ (#faq)
+       ========================================================================= */
+    .faq-section {
+      min-height: 100svh;
+      padding: 80px 0 60px;
+      border-top: 1px solid var(--card-border-subtle);
+      scroll-margin-top: 80px;
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 4fr 8fr;
+      gap: 48px;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(99, 102, 241, 0.35); }
+    .faq-q {
+      padding: 18px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-a {
+      padding: 0 20px 18px;
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--card-border-subtle);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: #050608;
+    }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 1024px) {
+      .hero-split-grid { grid-template-columns: 1fr; gap: 36px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-7, .col-5, .col-4, .col-12 { grid-column: span 1; }
+      .roi-card { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .workstation-body { grid-template-columns: 1fr; }
+      .ws-sidebar { display: none; }
+      .clean-pipeline-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. GLOBAL ECOSYSTEM SWITCHER -->
+  <div class="nexus-global-bar">
+    <div><strong>NEXUS GROUP</strong> • AUTONOMOUS AI ECOSYSTEM</div>
+    <div>
+      <a href="../01_aios/index.html" class="active">AiOS</a>
+      <a href="../02_crm/index.html">CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">Enterprise AI</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- 2. NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>Nexus <span style="color: var(--accent-light);">AiOS</span></div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#bento">Capabilities</a>
+      <a href="#roi">ROI Calculator</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://t.me/DanLP18" target="_blank">Book AI Audit</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#pricing" class="btn-login">Sign In</a>
+      <a href="#pricing" class="btn-cta">
+        <span>Deploy in 15 Mins</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- =======================================================================
+         SCREEN 1: LINEAR-STYLE WORKSTATION HERO (100SVH)
+         ======================================================================= -->
+    <section class="hero-screen">
+      <div class="hero-split-grid">
+        <!-- Hero Text Column -->
+        <div>
+          <div class="tech-pill">
+            <span class="tg-indicator"></span>
+            <span>TELEGRAM-NATIVE AUTONOMOUS AI</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Stop Chasing Team Reports.<br>
+            Start Every Day With Clarity.
+          </h1>
+
+          <p class="hero-sub">
+            Staff submit 60-second updates in Telegram. AiOS synthesizes departmental operations, intercepts blockers, and delivers a 2-minute audio briefing by 8:00 AM.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#pricing" class="btn-primary">
+              <span>Start Free 14-Day Pilot</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://t.me/DanLP18" target="_blank" class="btn-secondary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.8 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              <span>Live Telegram Demo</span>
+            </a>
+          </div>
+
+          <div class="institutional-strip">
+            <div class="inst-pill">
+              <span class="inst-dot"></span>
+              <span>Telegram Bot API 7.2</span>
+            </div>
+            <div class="inst-pill">
+              <span class="inst-dot"></span>
+              <span>NBC Bakong KHQR Sync</span>
+            </div>
+            <div class="inst-pill">
+              <span class="inst-dot"></span>
+              <span>AES-256 Cloud Vault</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Authentic Telegram Enterprise Workstation -->
+        <div class="workstation-frame">
+          <div class="workstation-chrome">
+            <div class="window-controls">
+              <span class="win-btn"></span>
+              <span class="win-btn"></span>
+              <span class="win-btn"></span>
+            </div>
+            <div class="workstation-title">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.8 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              <span>Telegram Enterprise Workstation • Phnom Penh Executive Node</span>
+            </div>
+            <div class="workstation-meta">08:00 AM ICT</div>
+          </div>
+
+          <div class="workstation-body">
+            <!-- Left Channel Rail -->
+            <div class="ws-sidebar">
+              <div class="ws-channel-item active">
+                <div class="ws-avatar ai-avatar">AI</div>
+                <div class="ws-channel-info">
+                  <div class="ws-channel-name">
+                    <span>AiOS Briefing</span>
+                    <span class="ws-badge-verified">✓</span>
+                  </div>
+                  <div class="ws-channel-preview">Executive digest ready</div>
+                </div>
+                <div class="ws-time">08:00</div>
+              </div>
+
+              <div class="ws-channel-item">
+                <div class="ws-avatar mkt-avatar">MK</div>
+                <div class="ws-channel-info">
+                  <div class="ws-channel-name">Marketing Dept</div>
+                  <div class="ws-channel-preview">ROAS 4.1x confirmed</div>
+                </div>
+                <div class="ws-time">07:42</div>
+              </div>
+
+              <div class="ws-channel-item">
+                <div class="ws-avatar ops-avatar">OP</div>
+                <div class="ws-channel-info">
+                  <div class="ws-channel-name">Logistics Hub</div>
+                  <div class="ws-channel-preview">Siem Reap reroute done</div>
+                </div>
+                <div class="ws-time">07:55</div>
+              </div>
+
+              <div class="ws-channel-item">
+                <div class="ws-avatar fin-avatar">FN</div>
+                <div class="ws-channel-info">
+                  <div class="ws-channel-name">Treasury / Bakong</div>
+                  <div class="ws-channel-preview">$42,500 settled</div>
+                </div>
+                <div class="ws-time">08:00</div>
+              </div>
+            </div>
+
+            <!-- Right Chat Canvas -->
+            <div class="ws-chat-pane">
+              <div class="ws-chat-header">
+                <div class="chat-header-user">
+                  <div class="header-avatar">AI</div>
+                  <div>
+                    <div class="header-name">
+                      <span>Nexus AiOS Autonomous Briefing</span>
+                      <span class="verified-pill">VERIFIED BOT</span>
+                    </div>
+                    <div class="header-status">Connected via Telegram Cloud API 7.2</div>
+                  </div>
+                </div>
+                <div class="encryption-tag">AES-256 ENCRYPTED</div>
+              </div>
+
+              <div class="ws-msg-stream">
+                <!-- 1. Voice Message Digest Bubble -->
+                <div class="ws-msg-bubble voice-bubble">
+                  <div class="bubble-header">
+                    <span class="bubble-tag">2-MINUTE EXECUTIVE AUDIO DIGEST</span>
+                    <div class="speed-selector">
+                      <button class="spd-btn active" onclick="setSpeed(1, this)">1.0x</button>
+                      <button class="spd-btn" onclick="setSpeed(1.5, this)">1.5x</button>
+                      <button class="spd-btn" onclick="setSpeed(2, this)">2.0x</button>
+                    </div>
+                  </div>
+
+                  <div class="voice-player-row">
+                    <button class="voice-play-trigger" id="playBtn" onclick="toggleAudio()">
+                      <svg id="playIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </button>
+                    <div class="voice-waveform" id="voiceWaveform">
+                      <div class="wf-bar" style="animation-delay: 0.1s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.3s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.2s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.5s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.4s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.7s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.2s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.6s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.3s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.8s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.4s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.2s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.5s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.3s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.6s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.1s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.4s"></div>
+                      <div class="wf-bar" style="animation-delay: 0.7s"></div>
+                    </div>
+                    <span class="voice-timer" id="digestTimer">00:00 / 02:14</span>
+                  </div>
+
+                  <div class="voice-transcript">
+                    <strong>Executive Summary:</strong> Marketing ROAS reached 4.1x with 120 qualified leads synced to CRM. Logistics cleared Batch 4 customs delay by rerouting 40 units to Siem Reap. Bakong treasury settled $42,500 with 0 pending variances.
+                  </div>
+                </div>
+
+                <!-- 2. Bakong KHQR Settlement Receipt -->
+                <div class="ws-msg-bubble receipt-bubble">
+                  <div class="receipt-header">
+                    <span style="color: var(--emerald-light); font-weight: 700;">BAKONG KHQR SETTLEMENT RECEIPT</span>
+                    <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.7rem;">BATCH #884</span>
+                  </div>
+                  <div class="receipt-amounts">
+                    <div class="amount-col">
+                      <div class="amount-curr">USD Treasury</div>
+                      <div class="amount-val">$42,500.00</div>
+                    </div>
+                    <div class="amount-col">
+                      <div class="amount-curr">KHR Treasury</div>
+                      <div class="amount-val">174,250,000 ៛</div>
+                    </div>
+                  </div>
+                  <div class="receipt-footer">
+                    <span class="receipt-check">✓ NBC Bakong Webhook Verified</span>
+                    <span class="receipt-time">08:00 AM ICT</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Input Bar -->
+              <div class="ws-input-bar">
+                <input type="text" readonly value="Ask AiOS: 'What was our logistics delay yesterday?'" class="ws-input-field">
+                <button class="ws-send-btn" onclick="alert('AiOS Intelligence Query: Customs clearance for Batch 4 was delayed 24h. The autonomous operating loop transferred 40 units to Siem Reap hub at 07:55 AM, avoiding customer SLA penalty.')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCREEN 2: PRECISION BENTO GRID (#bento)
+         ======================================================================= -->
+    <section class="bento-section" id="bento">
+      <div class="section-tag">CAPABILITIES</div>
+      <h2 class="section-title">Engineered for Autonomy</h2>
+      <p class="section-lead">Everything your team does in Telegram, synthesized into executive decisions.</p>
+
+      <div class="bento-grid">
+        <!-- Card 1 (col-7): Telegram Native Check-In -->
+        <div class="bento-card col-7">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:#2AABEE;"></span>Telegram Native</span>
+              <span class="badge-metric">98.4% on-time</span>
+            </div>
+            <h3 class="bento-card-title">Zero App Downloads</h3>
+            <p class="bento-card-sub">Staff check in inside their existing Telegram chats in under 60 seconds.</p>
+          </div>
+
+          <!-- Sleek Telegram Chat UI Component -->
+          <div class="tg-mini-chat" data-ui="telegram">
+            <div class="tg-msg">
+              <div class="tg-msg-avatar">AI</div>
+              <div class="tg-msg-bubble">
+                <div class="tg-sender">Nexus Check-In Bot</div>
+                <div>Morning Sothea. Today's deliverables and blockers?</div>
+                <div class="tg-time">07:30 AM</div>
+              </div>
+            </div>
+            <div class="tg-msg user-msg">
+              <div class="tg-msg-bubble user-bubble">
+                <div>Dispatched 40 SKUs. Reconciled Bakong batch #884. No blockers.</div>
+                <div class="tg-time">07:32 AM <span class="checks">✓✓</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 (col-5): Blocker Interceptor -->
+        <div class="bento-card col-5">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:var(--amber);"></span>Live Radar</span>
+              <span class="badge-metric" style="color:var(--amber);">Active</span>
+            </div>
+            <h3 class="bento-card-title">Blocker Interception</h3>
+            <p class="bento-card-sub">Flags dependency bottlenecks before they cause customer cancellations.</p>
+          </div>
+
+          <!-- Sleek Radar Warning & Auto-Fix Widget -->
+          <div class="radar-widget" data-ui="radar">
+            <div class="radar-alert-pill">
+              <div class="radar-pulse-ring">
+                <span class="radar-pulse-dot"></span>
+              </div>
+              <div class="radar-alert-info">
+                <div class="radar-alert-title">Customs Delay Flagged</div>
+                <div class="radar-alert-sub">Batch 4 delayed 24h</div>
+              </div>
+            </div>
+            <div class="radar-action-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Auto-rerouted to Siem Reap hub</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 (col-4): Cross-Department Sync -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:var(--accent-light);"></span>Synthesis</span>
+            </div>
+            <h3 class="bento-card-title">Cross-Department Sync</h3>
+            <p class="bento-card-sub">Marketing, logistics, and sales aligned in one stream.</p>
+          </div>
+
+          <div class="sync-telemetry-box" data-ui="sync">
+            <div class="sync-row">
+              <span class="sync-label">Marketing</span>
+              <span class="sync-val" style="color:var(--emerald);">4.1x ROAS</span>
+            </div>
+            <div class="sync-row">
+              <span class="sync-label">Fulfillment</span>
+              <span class="sync-val">0 delayed</span>
+            </div>
+            <div class="sync-row">
+              <span class="sync-label">Sales</span>
+              <span class="sync-val">120 leads synced</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 (col-4): Bakong Dual Currency -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:var(--emerald);"></span>Bakong KHQR</span>
+            </div>
+            <h3 class="bento-card-title">Dual-Currency Sync</h3>
+            <p class="bento-card-sub">Real-time webhook settlement in USD and KHR.</p>
+          </div>
+
+          <div class="currency-card-widget" data-ui="currency">
+            <div class="curr-line">
+              <span class="curr-tag">USD</span>
+              <span class="curr-amount">$42,500.00</span>
+            </div>
+            <div class="curr-line">
+              <span class="curr-tag">KHR</span>
+              <span class="curr-amount">174,250,000 ៛</span>
+            </div>
+            <div class="curr-status">
+              <span class="status-indicator"></span> Webhook settled via NBC Bakong
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 (col-4): Neural Audio Briefing -->
+        <div class="bento-card col-4">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:var(--accent);"></span>Audio Engine</span>
+            </div>
+            <h3 class="bento-card-title">Neural Audio Briefing</h3>
+            <p class="bento-card-sub">2-minute voice digest delivered to your phone at 08:00 AM.</p>
+          </div>
+
+          <div class="audio-mini-card" data-ui="audio">
+            <div class="mini-play-circle">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <div class="mini-wave-bars">
+              <span class="m-bar" style="height: 10px;"></span>
+              <span class="m-bar" style="height: 18px;"></span>
+              <span class="m-bar" style="height: 12px;"></span>
+              <span class="m-bar" style="height: 22px;"></span>
+              <span class="m-bar" style="height: 15px;"></span>
+              <span class="m-bar" style="height: 7px;"></span>
+            </div>
+            <span class="mini-duration">02:14</span>
+          </div>
+        </div>
+
+        <!-- Card 6 (col-12): Operating Topology -->
+        <div class="bento-card col-12">
+          <div>
+            <div class="bento-badge-row">
+              <span class="micro-badge"><span class="badge-dot" style="background:var(--accent-light);"></span>Architecture</span>
+              <span class="badge-metric">Automated Loop</span>
+            </div>
+            <h3 class="bento-card-title">From Telegram Message to Executive Digest</h3>
+            <p class="bento-card-sub">Four automated steps connecting frontline operations to executive strategy.</p>
+          </div>
+
+          <div class="clean-pipeline-strip" data-ui="pipeline">
+            <div class="pipeline-step">
+              <div class="step-num">STEP 01</div>
+              <div class="step-title">Telegram Input</div>
+              <div class="step-desc">60s staff check-in</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="step-num">STEP 02</div>
+              <div class="step-title">Vector Memory</div>
+              <div class="step-desc">AES-256 cloud vault</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="step-num">STEP 03</div>
+              <div class="step-title">Conflict Radar</div>
+              <div class="step-desc">Dependency resolution</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="step-num">STEP 04</div>
+              <div class="step-title">Audio Digest</div>
+              <div class="step-desc">8:00 AM executive brief</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCREEN 3: PRECISION FOUNDER ROI CALCULATOR (#roi)
+         ======================================================================= -->
+    <section class="roi-section" id="roi">
+      <div class="section-tag">VALUE QUANTIFICATION</div>
+      <h2 class="section-title">Calculate Executive Hours Recovered</h2>
+      <p class="section-lead">Estimate the managerial time and payroll waste AiOS eliminates for your organization.</p>
+
+      <div class="roi-card">
+        <!-- Sliders -->
+        <div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Full-Time Team Size</span>
+              <span class="slider-val" id="teamSizeVal">35 Staff</span>
+            </div>
+            <input type="range" id="teamSizeRange" min="10" max="250" value="35" oninput="calculateROI()">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Daily Reporting Waste per Manager</span>
+              <span class="slider-val" id="timeWasteVal">45 Mins / Day</span>
+            </div>
+            <input type="range" id="timeWasteRange" min="15" max="90" step="5" value="45" oninput="calculateROI()">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Executive / Founder Hourly Value</span>
+              <span class="slider-val" id="hourlyRateVal">$175 / Hour</span>
+            </div>
+            <input type="range" id="hourlyRateRange" min="50" max="500" step="25" value="175" oninput="calculateROI()">
+          </div>
+        </div>
+
+        <!-- Dynamic Output Display -->
+        <div class="roi-display-box">
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; font-family: var(--font-mono);">Estimated Annual Value Recovered</div>
+          <div class="roi-stat-main" id="annualSavings">$138,600</div>
+          <div style="font-size: 0.8rem; color: var(--accent-light); font-weight: 600;">Based on recovered management attention & blocker prevention</div>
+
+          <div class="roi-grid-mini">
+            <div>
+              <div class="roi-mini-num" id="hoursPerWeek">16.5 hrs</div>
+              <div style="font-size: 0.74rem; color: var(--text-muted);">Saved per week</div>
+            </div>
+            <div>
+              <div class="roi-mini-num" id="paybackDays">&lt; 12 Days</div>
+              <div style="font-size: 0.74rem; color: var(--text-muted);">Payback period</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCREEN 4: TRANSPARENT 3-TIER ENTERPRISE PRICING (#pricing)
+         ======================================================================= -->
+    <section class="pricing-section" id="pricing">
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
+        <div class="section-tag">PREDICTABLE INVESTMENT</div>
+        <h2 class="section-title">Transparent Pricing Built for Scale</h2>
+        <p class="section-lead" style="margin: 0 auto;">Deploy within 15 minutes. No implementation contracts or consulting retainers.</p>
+      </div>
+
+      <!-- Billing Cycle Toggle -->
+      <div class="billing-toggle-row">
+        <button class="cycle-btn active" id="btnMonthly" onclick="setBillingCycle('monthly')">Monthly Billing</button>
+        <button class="cycle-btn" id="btnAnnual" onclick="setBillingCycle('annual')">Annual Billing</button>
+        <span class="discount-chip">Save 20%</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Tier 1 -->
+        <div class="price-card">
+          <div>
+            <div class="tier-name">Starter Pilot</div>
+            <div class="tier-desc">For growing firms replacing manual status meetings with autonomous Telegram reports.</div>
+            <div class="price-row">
+              <span class="price-val" id="priceStarter">$490</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Up to 25 team members</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Telegram native check-in bots</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Daily 8:00 AM text synthesis</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Standard email & chat support</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://t.me/DanLP18" target="_blank" class="tier-btn btn-tier-default">Start Starter Pilot</a>
+        </div>
+
+        <!-- Tier 2 (Featured) -->
+        <div class="price-card featured">
+          <div class="featured-badge">MOST POPULAR</div>
+          <div>
+            <div class="tier-name">Growth Operating</div>
+            <div class="tier-desc">Complete autonomous loop with neural audio digests, Bakong KHQR sync, and blocker radar.</div>
+            <div class="price-row">
+              <span class="price-val" id="priceGrowth">$1,290</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Up to 100 team members</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Daily 8:00 AM neural voice brief</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Bakong KHQR webhook reconciliation</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Live revenue blocker interceptor</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://t.me/DanLP18" target="_blank" class="tier-btn btn-tier-featured">Start 14-Day Free Pilot</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="price-card">
+          <div>
+            <div class="tier-name">Enterprise Custom</div>
+            <div class="tier-desc">Dedicated cloud tenant, custom ERP webhooks, on-premise LLM routing, and 24/7 SLA.</div>
+            <div class="price-row">
+              <span class="price-val" id="priceEnterprise">$3,490</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Unlimited team members</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Isolated private cloud tenant</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Custom ERP & database integrations</span>
+              </li>
+              <li class="feature-item">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Dedicated solution architect</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://t.me/DanLP18" target="_blank" class="tier-btn btn-tier-default">Contact Executive Team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCREEN 5: EXECUTIVE FAQ (#faq)
+         ======================================================================= -->
+    <section class="faq-section" id="faq">
+      <div class="faq-layout">
+        <div>
+          <div class="section-tag">EXECUTIVE FAQ</div>
+          <h2 class="section-title">Common Questions</h2>
+          <p class="section-lead">Everything executive leadership needs to know about security, rollout, and architecture.</p>
+        </div>
+
+        <div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>Do our employees have to download or learn any new apps?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+              No. Staff report directly within their existing Telegram app in under 60 seconds. There are zero new software logins or training sessions required.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>How does AiOS handle sensitive corporate and financial data?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+              All communications are encrypted in transit and at rest using AES-256. Customer data is strictly isolated within dedicated cloud partitions and is never used to train public LLM models.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>Can AiOS connect directly to National Bank of Cambodia Bakong KHQR?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+              Yes. AiOS includes pre-built settlement webhooks supporting dual-currency (USD and KHR) reconciliation directly against your daily operational ledger.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>What is the typical deployment timeframe?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+              Standard deployment takes under 15 minutes. We connect your Telegram bot token, configure department routing, and your executive briefing begins the following morning at 8:00 AM.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-weight: 800; color: #fff;">Nexus AiOS</span>
+      <span>•</span>
+      <span>Autonomous Operating Intelligence</span>
+    </div>
+    <p>© 2026 Nexus Group International. All rights reserved.</p>
+  </footer>
+
+  <!-- INTERACTIVE APPLICATION LOGIC -->
+  <script>
+    /* 1. AUDIO DIGEST PLAYER WITH WEB AUDIO SYNTH */
+    let isPlaying = false;
+    let timerInterval = null;
+    let seconds = 0;
+    let playbackSpeed = 1.0;
+    let audioCtx = null;
+
+    function playExecutiveChime() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        // Twin-tone executive chime (587.33Hz D5 -> 880Hz A5 subtle sine)
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.14);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.75);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+      } catch (e) {}
+    }
+
+    function toggleAudio() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('playIcon');
+      const timer = document.getElementById('digestTimer');
+      const bars = document.querySelectorAll('.wf-bar');
+
+      if (isPlaying) {
+        playExecutiveChime();
+        playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+        bars.forEach(b => b.style.animationPlayState = 'running');
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          seconds += Math.round(playbackSpeed);
+          const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const s = String(seconds % 60).padStart(2, '0');
+          timer.innerText = m + ':' + s + ' / 02:14';
+          if (seconds >= 134) toggleAudio();
+        }, 1000 / playbackSpeed);
+      } else {
+        playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        bars.forEach(b => b.style.animationPlayState = 'paused');
+        clearInterval(timerInterval);
+      }
+    }
+
+    function setSpeed(speed, btn) {
+      playbackSpeed = speed;
+      document.querySelectorAll('.spd-btn').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const bars = document.querySelectorAll('.wf-bar');
+      bars.forEach(b => b.style.animationDuration = (1.2 / speed) + 's');
+      if (isPlaying) {
+        toggleAudio();
+        toggleAudio();
+      }
+    }
+
+    /* 2. FOUNDER ROI CALCULATOR */
+    function calculateROI() {
+      const teamSize = parseInt(document.getElementById('teamSizeRange').value, 10);
+      const timeWaste = parseInt(document.getElementById('timeWasteRange').value, 10);
+      const hourlyRate = parseInt(document.getElementById('hourlyRateRange').value, 10);
+
+      document.getElementById('teamSizeVal').innerText = teamSize + ' Staff';
+      document.getElementById('timeWasteVal').innerText = timeWaste + ' Mins / Day';
+      document.getElementById('hourlyRateVal').innerText = '$' + hourlyRate + ' / Hour';
+
+      const managers = Math.max(1, Math.round(teamSize / 7));
+      const hoursSavedPerDay = (managers * timeWaste) / 60;
+      const hoursSavedPerWeek = hoursSavedPerDay * 5;
+      const annualHours = hoursSavedPerWeek * 48;
+      const annualValue = annualHours * hourlyRate;
+
+      document.getElementById('hoursPerWeek').innerText = hoursSavedPerWeek.toFixed(1) + ' hrs';
+      document.getElementById('annualSavings').innerText = '$' + Math.round(annualValue).toLocaleString();
+    }
+
+    /* 3. BILLING CYCLE TOGGLE */
+    function setBillingCycle(cycle) {
+      const btnMonthly = document.getElementById('btnMonthly');
+      const btnAnnual = document.getElementById('btnAnnual');
+      const pStarter = document.getElementById('priceStarter');
+      const pGrowth = document.getElementById('priceGrowth');
+      const pEnterprise = document.getElementById('priceEnterprise');
+
+      if (cycle === 'annual') {
+        btnMonthly.classList.remove('active');
+        btnAnnual.classList.add('active');
+        pStarter.innerText = '$392';
+        pGrowth.innerText = '$1,032';
+        pEnterprise.innerText = '$2,792';
+      } else {
+        btnAnnual.classList.remove('active');
+        btnMonthly.classList.add('active');
+        pStarter.innerText = '$490';
+        pGrowth.innerText = '$1,290';
+        pEnterprise.innerText = '$3,490';
+      }
+    }
+  </script>
+</body>
+</html>
+"""
+
+with open("sites/01_aios/index.html", "w", encoding="utf-8") as f:
+    f.write(html_code)
+
+print("Successfully written sites/01_aios/index.html, length:", len(html_code))
+

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Ecosystem — Next-Gen UI/UX Redesign Studio & Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Koulen&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07070A;
+      --surface: #0E0E16;
+      --card: #13131E;
+      --card-border: #232334;
+      --card-hover: #191928;
+      
+      --text: #F8F8FD;
+      --text-sub: #9E9EBA;
+      --text-muted: #66667C;
+
+      --violet: #7C5CFC;
+      --violet-hover: #6946FA;
+      --violet-glow: rgba(124, 92, 252, 0.35);
+      --cobalt: #2B3BFF;
+      --cyan: #00D4BE;
+      --coral: #FF4757;
+      --emerald: #10B981;
+      --amber: #F59E0B;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-khmer: 'Kantumruy Pro', sans-serif;
+      --font-khmer-head: 'Koulen', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+      display: flex;
+      height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(124, 92, 252, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(43, 59, 255, 0.08) 0%, transparent 50%);
+    }
+
+    /* SIDEBAR NAVIGATION */
+    .sidebar {
+      width: 280px;
+      background: rgba(14, 14, 22, 0.95);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--violet), var(--cobalt));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      box-shadow: 0 4px 12px var(--violet-glow);
+    }
+
+    .sidebar-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-group-title {
+      padding: 16px 20px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-menu {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 9px;
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+
+    .nav-item.active {
+      background: rgba(124, 92, 252, 0.15);
+      border-color: rgba(124, 92, 252, 0.35);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(124, 92, 252, 0.2);
+    }
+
+    .nav-badge {
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .badge-redesign { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+    .badge-portal { background: rgba(124, 92, 252, 0.2); color: #C4B5FD; }
+
+    /* MAIN VIEWPORT */
+    .viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      background: #08080D;
+    }
+
+    /* TOP HEADER CONTROLS */
+    .top-controls {
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(11, 11, 18, 0.85);
+      backdrop-filter: blur(16px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .screen-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .screen-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .screen-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: rgba(124, 92, 252, 0.15);
+      border: 1px solid rgba(124, 92, 252, 0.3);
+      color: #C4B5FD;
+      text-transform: uppercase;
+    }
+
+    .device-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      gap: 4px;
+    }
+
+    .device-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .device-btn.active {
+      background: var(--violet);
+      color: #fff;
+    }
+
+    /* CANVAS STAGE */
+    .canvas-stage {
+      flex: 1;
+      padding: 36px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .device-frame {
+      width: 100%;
+      max-width: 1160px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(124, 92, 252, 0.12);
+      transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .device-frame.tablet { max-width: 780px; }
+    .device-frame.mobile { max-width: 420px; }
+
+    /* BROWSER CHROME HEADER */
+    .frame-chrome {
+      background: #0B0B12;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .chrome-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .c-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .c-red { background: #FF5F56; }
+    .c-yellow { background: #FFBD2E; }
+    .c-green { background: #27C93F; }
+
+    .chrome-address-bar {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 5px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #9494AB;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lock-icon { color: var(--emerald); font-size: 11px; }
+
+    /* MOCKUP CONTENT CONTAINER */
+    .mockup-view {
+      display: none;
+      padding: 32px 36px;
+      animation: fadeIn 0.25s ease;
+    }
+    .mockup-view.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SHARED UI COMPONENTS IN PROTOTYPE */
+    .hero-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .h-metric-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .h-metric-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--violet), transparent);
+    }
+
+    .hm-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hm-val {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .hm-trend {
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .trend-up { color: var(--emerald); }
+    .trend-neutral { color: var(--amber); }
+
+    /* PROTOTYPE 1: AIOS */
+    .aios-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feed-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .feed-card:hover {
+      border-color: #373552;
+      background: var(--card-hover);
+    }
+
+    .feed-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C5CFC, #2B3BFF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .user-name { font-weight: 700; font-size: 0.92rem; }
+    .user-dept { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* PROTOTYPE 2: CRM KHQR BILLING */
+    .khqr-box {
+      background: #FFFFFF;
+      color: #0F172A;
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 380px;
+      margin: 0 auto 24px auto;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .khqr-header {
+      background: #D92D20;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .khqr-amount {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+
+    .khqr-qr-mock {
+      width: 180px;
+      height: 180px;
+      margin: 12px auto;
+      background: repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 50% / 20px 20px;
+      border: 8px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* PROTOTYPE 3: COMMERCE STOREFRONT (MOBILE TG MINI-APP) */
+    .tg-header {
+      background: #18222D;
+      padding: 12px 18px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .p-thumb {
+      height: 90px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(124,92,252,0.2), rgba(0,212,190,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .p-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .p-price { font-family: var(--font-mono); font-size: 1rem; color: var(--emerald); font-weight: 700; margin-bottom: 8px; }
+
+    .btn-buy {
+      width: 100%;
+      background: var(--violet);
+      color: #fff;
+      border: none;
+      padding: 7px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: var(--violet);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px var(--violet-glow);
+    }
+
+    .btn-primary:hover { background: var(--violet-hover); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 9px 18px;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .currency-pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .currency-pill.active { background: var(--violet); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-pill">
+        <div class="brand-icon">⬡</div>
+        <div>
+          <div>NEXUS DESIGN STUDIO</div>
+          <div class="sidebar-sub">Next-Gen UI/UX Redesigns</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-group-title">Pillar 1: Digital Products (6)</div>
+    <div class="nav-menu">
+      <div class="nav-item active" onclick="showScreen('aios', this)">
+        <span>1. Nexus AiOS</span>
+        <span class="nav-badge badge-redesign">SME Dashboard</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('crm', this)">
+        <span>2. Nexus Pro CRM</span>
+        <span class="nav-badge badge-portal">KHQR Invoicing</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('commerce', this)">
+        <span>3. Nexus Commerce</span>
+        <span class="nav-badge badge-redesign">Mini-App Store</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('finance', this)">
+        <span>4. Nexus Finance</span>
+        <span class="nav-badge badge-portal">FinTech Vault</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('affiliate', this)">
+        <span>5. Nexus Affiliate</span>
+        <span class="nav-badge badge-redesign">Partner Hub</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('talently', this)">
+        <span>6. Talently Careers</span>
+        <span class="nav-badge badge-portal">Hiring Board</span>
+      </div>
+
+      <div class="nav-group-title" style="padding-left: 8px; margin-top: 10px;">Pillar 2: Professional Services (3)</div>
+      <div class="nav-item" onclick="showScreen('agency', this)">
+        <span>7. Nexus Intelligence</span>
+        <span class="nav-badge badge-redesign">Elite Agency</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('consulting', this)">
+        <span>8. Nexus AI Enterprise</span>
+        <span class="nav-badge badge-portal">Cognitive Assistant</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('vertex', this)">
+        <span>9. Vertex Partners</span>
+        <span class="nav-badge badge-redesign">C-Suite HR</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CANVAS VIEWPORT -->
+  <main class="viewport">
+    
+    <!-- TOP CONTROLS -->
+    <div class="top-controls">
+      <div class="screen-meta">
+        <h2 class="screen-title" id="screenTitle">Nexus AiOS — Executive AI Briefing & Alignment</h2>
+        <span class="screen-tag" id="screenTag">High-Fidelity Prototype</span>
+      </div>
+
+      <div class="device-switcher">
+        <button class="device-btn active" onclick="setDevice('desktop', this)">🖥️ Desktop</button>
+        <button class="device-btn" onclick="setDevice('tablet', this)">📱 Tablet</button>
+        <button class="device-btn" onclick="setDevice('mobile', this)">📲 Telegram View</button>
+      </div>
+    </div>
+
+    <!-- CANVAS STAGE -->
+    <div class="canvas-stage">
+      <div class="device-frame" id="deviceFrame">
+        
+        <!-- BROWSER CHROME -->
+        <div class="frame-chrome">
+          <div class="chrome-dots">
+            <span class="c-dot c-red"></span>
+            <span class="c-dot c-yellow"></span>
+            <span class="c-dot c-green"></span>
+          </div>
+          <div class="chrome-address-bar">
+            <span id="chromeUrl">https://aios.nexus.asia/dashboard</span>
+            <span class="lock-icon">🔒 SSL Verified (Let's Encrypt)</span>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 1: AIOS (REDESIGNED)
+             ============================================================= -->
+        <div class="mockup-view active" id="view-aios">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+            <div>
+              <div style="font-family: var(--font-khmer-head); font-size: 1.8rem; color: #fff; margin-bottom: 4px;">
+                សួស្តីលោកសុខា · សង្ខេបប្រតិបត្តិការព្រឹកនេះ
+              </div>
+              <div style="color: var(--text-sub); font-size: 0.9rem;">
+                Good Morning Sokha · AI synthesized 14 department check-ins into 3 key decisions.
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="currency-pill active">ខ្មែរ</button>
+              <button class="currency-pill">EN</button>
+              <button class="btn-primary" style="padding: 7px 14px; font-size: 0.8rem;">⚡ Send Telegram Alert</button>
+            </div>
+          </div>
+
+          <div class="hero-metric-grid">
+            <div class="h-metric-card">
+              <div class="hm-title">Daily Reports Logged</div>
+              <div class="hm-val">14 / 15</div>
+              <div class="hm-trend trend-up">↑ 93% On-Time via Telegram</div>
+            </div>
+            <div class="h-metric-card">
+              <div class="hm-title">Today's Revenue Collected</div>
+              <div class="hm-val">$4,850.00</div>
+              <div class="hm-trend trend-up">↑ 18% vs Yesterday (KHQR)</div>
+            </div>
+            <div class="h-metric-card">
+              <div class="hm-title">High Priority Bottlenecks</div>
+              <div class="hm-val" style="color: #F59E0B;">1 Item</div>
+              <div class="hm-trend trend-neutral">⚠️ Siem Reap Stock Delay</div>
+            </div>
+          </div>
+
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; color: #C4B5FD;">
+            📋 របាយការណ៍បច្ចុប្បន្នភាពតាមផ្នែក (Department Feed)
+          </h4>
+          <div class="aios-feed">
+            <div class="feed-card">
+              <div class="feed-user">
+                <div class="user-avatar">SR</div>
+                <div>
+                  <div class="user-name">Sophea Ratanak</div>
+                  <div class="user-dept">Head of Sales & Invoicing · Reported 07:45 AM</div>
+                </div>
+              </div>
+              <div style="font-family: var(--font-khmer); font-size: 0.9rem; color: #E2E2F0; max-width: 480px;">
+                «បានចេញវិក្កយបត្រថ្មីចំនួន 3 ជូនអតិថិជន និងបានទទួលការទូទាត់ KHQR ចំនួន $2,100 រួចរាល់។»
+              </div>
+              <span class="nav-badge badge-redesign">Verified</span>
+            </div>
+
+            <div class="feed-card">
+              <div class="feed-user">
+                <div class="user-avatar" style="background: linear-gradient(135deg, #10B981, #00D4BE);">CK</div>
+                <div>
+                  <div class="user-name">Channary Keo</div>
+                  <div class="user-dept">Fulfillment & Operations · Reported 08:05 AM</div>
+                </div>
+              </div>
+              <div style="font-family: var(--font-khmer); font-size: 0.9rem; color: #E2E2F0; max-width: 480px;">
+                «ការដឹកជញ្ជូន 85 កញ្ចប់បានចេញពីឃ្លាំងភ្នំពេញ។ សល់តែ 15 កញ្ចប់ត្រៀមដឹកទៅបាត់ដំបង។»
+              </div>
+              <span class="nav-badge badge-redesign">Verified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 2: NEXUS PRO CRM (KHQR BILLING)
+             ============================================================= -->
+        <div class="mockup-view" id="view-crm">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h3 style="font-size: 1.4rem; font-weight: 800;">Engagement Proposal & KHQR Milestone Billing</h3>
+              <p style="color: var(--text-sub); font-size: 0.88rem;">Project: Enterprise AI Automation Retainer · Client: Apex Holdings Ltd</p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="currency-pill active" onclick="toggleCurrency('USD')">USD ($)</button>
+              <button class="currency-pill" onclick="toggleCurrency('KHR')">KHR (៛)</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 380px; gap: 24px; align-items: start;">
+            <div style="background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px;">
+              <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 14px;">Milestone Breakdown</h4>
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem;">
+                <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                  <span>Milestone 1: Discovery & Architecture Blueprint</span>
+                  <span style="font-weight: 700; color: var(--emerald);">COMPLETED ($1,500.00)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                  <span>Milestone 2: Telegram Bot & ERP Database Sync</span>
+                  <span style="font-weight: 700; color: #F59E0B;">DUE TODAY ($2,500.00)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                  <span>Milestone 3: Executive UAT & Team Training</span>
+                  <span style="color: var(--text-muted);">SCHEDULED ($1,000.00)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DYNAMIC KHQR PAYMENT CARD -->
+            <div class="khqr-box">
+              <div class="khqr-header">NBC BAKONG KHQR · ABA BANK</div>
+              <div style="font-size: 0.82rem; color: #64748B;">Instant Payment to: <strong>NEXUS DIGITAL LTD</strong></div>
+              <div class="khqr-amount" id="crmKhqrAmount">$2,500.00</div>
+              <div class="khqr-qr-mock"></div>
+              <div style="font-size: 0.75rem; color: #64748B; margin-top: 6px;">
+                Scan with any Bakong-enabled Cambodian Banking App (ABA, ACLEDA, Wing, Canadia)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 3: NEXUS COMMERCE (TELEGRAM MINI-APP)
+             ============================================================= -->
+        <div class="mockup-view" id="view-commerce">
+          <div class="tg-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; background: #FF4757; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                🍔
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;">Durger King (Telegram Shop)</div>
+                <div style="font-size: 0.72rem; color: #34D399;">● Online · Delivers in 25 mins</div>
+              </div>
+            </div>
+            <span class="currency-pill active">🛒 2 Items ($8.50)</span>
+          </div>
+
+          <div class="product-grid">
+            <div class="product-card">
+              <div class="p-thumb">🍔</div>
+              <div class="p-name">Nexus Double Truffle Burger</div>
+              <div class="p-price">$5.50</div>
+              <button class="btn-buy" onclick="alert('Added to Cart! PayWay ready.')">+ Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <div class="p-thumb">🍟</div>
+              <div class="p-name">Golden Seasoned Fries</div>
+              <div class="p-price">$3.00</div>
+              <button class="btn-buy" onclick="alert('Added to Cart! PayWay ready.')">+ Add to Cart</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; background: rgba(0,212,190,0.1); border: 1px solid rgba(0,212,190,0.3); border-radius: 10px; padding: 12px; text-align: center;">
+            <div style="font-size: 0.85rem; color: #00D4BE; font-weight: 700;">💳 Native PayWay & KHQR Checkout Ready</div>
+            <div style="font-size: 0.75rem; color: var(--text-sub); margin-top: 2px;">Customer orders in 3 taps without leaving Telegram.</div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 4: NEXUS FINANCE
+             ============================================================= -->
+        <div class="mockup-view" id="view-finance">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h3 style="font-size: 1.4rem; font-weight: 800;">Nexus Finance — Multi-Currency Liquidity Hub</h3>
+              <p style="color: var(--text-sub); font-size: 0.88rem;">Automated treasury settlement for Cambodian digital commerce</p>
+            </div>
+            <button class="btn-primary" style="background: var(--cyan); color: #0F172A;">+ Instant Settlement</button>
+          </div>
+
+          <div class="hero-metric-grid">
+            <div class="h-metric-card" style="border-top: 2px solid var(--cyan);">
+              <div class="hm-title">USD Operating Vault</div>
+              <div class="hm-val">$84,520.00</div>
+              <div class="hm-trend trend-up">ABA Corporate Linked</div>
+            </div>
+            <div class="h-metric-card" style="border-top: 2px solid var(--violet);">
+              <div class="hm-title">KHR Currency Vault</div>
+              <div class="hm-val">៛ 346,500,000</div>
+              <div class="hm-trend trend-up">Bakong KHQR Settled</div>
+            </div>
+            <div class="h-metric-card" style="border-top: 2px solid var(--emerald);">
+              <div class="hm-title">Merchant Transactions (Today)</div>
+              <div class="hm-val">682 Orders</div>
+              <div class="hm-trend trend-up">100% Success Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 5: NEXUS AFFILIATE
+             ============================================================= -->
+        <div class="mockup-view" id="view-affiliate">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h3 style="font-size: 1.4rem; font-weight: 800;">Partner Commission Dashboard</h3>
+              <p style="color: var(--text-sub); font-size: 0.88rem;">Track live clicks, software subscriptions, and weekly ABA payouts</p>
+            </div>
+            <span class="nav-badge" style="background: #E7C66A; color: #0F172A; font-weight: 800;">Gold Partner (15% Rate)</span>
+          </div>
+
+          <div class="hero-metric-grid">
+            <div class="h-metric-card">
+              <div class="hm-title">Unpaid Commission Balance</div>
+              <div class="hm-val" style="color: #FBBF24;">$425.50</div>
+              <div class="hm-trend trend-up">Payout Friday to ABA (000-123-456)</div>
+            </div>
+            <div class="h-metric-card">
+              <div class="hm-title">Active Referral Customers</div>
+              <div class="hm-val">18 Firms</div>
+              <div class="hm-trend trend-up">AiOS & CRM Subscriptions</div>
+            </div>
+            <div class="h-metric-card">
+              <div class="hm-title">Unique Link Clicks</div>
+              <div class="hm-val">1,420</div>
+              <div class="hm-trend trend-up">Conversion Rate: 8.4%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPE 6: TALENTLY CAREERS
+             ============================================================= -->
+        <div class="mockup-view" id="view-talently">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <h3 style="font-size: 1.4rem; font-weight: 800;">Cambodia Tech & Corporate Jobs Marketplace</h3>
+              <p style="color: var(--text-sub); font-size: 0.88rem;">1-Click Apply with automated Telegram alerts</p>
+            </div>
+            <button class="btn-primary" style="background: var(--emerald);">+ Post a Job ($49)</button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="feed-card">
+              <div style="display: flex; gap: 14px; align-items: center;">
+                <div style="width: 44px; height: 44px; background: #1E293B; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #38BDF8;">
+                  NX
+                </div>
+                <div>
+                  <div style="font-weight: 700; font-size: 1rem;">Senior Full-Stack Next.js / AI Engineer</div>
+                  <div style="color: var(--text-muted); font-size: 0.82rem;">Nexus Intelligence · Phnom Penh (Hybrid) · $1,500 - $2,500/mo</div>
+                </div>
+              </div>
+              <button class="btn-primary" style="padding: 7px 16px; font-size: 0.8rem;">1-Click Apply</button>
+            </div>
+
+            <div class="feed-card">
+              <div style="display: flex; gap: 14px; align-items: center;">
+                <div style="width: 44px; height: 44px; background: #0F172A; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #34D399;">
+                  VP
+                </div>
+                <div>
+                  <div style="font-weight: 700; font-size: 1rem;">Managing Director of Corporate Finance</div>
+                  <div style="color: var(--text-muted); font-size: 0.82rem;">Vertex Partners Client · Singapore / APAC · Executive Package</div>
+                </div>
+              </div>
+              <button class="btn-outline" style="padding: 7px 16px; font-size: 0.8rem;">Confidential Review</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================
+             PROTOTYPES 7, 8, 9: PROFESSIONAL SERVICES
+             ============================================================= -->
+        <div class="mockup-view" id="view-agency">
+          <div style="text-align: center; max-width: 640px; margin: 0 auto 30px auto;">
+            <span class="screen-tag" style="background: rgba(43,59,255,0.2); color: #93C5FD;">Premier Digital & AI Engineering</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin: 12px 0;">Build Something Transformative.</h2>
+            <p style="color: var(--text-sub); font-size: 1rem; line-height: 1.6;">
+              Nexus Intelligence pairs high-performance Next.js architectures with native Telegram AI automations for Southeast Asia's leading enterprises.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 14px; margin-top: 20px;">
+              <a href="https://t.me/DanLP18" target="_blank" class="btn-primary">💬 Start on Telegram (@DanLP18)</a>
+              <button class="btn-outline">View Case Studies</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-view" id="view-consulting">
+          <div style="text-align: center; max-width: 640px; margin: 0 auto 30px auto;">
+            <span class="screen-tag" style="background: rgba(124,92,252,0.2); color: #C4B5FD;">Enterprise Cognitive Architectures</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin: 12px 0;">The AI Assistant That Thinks Ahead.</h2>
+            <p style="color: var(--text-sub); font-size: 1rem; line-height: 1.6;">
+              Persistent workflow memory, autonomous tool execution, and private enterprise LLM deployments designed for scale-ups.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 14px; margin-top: 20px;">
+              <button class="btn-primary" onclick="alert('Launching interactive trial sandbox (app.html)...')">🚀 Launch Interactive Demo</button>
+              <button class="btn-outline">Book Architecture Review</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-view" id="view-vertex">
+          <div style="text-align: center; max-width: 680px; margin: 0 auto 30px auto;">
+            <span class="screen-tag" style="background: rgba(4,107,210,0.2); color: #60A5FA;">Singapore · Executive Management & HR Strategy</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin: 12px 0;">Building High-Performing Leadership Teams.</h2>
+            <p style="color: var(--text-sub); font-size: 1rem; line-height: 1.6;">
+              Strategic executive search and board advisory across APAC. Trusted by top regional enterprises with a 12-month retention guarantee.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 14px; margin-top: 20px;">
+              <button class="btn-primary" style="background: #046BD2;">Schedule Confidential Consultation</button>
+              <button class="btn-outline">Review APAC Track Record</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const screens = {
+      aios: { title: "Nexus AiOS — Executive AI Briefing & Alignment", tag: "Digital Product", url: "https://aios.nexus.asia/dashboard" },
+      crm: { title: "Nexus Pro CRM — Proposal & KHQR Invoicing Portal", tag: "B2B SaaS", url: "https://crm.nexus.asia/invoices/inv-2026-08" },
+      commerce: { title: "Nexus Commerce — Telegram Mini-App Storefront", tag: "Social Commerce", url: "https://app.nexuscommerce.asia/?store=durger-king" },
+      finance: { title: "Nexus Finance — Multi-Currency Liquidity Hub", tag: "FinTech Rail", url: "https://nexusfinance.asia/vault" },
+      affiliate: { title: "Nexus Affiliate — Partner Earnings & ABA Cashout", tag: "Distribution", url: "https://affiliates.nexus.asia/portal" },
+      talently: { title: "Talently Careers — Hiring Marketplace & Alerts", tag: "Workforce", url: "https://talentlycareers.site/jobs" },
+      agency: { title: "Nexus Intelligence — AI Agency & Web Systems", tag: "Flagship Agency", url: "https://nexusintelligence.asia" },
+      consulting: { title: "Nexus AI Enterprise — Cognitive Assistant Engine", tag: "Enterprise Platform", url: "https://nexusaipro.site/app.html" },
+      vertex: { title: "Vertex Partners — Executive HR & Leadership Search", tag: "Singapore Advisory", url: "https://vertexpartners.asia" }
+    };
+
+    function showScreen(key, el) {
+      document.querySelectorAll('.mockup-view').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      
+      const target = document.getElementById('view-' + key);
+      if (target) target.classList.add('active');
+      if (el) el.classList.add('active');
+
+      const info = screens[key];
+      if (info) {
+        document.getElementById('screenTitle').innerText = info.title;
+        document.getElementById('screenTag').innerText = info.tag;
+        document.getElementById('chromeUrl').innerText = info.url;
+      }
+    }
+
+    function setDevice(type, btn) {
+      document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const frame = document.getElementById('deviceFrame');
+      frame.className = 'device-frame ' + (type === 'desktop' ? '' : type);
+    }
+
+    function toggleCurrency(curr) {
+      const amt = document.getElementById('crmKhqrAmount');
+      if (curr === 'USD') amt.innerText = '$2,500.00';
+      if (curr === 'KHR') amt.innerText = '៛ 10,250,000';
+    }
+  </script>
+</body>
+</html>

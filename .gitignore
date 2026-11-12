@@ -1,0 +1,10 @@
+# Local agent tooling config (not project content)
+.agent/
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

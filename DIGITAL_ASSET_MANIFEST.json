@@ -1,0 +1,127 @@
+{
+  "ecosystem": "Nexus Group International",
+  "audit_version": "1.1.0",
+  "review_date": "November 2026",
+  "prepared_for": "Oum Naro & Executive Leadership Team",
+  "summary": {
+    "total_properties": 9,
+    "digital_products": 6,
+    "professional_services": 3,
+    "telegram_bots_active": 5,
+    "average_ui_ux_rating": 9.3
+  },
+  "digital_products": [
+    {
+      "id": "aios",
+      "name": "Nexus AiOS",
+      "category": "Digital Product (Operating System)",
+      "current_url": "https://nexus-aios-ashy.vercel.app/",
+      "target_apex_url": "https://aios.nexus.asia",
+      "hosting_provider": "Vercel",
+      "framework": "Next.js 14, React, Tailwind CSS",
+      "authentication": ["/login", "/signup"],
+      "telegram_integration": "In-app staff daily reporting bot",
+      "status": "Production Live (Requires Apex DNS)"
+    },
+    {
+      "id": "crm",
+      "name": "Nexus Pro CRM",
+      "category": "Digital Product (Vertical SaaS)",
+      "current_url": "https://nexus-crm-liard.vercel.app/",
+      "target_apex_url": "https://crm.nexus.asia",
+      "hosting_provider": "Vercel",
+      "framework": "Next.js 14, React, Tailwind CSS",
+      "authentication": ["/portal", "/dashboard/login"],
+      "telegram_integration": "@nexuscrm_official_bot",
+      "status": "Production Live (Requires Apex DNS)"
+    },
+    {
+      "id": "commerce",
+      "name": "NEXUS Commerce",
+      "category": "Digital Product (Conversational Social Commerce)",
+      "current_url": "https://nexuscommerce.asia/",
+      "target_apex_url": "https://nexuscommerce.asia",
+      "hosting_provider": "Custom Cloud Edge",
+      "framework": "HTML5, Tailwind CSS",
+      "payment_gateways": ["ABA PayWay", "NBC Bakong KHQR"],
+      "telegram_integration": "@ndxdigital_support",
+      "status": "Production Live"
+    },
+    {
+      "id": "finance",
+      "name": "Nexus Finance",
+      "category": "Digital Product (FinTech Gateway)",
+      "current_url": "https://nexusfinance.asia/",
+      "target_apex_url": "https://nexusfinance.asia",
+      "hosting_provider": "Cloudflare / Custom Edge",
+      "framework": "HTML5, Custom CSS, Kantumruy Pro & Koulen",
+      "telegram_integration": "@ndxdigital_support",
+      "status": "Production Live (Pre-launch Lead Gen)"
+    },
+    {
+      "id": "affiliates",
+      "name": "Nexus Affiliate Network",
+      "category": "Digital Product (Partner Distribution)",
+      "current_url": "https://nexus-digital-affiliates.vercel.app/join.html",
+      "target_apex_url": "https://affiliates.nexus.asia",
+      "hosting_provider": "Vercel",
+      "framework": "HTML5, CSS, Material Symbols",
+      "payout_methods": ["ABA Bank Payouts"],
+      "telegram_integration": "@nexusdigital_affiliates_bot",
+      "status": "Production Live (Requires Apex DNS)"
+    },
+    {
+      "id": "talently",
+      "name": "Talently Careers",
+      "category": "Digital Product (Job Marketplace)",
+      "current_url": "https://talentlycareers.site/",
+      "target_apex_url": "https://talentlycareers.site",
+      "hosting_provider": "Custom Cloud Edge",
+      "framework": "HTML5, Plus Jakarta Sans, Inter",
+      "portals": ["Candidate Portal (candidate.html)", "Employer Portal (employer.html)"],
+      "telegram_integration": "@talently_job_alerts_bot",
+      "status": "Production Live"
+    }
+  ],
+  "professional_services": [
+    {
+      "id": "agency",
+      "name": "Nexus Digital (Nexus Intelligence Agency)",
+      "category": "Professional Service (AI Agency & Web Systems)",
+      "current_url": "https://nexusintelligence-agency.vercel.app/",
+      "target_apex_url": "https://nexusintelligence.asia",
+      "location": "Phnom Penh, Cambodia",
+      "framework": "Next.js 14, Tailwind CSS",
+      "contact_channel": "@DanLP18 (Executive Chat)",
+      "status": "Production Live (Requires Apex DNS)"
+    },
+    {
+      "id": "ai-consulting",
+      "name": "Nexus AI Consulting",
+      "category": "Professional Service (Enterprise AI Platform)",
+      "current_url": "https://www.nexusaipro.site/",
+      "target_apex_url": "https://nexusaipro.site",
+      "interactive_demo": "app.html",
+      "framework": "Tailwind CSS, React",
+      "status": "Production Live"
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex Partners",
+      "category": "Professional Service (Executive Management & HR Search)",
+      "current_url": "https://vertexpartners.asia/",
+      "target_apex_url": "https://vertexpartners.asia",
+      "location": "Singapore (APAC Scope)",
+      "framework": "WordPress, Elementor, Tailwind",
+      "status": "Production Live"
+    }
+  ],
+  "telegram_bots_registry": [
+    { "handle": "@nexuscrm_official_bot", "purpose": "Proposals, leads, and KHQR billing alerts" },
+    { "handle": "@ndxdigital_support", "purpose": "Customer & merchant support for Commerce & Finance" },
+    { "handle": "@nexusdigital_affiliates_bot", "purpose": "Partner registration, tracked links, and ABA earnings" },
+    { "handle": "@talently_job_alerts_bot", "purpose": "Daily automated career and job alert notifications" },
+    { "handle": "@DanLP18", "purpose": "Direct leadership chat for agency sales and custom builds" }
+  ]
+}
+

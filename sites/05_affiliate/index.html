@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Partner Network — Affiliate Program &amp; Creator Earnings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../nexus-tokens.css">
+  <style>
+    :root {
+      --bg: #0A0B0E;
+      --surface: #111319;
+      --card: #161922;
+      --card-border: rgba(245, 158, 11, 0.2);
+      --card-hover: rgba(245, 158, 11, 0.45);
+      
+      --text-main: #FFFFFF;
+      --text-sub: #94A3B8;
+      --text-muted: #64748B;
+
+      --gold: #F59E0B;
+      --gold-light: #FDE68A;
+      --gold-dark: #D97706;
+      --gold-glow: rgba(245, 158, 11, 0.35);
+
+      --emerald: #10B981;
+      --emerald-light: #6EE7B7;
+      --blue: #3B82F6;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 85% 0%, rgba(245, 158, 11, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 10% 45%, rgba(59, 130, 246, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 60% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* GLOBAL ECOSYSTEM BAR */
+    .nexus-global-bar {
+      background: rgba(10, 11, 14, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 7px 36px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-sub);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: var(--font-display);
+    }
+    .nexus-global-bar a { color: var(--text-sub); text-decoration: none; margin-left: 16px; transition: color 0.2s; font-weight: 500; }
+    .nexus-global-bar a:hover, .nexus-global-bar a.active { color: #fff; font-weight: 700; }
+    .nexus-global-bar a.active { color: var(--gold-light); }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(10, 11, 14, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 31px;
+      z-index: 999;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px var(--gold-glow);
+    }
+    .brand-icon svg { width: 19px; height: 19px; fill: none; stroke: #000; stroke-width: 2.2; }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .btn-portal {
+      color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border); transition: all 0.2s;
+    }
+    .btn-portal:hover { border-color: var(--gold-light); background: rgba(245, 158, 11, 0.1); }
+    .btn-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 9px 22px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--gold-glow);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(245, 158, 11, 0.6); }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* SCREEN 1: 100svh SPLIT HERO */
+    .hero-split-screen {
+      min-height: calc(100svh - 96px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+      margin-bottom: 18px;
+      color: #fff;
+      text-wrap: balance;
+    }
+    .hero-headline span {
+      background: linear-gradient(135deg, #FEF3C7 0%, #F59E0B 70%, #D97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--gold-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45); }
+    .btn-hero-primary:active, .btn-hero-secondary:active, .btn-cta:active, .btn-portal:active, .p-pill:active {
+      transform: scale(0.975);
+    }
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .btn-hero-secondary:hover { background: rgba(245, 158, 11, 0.12); border-color: var(--gold-light); }
+
+    /* TRUST BADGES */
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      max-width: 520px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--gold-light); flex-shrink: 0; }
+
+    /* RIGHT HERO: LIVE EARNINGS CALCULATOR & BAKONG DISBURSEMENT */
+    .calc-console {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 24px rgba(245, 158, 11, 0.2);
+      position: relative;
+    }
+    .calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .calc-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .partner-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-light);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .calc-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .metric-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    .m-title { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .m-val { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #fff; margin-top: 3px; }
+    .m-val.gold { color: var(--gold-light); }
+
+    .slider-row {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+    .custom-range {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .payout-bot-preview {
+      background: #0B0E14;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .bot-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+    .bot-head svg { width: 14px; height: 14px; stroke: #60A5FA; }
+    .btn-withdraw {
+      background: var(--emerald);
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-withdraw:hover { background: #059669; }
+
+    /* SCREEN 2: BENTO SECTION */
+    .bento-section {
+      padding: 80px 0 60px;
+      scroll-margin-top: 80px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--card-hover);
+      box-shadow: 0 16px 36px -10px rgba(0,0,0,0.7), 0 0 20px -5px rgba(245, 158, 11, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    /* SCREEN 3: TIERS */
+    .tiers-section {
+      padding: 60px 0 100px;
+      scroll-margin-top: 80px;
+    }
+    .tier-rate {
+      font-family: var(--font-mono);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin: 16px 0 8px;
+    }
+    .tier-rate span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+    .feature-list { list-style: none; margin: 20px 0 28px; display: flex; flex-direction: column; gap: 10px; }
+    .feature-list li { display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-sub); }
+    .feature-list li svg { width: 16px; height: 16px; stroke: var(--emerald-light); flex-shrink: 0; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 0 40px;
+      background: rgba(6, 7, 10, 0.95);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 2.6rem; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-4, .col-6, .col-8, .col-12 { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL ECOSYSTEM BAR -->
+  <div class="nexus-global-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 800; color: #fff; letter-spacing: -0.02em;">NEXUS GROUP</span>
+      <span style="background: rgba(245, 158, 11, 0.2); color: var(--gold-light); padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 800;">PARTNER NETWORK</span>
+    </div>
+    <div>
+      <a href="../01_aios/index.html">Nexus AiOS</a>
+      <a href="../02_crm/index.html">Nexus CRM</a>
+      <a href="../03_commerce/index.html">Commerce</a>
+      <a href="../04_finance/index.html">Finance</a>
+      <a href="../05_affiliate/index.html" class="active">Affiliates</a>
+      <a href="../06_talently/index.html">Talently</a>
+      <a href="../07_agency/index.html">Agency</a>
+      <a href="../08_ai_consulting/index.html">AI Enterprise</a>
+      <a href="../09_vertex/index.html">Vertex</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-group">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      </div>
+      <div>Nexus <span style="color: var(--gold-light);">Partners</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#calculator">Earnings Calculator</a>
+      <a href="#tiers">Commission Tiers</a>
+      <a href="#attribution">Tracking Engine</a>
+      <a href="#resources">Marketing Assets</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-portal">Partner Portal</a>
+      <a href="#tiers" class="btn-cta">
+        <span>Apply for Partner Key</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCREEN 1: 100svh SPLIT HERO -->
+    <section class="hero-split-screen container">
+      <div class="hero-grid">
+        <!-- LEFT: EDITORIAL VALUE PROPOSITION -->
+        <div class="hero-copy">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Nexus Partner Network • Recurring Revenue Program
+          </div>
+          <h1 class="hero-headline">
+            Monetize Regional Reach.<br>
+            Earn Up to <span>40% Recurring</span>.
+          </h1>
+          <p class="hero-sub">
+            The highest-yielding B2B partner program in Southeast Asia. Recommend Nexus enterprise software to your corporate network, agencies, and clients. Receive recurring Bakong payouts directly to your mobile wallet.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#tiers" class="btn-hero-primary">
+              <span>View Commission Tiers</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#calculator" class="btn-hero-secondary">
+              <span>Simulate Earnings</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant Bakong USD/KHR Auto-Disbursement</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>90-Day Uncapped Cookie Attribution</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+              <span>Real-Time Telegram Conversion Webhooks</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span>Dedicated Enterprise Partner Desk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LIVE INTERACTIVE EARNINGS CALCULATOR -->
+        <div class="calc-console" id="calculator">
+          <div class="calc-header">
+            <div>
+              <div class="calc-title">Interactive Yield Simulator</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Simulate monthly recurring passive commissions</div>
+            </div>
+            <span class="partner-badge" id="partner-tier-badge">SILVER PARTNER (30%)</span>
+          </div>
+
+          <div class="calc-metrics">
+            <div class="metric-card">
+              <div class="m-title">Referred Clients</div>
+              <div class="m-val" id="client-count">24 Firms</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-title">Commission Split</div>
+              <div class="m-val gold" id="commission-rate">30%</div>
+            </div>
+            <div class="metric-card">
+              <div class="m-title">Monthly Yield</div>
+              <div class="m-val gold" id="monthly-income">$3,564 / mo</div>
+            </div>
+          </div>
+
+          <!-- SLIDER -->
+          <div class="slider-row">
+            <div class="slider-header">
+              <span>Active Referred Business Clients:</span>
+              <strong id="slider-count" style="color: var(--gold-light); font-family: var(--font-mono);">24</strong>
+            </div>
+            <input type="range" min="1" max="100" value="24" class="custom-range" oninput="updateAffiliateEarnings(this.value)">
+            <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--text-muted); margin-top: 4px;">
+              <span>1 Referral</span>
+              <span>50 Referrals</span>
+              <span>100 Referrals</span>
+            </div>
+          </div>
+
+          <!-- BOT PAYOUT SIMULATION -->
+          <div class="payout-bot-preview">
+            <div class="bot-head">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+              <span>Nexus Partner Telegram Bot • Automated Settlement</span>
+            </div>
+            <div style="font-size: 0.76rem; color: #fff; margin-bottom: 8px;">
+              Annualized Projected Run-Rate: <strong style="color: var(--emerald-light); font-family: var(--font-mono);" id="annual-income">$42,768 USD</strong>
+            </div>
+            <button class="btn-withdraw" id="btn-withdraw" onclick="simulateWithdrawal()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Test Bakong Payout Simulation</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: BENTO SECTION -->
+    <section class="container bento-section" id="attribution">
+      <div class="section-tag">Partner Infrastructure</div>
+      <h2 class="section-title">Engineered for Maximum Creator ROI</h2>
+      <p class="section-lead">Automate attribution, track multi-channel referrals, and withdraw recurring earnings with zero bank delays.</p>
+
+      <div class="bento-grid">
+        <!-- CARD 1: TRACKING ENGINE -->
+        <div class="bento-card col-6">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Fingerprint Attribution Engine</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Our tracking persists across device switches and Telegram webview environments with 90-day cookie lock and domain-level referral credit.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--gold-light); font-size: 0.8rem;">
+            ✓ 0% Dropped Conversion Leaks
+          </div>
+        </div>
+
+        <!-- CARD 2: MARKETING ASSETS -->
+        <div class="bento-card col-6" id="resources">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Co-Branded Sales Collateral</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Access battle-tested slide decks, ROI case studies, social media banners, and email copy templates localized for regional decision makers.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: #60A5FA; font-size: 0.8rem;">
+            ✓ Turnkey Agency Toolkits
+          </div>
+        </div>
+
+        <!-- CARD 3: TELEGRAM BOT NOTIFICATIONS -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-light)" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Instant Telegram Alerts</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Receive notification every time a referred business activates a pilot or renews a recurring plan.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--emerald-light); font-size: 0.8rem;">
+            ✓ Real-Time Transparency
+          </div>
+        </div>
+
+        <!-- CARD 4: ZERO WITHDRAWAL MINIMUM -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(245, 158, 11, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">$0 Minimum Threshold</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              No waiting for $100 payout floors. Withdraw your earnings at any balance level directly into Bakong USD or KHR.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: var(--gold-light); font-size: 0.8rem;">
+            ✓ Immediate Liquidity Access
+          </div>
+        </div>
+
+        <!-- CARD 5: DEDICATED PARTNER DESK -->
+        <div class="bento-card col-4">
+          <div>
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">White-Glove Support</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem;">
+              Partner with dedicated solution engineers who will join your enterprise sales calls to help close large opportunities.
+            </p>
+          </div>
+          <div style="margin-top: 14px; font-weight: 700; color: #60A5FA; font-size: 0.8rem;">
+            ✓ Enterprise Deal Assistance
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: TIERS -->
+    <section class="container tiers-section" id="tiers">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <div class="section-tag">Tier Progression</div>
+        <h2 class="section-title">Transparent Commission Structure</h2>
+        <p class="section-lead">Grow your recurring revenue share as your referral portfolio expands.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Bronze Partner</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">1 to 10 referred accounts.</p>
+            <div class="tier-rate">
+              25% <span>Recurring Lifetime</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 90-Day Cookie Window</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard Marketing Assets</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly Bakong Disbursements</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Partner Community Access</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Join as Bronze</a>
+        </div>
+
+        <div class="bento-card col-4" style="border-color: var(--gold); box-shadow: 0 10px 30px -10px var(--gold-glow);">
+          <div style="position: absolute; top: 16px; right: 16px; background: var(--gold); color: #000; font-size: 0.7rem; font-weight: 800; padding: 3px 9px; border-radius: 4px; text-transform: uppercase;">
+            Most Popular
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Silver Partner</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">11 to 30 referred accounts.</p>
+            <div class="tier-rate" style="color: var(--gold-light);">
+              30% <span>Recurring Lifetime</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 120-Day Extended Cookie Window</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Co-Branded Landing Pages</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Weekly Automated Payouts</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Account Representative</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-cta" style="text-align: center; justify-content: center;">Apply for Silver</a>
+        </div>
+
+        <div class="bento-card col-4">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Diamond Principal</h3>
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-top: 4px;">70+ referred accounts or enterprise syndicates.</p>
+            <div class="tier-rate">
+              40% <span>Recurring Lifetime</span>
+            </div>
+            <ul class="feature-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Permanent Domain Cookie Lock</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Joint Enterprise Sales Pitching</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Same-Day On-Demand Bakong Clearing</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Executive Revenue Share Governance</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-portal" style="text-align: center; font-weight: 700;">Inquire Diamond</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-group" style="margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div>Nexus <span style="color: var(--gold-light);">Partners</span></div>
+        </div>
+        <p style="color: var(--text-sub); font-size: 0.85rem; max-width: 320px; line-height: 1.6;">
+          High-yielding recurring revenue affiliate network for creators, agencies, and enterprise consultants across Southeast Asia.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Partner Platform</h4>
+        <ul>
+          <li><a href="#calculator">Earnings Calculator</a></li>
+          <li><a href="#tiers">Commission Tiers</a></li>
+          <li><a href="#attribution">Tracking Engine</a></li>
+          <li><a href="#resources">Marketing Assets</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ecosystem Suite</h4>
+        <ul>
+          <li><a href="../01_aios/index.html">Nexus AiOS</a></li>
+          <li><a href="../02_crm/index.html">Nexus CRM</a></li>
+          <li><a href="../03_commerce/index.html">Nexus Commerce</a></li>
+          <li><a href="../04_finance/index.html">Nexus Finance</a></li>
+          <li><a href="../09_vertex/index.html">Vertex Partners</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Regional Head Office</h4>
+        <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+          Exchange Square Tower, Level 18<br>
+          Phnom Penh, Kingdom of Cambodia<br>
+          partners@nexus.asia
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>© 2026 Nexus Group International. All rights reserved. 100% English Global Edition.</div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Security &amp; NBC Compliance</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function updateAffiliateEarnings(clients) {
+      document.getElementById('slider-count').innerText = clients;
+      document.getElementById('client-count').innerText = clients + ' Firms';
+
+      let rate = 0.25;
+      let tierName = 'BRONZE PARTNER (25%)';
+      if (clients > 10 && clients <= 30) {
+        rate = 0.30;
+        tierName = 'SILVER PARTNER (30%)';
+      } else if (clients > 30 && clients <= 70) {
+        rate = 0.35;
+        tierName = 'GOLD ELITE (35%)';
+      } else if (clients > 70) {
+        rate = 0.40;
+        tierName = 'DIAMOND PRINCIPAL (40%)';
+      }
+
+      document.getElementById('partner-tier-badge').innerText = tierName;
+      document.getElementById('commission-rate').innerText = (rate * 100) + '%';
+
+      const monthly = Math.round(clients * 495 * rate);
+      document.getElementById('monthly-income').innerText = '$' + monthly.toLocaleString() + ' / mo';
+      document.getElementById('annual-income').innerText = '$' + (monthly * 12).toLocaleString() + ' USD';
+    }
+
+    function simulateWithdrawal() {
+      const btn = document.getElementById('btn-withdraw');
+      btn.innerHTML = '<span>Communicating with Bakong Network...</span>';
+      btn.style.background = '#2563EB';
+
+      setTimeout(() => {
+        btn.innerHTML = '✓ Disbursed $3,564.00 to Bakong in 0.8s';
+        btn.style.background = '#059669';
+        alert('Bakong Transaction #TX-BKNG-77312 verified. $3,564.00 USD deposited into your mobile wallet.');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

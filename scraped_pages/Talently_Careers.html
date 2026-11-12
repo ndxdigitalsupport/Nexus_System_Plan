@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00288e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Talently">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Talently Careers — Find jobs in Cambodia</title>
+<meta name="description" content="Cambodia's job marketplace — jobs posted directly by companies. Apply in minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=78">
+</head>
+<body class="has-bottom-nav">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="brand-mark"><span class="material-symbols-outlined" style="font-size:22px">work</span></span>Talently<em> Careers</em></a>
+    <nav class="main-nav">
+      <a href="index.html" class="active" data-i18n="nav_find">Find Jobs</a>
+      <a href="jobs.html" data-i18n="nav_browse">Browse All</a>
+      <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="employer.html" data-i18n="nav_employers">For Employers</a>
+    </nav>
+    <div class="header-actions" id="headerActions">
+      <button class="lang-toggle btn btn-ghost btn-sm" onclick="T_I18N.toggle()">🇰🇭 ភាសាខ្មែរ</button>
+      <a href="login.html" class="btn btn-ghost btn-sm" id="signInLink" data-i18n="nav_signin">Sign in</a>
+      <a href="employer.html" class="btn btn-primary btn-sm" data-i18n="nav_post">Post a Job</a>
+    </div>
+  </div>
+</header>
+
+<div class="value-ribbon">
+  <div class="wrap">
+    <div class="vr-left">
+      <span class="vr-badge"><span class="material-symbols-outlined" style="font-size:14px">auto_awesome</span>HIRING SPRINT 2026</span>
+      <span class="vr-note" data-i18n="idx_ribbon_note">New verified roles added daily across tech, finance, and creative</span>
+    </div>
+    <a href="#how" style="font-size:.8rem;font-weight:700" data-i18n="idx_ribbon_how">How it works →</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="quick-steps">
+      <div class="qstep"><div class="q-ic"><span class="material-symbols-outlined">search</span></div><div><b data-i18n="idx_qs_search">Search Jobs</b><span data-i18n="idx_qs_search_s">Find the right opportunity</span></div></div>
+      <div class="qstep"><div class="q-ic"><span class="material-symbols-outlined">description</span></div><div><b data-i18n="idx_qs_resume">Upload Resume</b><span data-i18n="idx_qs_resume_s">Showcase your skills</span></div></div>
+      <div class="qstep"><div class="q-ic"><span class="material-symbols-outlined">work_history</span></div><div><b data-i18n="idx_qs_apply">Apply Easily</b><span data-i18n="idx_qs_apply_s">1-click instant submission</span></div></div>
+      <div class="qstep"><div class="q-ic"><span class="material-symbols-outlined">group</span></div><div><b data-i18n="idx_qs_emp">Top Employers</b><span data-i18n="idx_qs_emp_s">Connect with vetted teams</span></div></div>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-pill"><span class="dot"></span><span data-i18n="idx_hero_pill">Cambodia's Career Marketplace</span></div>
+        <h1 data-i18n="idx_hero_h1">Find The <span class="hl">Right Job</span> For You</h1>
+        <p class="lead" data-i18n="idx_hero_lead">Explore thousands of job opportunities and kickstart your career today. Connect directly with hiring managers, from fast-scaling startups to established enterprises.</p>
+        <form class="search-dock" id="heroSearch">
+          <div class="seg"><span class="material-symbols-outlined">search</span><input id="searchKw" data-i18n-ph="idx_ph_kw" placeholder="Job title, skill, or company" aria-label="Keyword"></div>
+          <div class="seg"><span class="material-symbols-outlined">location_on</span><input id="searchLoc" data-i18n-ph="idx_ph_loc" placeholder="City or location" aria-label="Location"></div>
+          <div class="seg" style="max-width:170px"><span class="material-symbols-outlined">tune</span>
+            <select id="searchCat" aria-label="Job type">
+              <option value="" data-i18n="idx_opt_alltypes">All types</option>
+              <option data-i18n="opt_fulltime">Full-time</option><option data-i18n="opt_parttime">Part-time</option><option data-i18n="opt_contract">Contract</option><option data-i18n="opt_internship">Internship</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit"><span data-i18n="idx_search_btn">Search Jobs</span> <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
+        </form>
+        <div class="trending"><span style="display:flex;align-items:center;gap:4px;font-weight:700"><span class="material-symbols-outlined" style="font-size:16px;color:var(--secondary)">trending_up</span>Trending:</span><span id="popSearches" style="display:contents"></span></div>
+      </div>
+      <div class="hero-visual hero-v2" aria-hidden="true">
+        <div class="hv2-trust">
+          <div class="hv2-pill"><span class="dot"></span><span data-i18n="idx_free">100% Free for Talent</span></div>
+          <div class="hv2-pill">💼 <span><span id="statJobs">–</span>+ <span data-i18n="idx_active_jobs">Verified Jobs</span></span></div>
+        </div>
+        <img class="hv2-person" src="images/hero-professional.webp" alt="">
+        <div class="hv2-float hv2-fc1"><div class="hv2-ic" style="background:#dcfce7">🎉</div><div>New match: Marketing Manager</div></div>
+        <div class="hv2-float hv2-fc2"><div class="hv2-ic" style="background:#dbeafe">✅</div><div>HR viewed your application</div></div>
+        <div class="hv2-cta">
+          <div class="avatars"><span class="hv2-av" style="background:linear-gradient(135deg,#f472b6,#ec4899)">S</span><span class="hv2-av" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">D</span><span class="hv2-av" style="background:linear-gradient(135deg,#34d399,#10b981)">M</span><span class="hv2-av hv2-more">9k+</span></div>
+          <b data-i18n="idx_join">Join thousands of job seekers today!</b>
+          <p data-i18n="idx_join_s">Match with verified hiring teams directly.</p>
+          <div class="hv2-stats">
+            <div><b><span class="hv2-count" data-target="9000">0</span>+</b><span>Seekers</span></div>
+            <div><b><span class="hv2-count" data-target="100">0</span>k+</b><span>Talent pool</span></div>
+            <div><b><span class="hv2-count" data-target="170">0</span>+</b><span>Companies</span></div>
+            <div><b>100%</b><span>Free</span></div>
+          </div>
+          <a class="btn btn-primary btn-sm btn-block hv2-btn" href="candidate.html" data-i18n="idx_create_acct">Create Free Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section class="section" style="padding-top:20px">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap">
+      <div>
+        <div class="kicker" data-i18n="idx_cat_kicker">Curated Specializations</div>
+        <h2 style="font-size:1.7rem;font-weight:800;margin-bottom:4px" data-i18n="idx_cat_h2">Popular Categories</h2>
+        <p class="sub" data-i18n="idx_cat_sub">Explore roles by vertical and target your expertise where demand is highest</p>
+      </div>
+      <a href="jobs.html" style="font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:4px"><span data-i18n="idx_view_all">View all jobs</span> <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+    </div>
+    <div class="cat-tiles" id="catStrip"></div>
+  </div>
+</section>
+
+<!-- ================= FEATURED JOBS ================= -->
+<section class="section" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap">
+      <div>
+        <div class="kicker" data-i18n="idx_feat_kicker">Top Recommended Openings</div>
+        <h2 style="font-size:1.7rem;font-weight:800;margin-bottom:4px" data-i18n="idx_feat_h2">Featured Jobs of the Week</h2>
+        <p class="sub" data-i18n="idx_feat_sub">Verified salaries, quick response guarantees, and direct HR interviews</p>
+      </div>
+    </div>
+    <div class="pill-tabs" id="pillTabs"></div>
+    <div class="feat-grid" id="jobsDayGrid"></div>
+    <div style="text-align:center;margin-top:28px"><a href="jobs.html" class="btn btn-ghost"><span data-i18n="idx_explore_all">Explore all active roles</span> <span class="material-symbols-outlined" style="font-size:18px">open_in_new</span></a></div>
+  </div>
+</section>
+
+<!-- ================= FEATURED EMPLOYERS ================= -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:24px">
+      <div class="kicker" data-i18n="idx_emp_kicker">Premium Partners</div>
+      <h2 style="font-size:1.7rem;font-weight:800;margin-bottom:4px" data-i18n="idx_emp_h2">Featured Employers</h2>
+      <p class="sub" data-i18n="idx_emp_sub">Top companies hiring now on Talently Careers</p>
+    </div>
+    <div class="emp-logos" id="featuredEmployers"></div>
+  </div>
+</section>
+  </div>
+</section>
+
+<!-- ================= DUAL CTA ================= -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="dual-cta">
+      <div class="dual-box seeker">
+        <span class="d-kicker"><span class="material-symbols-outlined" style="font-size:16px">psychology</span><span data-i18n="idx_cta_seeker_k">FOR JOB SEEKERS</span></span>
+        <h2 data-i18n="idx_cta_seeker_h">1-Click Apply &amp; Job Alerts</h2>
+        <p data-i18n="idx_cta_seeker_p">Create your profile once, apply in one click, and get instant Telegram alerts when matching jobs are posted.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="candidate.html"><span class="material-symbols-outlined" style="font-size:18px">upload_file</span><span data-i18n="idx_cta_seeker_btn">Build My Profile (Free)</span></a>
+          <a href="jobs.html" style="font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:4px"><span data-i18n="idx_cta_browse">Browse jobs</span> <span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></a>
+        </div>
+      </div>
+      <div class="dual-box employer">
+        <span class="d-kicker"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span><span data-i18n="idx_cta_emp_k">FOR EMPLOYERS</span></span>
+        <h2 data-i18n="idx_cta_emp_h">Hire Top Talent 3x Faster</h2>
+        <p data-i18n="idx_cta_emp_p">Post roles in under 2 minutes. Get instant Telegram alerts on every application and search 100,000+ candidate profiles.</p>
+        <div class="row">
+          <a class="btn btn-ghost" href="employer.html"><span class="material-symbols-outlined" style="font-size:18px">add_circle</span><span data-i18n="idx_cta_emp_btn">Post a Job Free</span></a>
+          <a href="pricing.html" style="font-weight:700;font-size:.88rem;color:#fff;display:flex;align-items:center;gap:4px"><span data-i18n="idx_cta_plans">Explore plans</span> <span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METRICS ================= -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="metrics">
+      <div class="metric"><div class="m-ic"><span class="material-symbols-outlined">speed</span></div><div><b><span id="statCos">7</span>+</b><span data-i18n="idx_m_cos">Verified companies hiring now</span></div></div>
+      <div class="metric"><div class="m-ic"><span class="material-symbols-outlined">notifications_active</span></div><div><b data-i18n="idx_m_instant">Instant</b><span data-i18n="idx_m_instant_s">Telegram alerts on new matches</span></div></div>
+      <div class="metric"><div class="m-ic"><span class="material-symbols-outlined">verified_user</span></div><div><b>100%</b><span data-i18n="idx_m_free">Free for job seekers, zero spam</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center-head"><div class="kicker" style="justify-content:center" data-i18n="idx_how_kicker">Simple Process</div><h2>How it works</h2></div>
+    <div class="how-grid">
+      <div class="card how-card"><div class="n">1</div><b data-i18n="idx_how1_h">Create your profile</b><p class="sub" style="margin-top:6px" data-i18n="idx_how1_p">Sign up free and upload your CV once.</p></div>
+      <div class="card how-card"><div class="n">2</div><b data-i18n="idx_how2_h">Apply in one click</b><p class="sub" style="margin-top:6px" data-i18n="idx_how2_p">Your profile goes directly to the company.</p></div>
+      <div class="card how-card"><div class="n">3</div><b data-i18n="idx_how3_h">Get hired</b><p class="sub" style="margin-top:6px" data-i18n="idx_how3_p">Companies contact shortlisted candidates directly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="alert-cta">
+      <div class="tg"><span class="material-symbols-outlined" style="font-size:28px">send</span></div>
+      <div style="flex:1;min-width:220px"><h2 data-i18n="idx_alert_h">Never miss a job</h2><p class="sub" data-i18n="idx_alert_p">Set up job alerts and get notified the moment matching jobs are posted. Free forever.</p></div>
+      <a href="candidate.html" class="btn btn-primary" data-i18n="idx_alert_btn">Set up job alerts</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <div class="trust-item"><span class="material-symbols-outlined">verified</span><span data-i18n="idx_trust1">Verified Employers Only</span></div>
+    <div class="trust-item"><span class="material-symbols-outlined">lock</span><span data-i18n="idx_trust2">100% Secure &amp; Safe Data</span></div>
+    <div class="trust-item"><span class="material-symbols-outlined">menu_book</span><span data-i18n="idx_trust3">Free Career Resources</span></div>
+    <div class="trust-item"><span class="material-symbols-outlined">support_agent</span><span data-i18n="idx_trust4">Candidate Support</span></div>
+  </div>
+</div>
+
+<footer class="site-footer" style="margin-top:0">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark"><span class="material-symbols-outlined" style="font-size:22px">work</span></span>Talently<em> Careers</em></a>
+        <p class="sub" style="margin-top:10px;max-width:300px" data-i18n="ft_tagline">Cambodia's job marketplace connecting talent with great companies.</p>
+      </div>
+      <div><h4 data-i18n="ft_seekers">Job Seekers</h4><a href="jobs.html" data-i18n="ft_search">Search Jobs</a><a href="candidate.html" data-i18n="ft_dash">Candidate Dashboard</a><a href="candidate.html" data-i18n="ft_alerts">Job Alerts</a></div>
+      <div><h4 data-i18n="ft_employers">Employers</h4><a href="employer.html" data-i18n="ft_post">Post Open Roles</a><a href="employer.html" data-i18n="ft_talent">Talent Search</a><a href="pricing.html" data-i18n="ft_hpricing">Hiring Pricing</a></div>
+      <div><h4 data-i18n="ft_company">Company</h4><a href="#" data-i18n="ft_about">About Us</a><a href="#" data-i18n="ft_contact">Contact</a><a href="privacy.html" data-i18n="ft_privacy_terms">Privacy &amp; Terms</a><a href="https://t.me/talently_job_alerts_bot" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="#229ED9"><path d="M21.9 4.6c.2-1-.7-1.7-1.7-1.4L2.7 9.1c-1 .3-1 1.7.1 1.9l4.3 1.3 1.7 5.3c.3.9 1.4 1 1.9.2l2.5-3.1 4.9 3.6c.8.6 1.9.1 2.1-.9l1.7-12.8zM8.5 11.2l8.3-5.2c.2-.1.4.1.3.3l-6.9 6.3-.3 2.1-1.4-3.5z"/></svg>Telegram Bot</a></div>
+    </div>
+    <div class="copyright"><span data-i18n="ft_copy">© 2026 Talently Careers. All rights reserved.</span><span><a href="privacy.html" data-i18n="ft_pp">Privacy Policy</a> · <a href="terms.html" data-i18n="ft_tos">Terms of Service</a></span></div>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="on"><span class="material-symbols-outlined" style="font-size:22px">home</span><span data-i18n="bn_home">Home</span></a>
+  <a href="jobs.html"><span class="material-symbols-outlined" style="font-size:22px">search</span><span data-i18n="bn_search">Search</span></a>
+  <a href="candidate.html"><span class="material-symbols-outlined" style="font-size:22px">favorite</span><span data-i18n="bn_saved">Saved</span></a>
+  <a href="candidate.html"><span class="material-symbols-outlined" style="font-size:22px">person</span><span data-i18n="bn_profile">Profile</span></a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/i18n.js?v=76"></script>
+<script src="js/i18n-common.js?v=76"></script>
+<script src="js/config.js?v=76"></script>
+<script src="js/tracking.js?v=78"></script>
+<script src="js/db.js?v=76"></script>
+<script src="js/ui.js?v=76"></script>
+<script src="js/home.js?v=76"></script>
+
+<script>
+T_I18N.add('en', {
+  nav_signin: 'Sign in', nav_find: 'Find Jobs', nav_browse: 'Browse All', nav_pricing: 'Pricing', nav_employers: 'For Employers', nav_post: 'Post a Job',
+  idx_ribbon_note: 'New verified roles added daily across tech, finance, and creative',
+  idx_ribbon_how: 'How it works →',
+  idx_qs_search: 'Search Jobs', idx_qs_search_s: 'Find the right opportunity',
+  idx_qs_resume: 'Upload Resume', idx_qs_resume_s: 'Showcase your skills',
+  idx_qs_apply: 'Apply Easily', idx_qs_apply_s: '1-click instant submission',
+  idx_qs_emp: 'Top Employers', idx_qs_emp_s: 'Connect with vetted teams',
+  idx_hero_pill: "Cambodia's Career Marketplace",
+  idx_hero_h1: 'Find The <span class="hl">Right Job</span> For You',
+  idx_hero_lead: 'Explore thousands of job opportunities and kickstart your career today. Connect directly with hiring managers, from fast-scaling startups to established enterprises.',
+  idx_ph_kw: 'Job title, skill, or company', idx_ph_loc: 'City or location',
+  idx_opt_alltypes: 'All types',
+  opt_fulltime: 'Full-time', opt_parttime: 'Part-time', opt_contract: 'Contract', opt_internship: 'Internship',
+  idx_search_btn: 'Search Jobs',
+  idx_free: '100% Free for Talent', idx_active_jobs: 'Active Jobs Verified',
+  idx_join: 'Join thousands of job seekers today!', idx_join_s: 'Match with verified hiring teams directly.',
+  idx_create_acct: 'Create Free Account',
+  idx_cat_kicker: 'Curated Specializations', idx_cat_h2: 'Popular Categories',
+  idx_cat_sub: 'Explore roles by vertical and target your expertise where demand is highest',
+  idx_view_all: 'View all jobs',
+  idx_feat_kicker: 'Top Recommended Openings', idx_feat_h2: 'Featured Jobs of the Week',
+  idx_feat_sub: 'Verified salaries, quick response guarantees, and direct HR interviews',
+  idx_explore_all: 'Explore all active roles',
+  idx_emp_kicker: 'Premium Partners', idx_emp_h2: 'Featured Employers',
+  idx_emp_sub: 'Top companies hiring now on Talently Careers',
+  idx_cta_seeker_k: 'FOR JOB SEEKERS', idx_cta_seeker_h: '1-Click Apply & Job Alerts',
+  idx_cta_seeker_p: 'Create your profile once, apply in one click, and get instant Telegram alerts when matching jobs are posted.',
+  idx_cta_seeker_btn: 'Build My Profile (Free)', idx_cta_browse: 'Browse jobs',
+  idx_cta_emp_k: 'FOR EMPLOYERS', idx_cta_emp_h: 'Hire Top Talent 3x Faster',
+  idx_cta_emp_p: 'Post roles in under 2 minutes. Get instant Telegram alerts on every application and search 100,000+ candidate profiles.',
+  idx_cta_emp_btn: 'Post a Job Free', idx_cta_plans: 'Explore plans',
+  idx_m_cos: 'Verified companies hiring now', idx_m_instant: 'Instant', idx_m_instant_s: 'Telegram alerts on new matches',
+  idx_m_free: 'Free for job seekers, zero spam',
+  idx_how_kicker: 'Simple Process', idx_how_h2: 'How it works',
+  idx_how1_h: 'Create your profile', idx_how1_p: 'Sign up free and upload your CV once.',
+  idx_how2_h: 'Apply in one click', idx_how2_p: 'Your profile goes directly to the company.',
+  idx_how3_h: 'Get hired', idx_how3_p: 'Companies contact shortlisted candidates directly.',
+  idx_alert_h: 'Never miss a job', idx_alert_p: 'Set up job alerts and get notified the moment matching jobs are posted. Free forever.',
+  idx_alert_btn: 'Set up job alerts',
+  idx_trust1: 'Verified Employers Only', idx_trust2: '100% Secure & Safe Data',
+  idx_trust3: 'Free Career Resources', idx_trust4: 'Candidate Support',
+  ft_tagline: "Cambodia's job marketplace connecting talent with great companies.",
+  ft_seekers: 'Job Seekers', ft_search: 'Search Jobs', ft_dash: 'Candidate Dashboard', ft_alerts: 'Job Alerts',
+  ft_employers: 'Employers', ft_post: 'Post Open Roles', ft_talent: 'Talent Search', ft_hpricing: 'Hiring Pricing',
+  ft_company: 'Company', ft_about: 'About Us', ft_contact: 'Contact', ft_privacy_terms: 'Privacy & Terms',
+  ft_copy: '© 2026 Talently Careers. All rights reserved.', ft_pp: 'Privacy Policy', ft_tos: 'Terms of Service',
+  bn_home: 'Home', bn_search: 'Search', bn_saved: 'Saved', bn_profile: 'Profile'
+});
+T_I18N.add('km', {
+  nav_signin: 'ចូលប្រើ', nav_find: 'ស្វែងរកការងារ', nav_browse: 'មើលទាំងអស់', nav_pricing: 'តម្លៃ', nav_employers: 'សម្រាប់និយោជក', nav_post: 'ប្រកាសការងារ',
+  idx_ribbon_note: 'ការងារថ្មីដែលបានផ្ទៀងផ្ទាត់បន្ថែមជារៀងរាល់ថ្ងៃ',
+  idx_ribbon_how: 'របៀបប្រើប្រាស់ →',
+  idx_qs_search: 'ស្វែងរកការងារ', idx_qs_search_s: 'រកឱកាសដែលសាកសម',
+  idx_qs_resume: 'ផ្ទុក CV', idx_qs_resume_s: 'បង្ហាញជំនាញរបស់អ្នក',
+  idx_qs_apply: 'ដាក់ពាក្យងាយស្រួល', idx_qs_apply_s: 'ដាក់ពាក្យដោយចុចតែម្តង',
+  idx_qs_emp: 'និយោជកល្អៗ', idx_qs_emp_s: 'ភ្ជាប់ជាមួយក្រុមការងារដែលបានផ្ទៀងផ្ទាត់',
+  idx_hero_pill: 'ទីផ្សារអាជីពកម្ពុជា',
+  idx_hero_h1: 'ស្វែងរក<span class="hl">ការងារ</span>ដែលសាកសមសម្រាប់អ្នក',
+  idx_hero_lead: 'ស្វែងរកឱកាសការងាររាប់ពាន់ ហើយចាប់ផ្តើមអាជីពរបស់អ្នកថ្ងៃនេះ។ ភ្ជាប់ដោយផ្ទាល់ជាមួយអ្នកជ្រើសរើសបុគ្គលិក ពីក្រុមហ៊ុន startup រហូតដល់សហគ្រាសធំៗ។',
+  idx_ph_kw: 'មុខតំណែង ជំនាញ ឬក្រុមហ៊ុន', idx_ph_loc: 'ទីក្រុង ឬទីតាំង',
+  idx_opt_alltypes: 'គ្រប់ប្រភេទ',
+  opt_fulltime: 'ពេញម៉ោង', opt_parttime: 'ក្រៅម៉ោង', opt_contract: 'កិច្ចសន្យា', opt_internship: 'ហាត់ការ',
+  idx_search_btn: 'ស្វែងរកការងារ',
+  idx_free: 'ឥតគិតថ្លៃ 100% សម្រាប់អ្នកស្វែងរកការងារ', idx_active_jobs: 'ការងារសកម្មដែលបានផ្ទៀងផ្ទាត់',
+  idx_join: 'ចូលរួមជាមួយអ្នកស្វែងរកការងាររាប់ពាន់នាក់ថ្ងៃនេះ!', idx_join_s: 'ផ្គូផ្គងដោយផ្ទាល់ជាមួយក្រុមជ្រើសរើសបុគ្គលិក។',
+  idx_create_acct: 'បង្កើតគណនីឥតគិតថ្លៃ',
+  idx_cat_kicker: 'ជំនាញដែលបានជ្រើសរើស', idx_cat_h2: 'ប្រភេទការងារពេញនិយម',
+  idx_cat_sub: 'ស្វែងរកតួនាទីតាមវិស័យ ហើយផ្តោតជំនាញរបស់អ្នកទៅកន្លែងដែលមានតម្រូវការខ្ពស់',
+  idx_view_all: 'មើលការងារទាំងអស់',
+  idx_feat_kicker: 'ឱកាសលេចធ្លោ', idx_feat_h2: 'ការងារពិសេសប្រចាំសប្តាហ៍',
+  idx_feat_sub: 'ប្រាក់ខែផ្ទៀងផ្ទាត់ ការឆ្លើយតបរហ័ស និងសម្ភាសន៍ផ្ទាល់ជាមួយ HR',
+  idx_explore_all: 'ស្វែងរកតួនាទីសកម្មទាំងអស់',
+  idx_emp_kicker: 'ដៃគូពិសេស', idx_emp_h2: 'និយោជកលេចធ្លោ',
+  idx_emp_sub: 'ក្រុមហ៊ុនកំពូលៗកំពុងជ្រើសរើសបុគ្គលិកនៅលើ Talently Careers',
+  idx_cta_seeker_k: 'សម្រាប់អ្នកស្វែងរកការងារ', idx_cta_seeker_h: 'ដាក់ពាក្យដោយចុចតែម្តង និងការជូនដំណឹងការងារ',
+  idx_cta_seeker_p: 'បង្កើតប្រវត្តិរូបរបស់អ្នកម្តង ដាក់ពាក្យដោយចុចតែម្តង ហើយទទួលការជូនដំណឹងតាម Telegram ភ្លាមៗនៅពេលមានការងារសមស្រប។',
+  idx_cta_seeker_btn: 'បង្កើតប្រវត្តិរូប (ឥតគិតថ្លៃ)', idx_cta_browse: 'មើលការងារ',
+  idx_cta_emp_k: 'សម្រាប់និយោជក', idx_cta_emp_h: 'ជ្រើសរើសបុគ្គលិកឆ្នើមលឿនជាង 3 ដង',
+  idx_cta_emp_p: 'ប្រកាសតួនាទីក្នុងរយៈពេលតិចជាង 2 នាទី។ ទទួលការជូនដំណឹងតាម Telegram ភ្លាមៗរាល់ពាក្យសុំ និងស្វែងរកប្រវត្តិរូបបេក្ខជនជាង 100,000។',
+  idx_cta_emp_btn: 'ប្រកាសការងារឥតគិតថ្លៃ', idx_cta_plans: 'មើលគម្រោង',
+  idx_m_cos: 'ក្រុមហ៊ុនផ្ទៀងផ្ទាត់កំពុងជ្រើសរើសឥឡូវនេះ', idx_m_instant: 'ភ្លាមៗ', idx_m_instant_s: 'ការជូនដំណឹងតាម Telegram នៅពេលមានការងារសមស្រប',
+  idx_m_free: 'ឥតគិតថ្លៃសម្រាប់អ្នកស្វែងរកការងារ គ្មានសារ spam',
+  idx_how_kicker: 'ដំណើរការសាមញ្ញ', idx_how_h2: 'របៀបប្រើប្រាស់',
+  idx_how1_h: 'បង្កើតប្រវត្តិរូបរបស់អ្នក', idx_how1_p: 'ចុះឈ្មោះឥតគិតថ្លៃ ហើយផ្ទុក CV របស់អ្នកម្តង។',
+  idx_how2_h: 'ដាក់ពាក្យដោយចុចតែម្តង', idx_how2_p: 'ប្រវត្តិរូបរបស់អ្នកទៅដល់ក្រុមហ៊ុនដោយផ្ទាល់។',
+  idx_how3_h: 'ទទួលបានការងារ', idx_how3_p: 'ក្រុមហ៊ុនទាក់ទងបេក្ខជនជាប់បឋមដោយផ្ទាល់។',
+  idx_alert_h: 'កុំខកខានការងារ', idx_alert_p: 'រៀបចំការជូនដំណឹងការងារ ហើយទទួលដំណឹងភ្លាមៗនៅពេលមានការងារសមស្រប។ ឥតគិតថ្លៃជារៀងរហូត។',
+  idx_alert_btn: 'រៀបចំការជូនដំណឹង',
+  idx_trust1: 'តែនិយោជកផ្ទៀងផ្ទាត់ប៉ុណ្ណោះ', idx_trust2: 'ទិន្នន័យសុវត្ថិភាព 100%',
+  idx_trust3: 'ធនធានអាជីពឥតគិតថ្លៃ', idx_trust4: 'ជំនួយបេក្ខជន',
+  ft_tagline: 'ទីផ្សារការងារកម្ពុជាភ្ជាប់ទេពកោសល្យជាមួយក្រុមហ៊ុនល្អៗ។',
+  ft_seekers: 'អ្នកស្វែងរកការងារ', ft_search: 'ស្វែងរកការងារ', ft_dash: 'ផ្ទាំងគ្រប់គ្រងបេក្ខជន', ft_alerts: 'ការជូនដំណឹងការងារ',
+  ft_employers: 'និយោជក', ft_post: 'ប្រកាសតួនាទី', ft_talent: 'ស្វែងរកទេពកោសល្យ', ft_hpricing: 'តម្លៃជ្រើសរើសបុគ្គលិក',
+  ft_company: 'ក្រុមហ៊ុន', ft_about: 'អំពីយើង', ft_contact: 'ទំនាក់ទំនង', ft_privacy_terms: 'ឯកជនភាព & លក្ខខណ្ឌ',
+  ft_copy: '© 2026 Talently Careers. រក្សាសិទ្ធិគ្រប់យ៉ាង។', ft_pp: 'គោលការណ៍ឯកជនភាព', ft_tos: 'លក្ខខណ្ឌប្រើប្រាស់',
+  bn_home: 'ដើម', bn_search: 'ស្វែងរក', bn_saved: 'រក្សាទុក', bn_profile: 'ប្រវត្តិរូប'
+});
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"b31944bb4014466c8e4d70a9e66f3f54","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
